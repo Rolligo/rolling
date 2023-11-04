@@ -1,8 +1,12 @@
-import "styles/colors.css";
-import "styles/reset.css";
+import GlobalStyle from "styles/GlobalStyle";
 
 function App() {
-  return <div></div>;
+  return (
+    <>
+      <GlobalStyle />
+      <div></div>
+    </>
+  );
 }
 
 export default App;
