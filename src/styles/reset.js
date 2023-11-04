@@ -7,12 +7,7 @@ export const reset = css`
     font-family: "Pretendard";
     word-break: keep-all;
   }
-
-  html,
-  body {
-    font-size: 62.5%;
-  }
-
+  
   a {
     color: inherit;
     text-decoration: none;
