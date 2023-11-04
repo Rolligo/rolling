@@ -9,7 +9,6 @@ import ImgBox from "./components/ImgBox";
 import card1 from "../../assets/images/card-img1.png";
 import card2 from "../../assets/images/card-img2.png";
 import card3 from "../../assets/images/card-img3.png";
-//import Emoji from "../../assets/images/Emoji-img.png";
 import Emoji from "../../assets/images/Emoji.png";
 import SingleImg from "./components/SingleImg";
 
