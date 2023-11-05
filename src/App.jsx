@@ -1,16 +1,11 @@
-import Emoji from "components/Badges/Emoji";
+import From from "components/Badges/From";
 import GlobalStyle from "styles/GlobalStyle";
 
 function App() {
-  const style = {
-    display: "flex",
-    gap: "1rem",
-    padding: "5rem",
-  };
   return (
     <>
       <GlobalStyle />
-      <div style={style}></div>
+      <div></div>
     </>
   );
 }
