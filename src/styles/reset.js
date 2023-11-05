@@ -41,4 +41,9 @@ export const reset = css`
     background-color: unset;
     cursor: pointer;
   }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
 `;
