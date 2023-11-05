@@ -45,8 +45,6 @@ export const ImgContainer = styled.div`
 `;
 
 export const ImgBox = styled.div`
-  // display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(33%, auto));
   display: flex;
   position: absolute;
   left: -16.3vw;
@@ -70,7 +68,6 @@ export const ImgBox = styled.div`
 `;
 
 export const SingleImg = styled.img`
-  // width: 27.4vw;
   width: 40vw;
   height: auto;
   ${onTablet} {
