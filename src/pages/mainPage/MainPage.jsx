@@ -1,51 +1,42 @@
 import React from "react";
-import MainPageDiv from "./components/MainPageDiv";
-import Section from "./components/Section";
-import DescriptionDiv from "./components/DescriptonDiv";
-import PointDiv from "./components/PointDiv";
-import MainH1 from "./components/MainH1";
-import MainH2 from "./components/MainH2";
-import ImgBox from "./components/ImgBox";
-import card1 from "../../assets/images/card-img1.png";
-import card2 from "../../assets/images/card-img2.png";
-import card3 from "../../assets/images/card-img3.png";
-import Emoji from "../../assets/images/Emoji.png";
-import SingleImg from "./components/SingleImg";
-import BrTag from "./components/BrTag";
-import EmojiImg from "./components/EmojiImg";
+import Card1 from "assets/images/card-img1.png";
+import Card2 from "assets/images/card-img2.png";
+import Card3 from "assets/images/card-img3.png";
+import Emoji from "assets/images/Emoji.png";
+import * as S from "./MainPage.style";
 
 const MainPage = () => {
   return (
-    <MainPageDiv>
+    <S.MainPageDiv>
       {/* 네비게이션 바 태그 여기에 위치해주세요! */}
-      <Section>
-        <DescriptionDiv>
-          <PointDiv>Point. 01</PointDiv>
-          <MainH1>
+      <S.Section>
+        <S.DescriptionDiv>
+          <S.PointDiv>Point. 01</S.PointDiv>
+          <S.MainH1>
             누구나 손쉽게, 온라인
-            <BrTag /> 롤링 페이퍼를 만들 수 있어요
-          </MainH1>
-          <MainH2>로그인 없이 자유롭게 만들어요.</MainH2>
-        </DescriptionDiv>
-        <ImgBox>
-          <SingleImg src={card1} alt="카드1이미지" />
-          <SingleImg src={card2} alt="카드2이미지" />
-          <SingleImg src={card3} alt="카드3이미지" />
-        </ImgBox>
-      </Section>
-      <Section flexdirection="row-reverse">
-        <DescriptionDiv>
-          <PointDiv>Point. 02</PointDiv>
-          <MainH1>
+            <S.BrTag /> 롤링 페이퍼를 만들 수 있어요
+          </S.MainH1>
+          <S.MainH2>로그인 없이 자유롭게 만들어요.</S.MainH2>
+        </S.DescriptionDiv>
+        <S.ImgBox>
+          <S.SingleImg src={Card1} alt="카드1이미지" />
+          <S.SingleImg src={Card2} alt="카드2이미지" />
+          <S.SingleImg src={Card3} alt="카드3이미지" />
+        </S.ImgBox>
+      </S.Section>
+      <S.Section flexdirection="row-reverse">
+        <S.DescriptionDiv>
+          <S.PointDiv>Point. 02</S.PointDiv>
+          <S.MainH1>
             서로에게 이모지로 감정을
-            <BrTag /> 표현해보세요
-          </MainH1>
-          <MainH2>롤링 페이퍼에 이모지를 추가할 수 있어요.</MainH2>
-        </DescriptionDiv>
-        <EmojiImg src={Emoji} alt="이모지이미지" />
-      </Section>
+            <S.BrTag /> 표현해보세요
+          </S.MainH1>
+          <S.MainH2>롤링 페이퍼에 이모지를 추가할 수 있어요.</S.MainH2>
+        </S.DescriptionDiv>
+        <S.EmojiImg src={Emoji} alt="이모지이미지" />
+      </S.Section>
       {/* 구경해보기 버튼 여기에 위치해주세요! */}
-    </MainPageDiv>
+    </S.MainPageDiv>
   );
 };
 
