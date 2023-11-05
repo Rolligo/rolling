@@ -1,4 +1,3 @@
-import From from "components/Badges/From";
 import GlobalStyle from "styles/GlobalStyle";
 
 function App() {
