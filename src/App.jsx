@@ -1,3 +1,4 @@
+import Emoji from "components/Badges/Emoji";
 import GlobalStyle from "styles/GlobalStyle";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <div></div>
+      <div style={style}></div>
     </>
   );
 }
