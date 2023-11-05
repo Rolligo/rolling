@@ -9,6 +9,7 @@ const EmojiImg = styled.img`
   }
 
   @media (min-width: 1200px) {
+    width: 550px;
   }
 `;
 

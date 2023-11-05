@@ -33,14 +33,14 @@ const MainPage = () => {
           <SingleImg src={card3} alt="카드3이미지" />
         </ImgBox>
       </Section>
-      <Section>
+      <Section flexdirection="row-reverse">
         <DescriptionDiv>
           <PointDiv>Point. 02</PointDiv>
           <MainH1>
             서로에게 이모지로 감정을
             <BrTag /> 표현해보세요
           </MainH1>
-          <MainH2>로그인 없이 자유롭게 만들어요.</MainH2>
+          <MainH2>롤링 페이퍼에 이모지를 추가할 수 있어요.</MainH2>
         </DescriptionDiv>
         <EmojiImg src={Emoji} alt="이모지이미지" />
       </Section>

@@ -14,6 +14,13 @@ const Section = styled.section`
   }
 
   @media (min-width: 1200px) {
+    padding: 60px 60px;
+    width: 100%;
+    max-width: 1140px;
+    flex-direction: ${(props) =>
+      props.flexdirection ? props.flexdirection : "row"};
+    gap: 100px;
+    justify-content: left;
   }
 `;
 

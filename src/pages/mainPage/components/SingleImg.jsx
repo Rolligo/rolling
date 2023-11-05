@@ -8,6 +8,7 @@ const SingleImg = styled.img`
   }
 
   @media (min-width: 1200px) {
+    width: 200px;
   }
 `;
 
