@@ -11,6 +11,7 @@ import card2 from "../../assets/images/card-img2.png";
 import card3 from "../../assets/images/card-img3.png";
 import Emoji from "../../assets/images/Emoji.png";
 import SingleImg from "./components/SingleImg";
+import BrTag from "./components/BrTag";
 
 const MainPage = () => {
   return (
@@ -19,7 +20,10 @@ const MainPage = () => {
       <Section>
         <DescriptionDiv>
           <PointDiv>Point. 01</PointDiv>
-          <MainH1>누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요</MainH1>
+          <MainH1>
+            누구나 손쉽게, 온라인
+            <BrTag /> 롤링 페이퍼를 만들 수 있어요
+          </MainH1>
           <MainH2>로그인 없이 자유롭게 만들어요.</MainH2>
         </DescriptionDiv>
         <ImgBox>
@@ -31,7 +35,10 @@ const MainPage = () => {
       <Section>
         <DescriptionDiv>
           <PointDiv>Point. 02</PointDiv>
-          <MainH1>서로에게 이모지로 감정을 표현해보세요</MainH1>
+          <MainH1>
+            서로에게 이모지로 감정을
+            <BrTag /> 표현해보세요
+          </MainH1>
           <MainH2>로그인 없이 자유롭게 만들어요.</MainH2>
         </DescriptionDiv>
         <SingleImg width="85vw" src={Emoji} alt="이모지이미지" />

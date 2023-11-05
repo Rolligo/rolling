@@ -8,6 +8,12 @@ const Section = styled.section`
   margin-top: 2.4rem;
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1200px) {
+  }
 `;
 
 export default Section;
