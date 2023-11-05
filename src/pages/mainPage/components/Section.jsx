@@ -10,6 +10,7 @@ const Section = styled.section`
   flex-direction: column;
 
   @media (min-width: 768px) {
+    width: 706px;
   }
 
   @media (min-width: 1200px) {

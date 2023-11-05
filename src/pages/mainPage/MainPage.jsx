@@ -12,6 +12,7 @@ import card3 from "../../assets/images/card-img3.png";
 import Emoji from "../../assets/images/Emoji.png";
 import SingleImg from "./components/SingleImg";
 import BrTag from "./components/BrTag";
+import EmojiImg from "./components/EmojiImg";
 
 const MainPage = () => {
   return (
@@ -41,7 +42,7 @@ const MainPage = () => {
           </MainH1>
           <MainH2>로그인 없이 자유롭게 만들어요.</MainH2>
         </DescriptionDiv>
-        <SingleImg width="85vw" src={Emoji} alt="이모지이미지" />
+        <EmojiImg src={Emoji} alt="이모지이미지" />
       </Section>
       {/* 구경해보기 버튼 여기에 위치해주세요! */}
     </MainPageDiv>

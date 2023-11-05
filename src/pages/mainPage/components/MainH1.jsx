@@ -8,6 +8,13 @@ const MainH1 = styled.div`
   font-weight: 700;
   line-height: 28px;
   letter-spacing: -0.18px;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 1200px) {
+  }
 `;
 
 export default MainH1;

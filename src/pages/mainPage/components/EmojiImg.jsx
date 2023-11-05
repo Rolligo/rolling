@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-const SingleImg = styled.img`
-  width: 27.4vw;
+const EmojiImg = styled.img`
+  width: 85vw;
   height: auto;
+
   @media (min-width: 768px) {
-    width: 237px;
+    width: 700px;
   }
 
   @media (min-width: 1200px) {
   }
 `;
 
-export default SingleImg;
+export default EmojiImg;
