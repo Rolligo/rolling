@@ -3,6 +3,7 @@ import { COLORS } from "styles/palette";
 
 export const DropdownContainer = styled.div`
   width: 32rem;
+  margin: 10rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
