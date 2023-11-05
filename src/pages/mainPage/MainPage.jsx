@@ -18,11 +18,13 @@ const MainPage = () => {
           </S.MainH1>
           <S.MainH2>로그인 없이 자유롭게 만들어요.</S.MainH2>
         </S.DescriptionDiv>
-        <S.ImgBox>
-          <S.SingleImg src={Card1} alt="카드1이미지" />
-          <S.SingleImg src={Card2} alt="카드2이미지" />
-          <S.SingleImg src={Card3} alt="카드3이미지" />
-        </S.ImgBox>
+        <S.ImgContainer>
+          <S.ImgBox>
+            <S.SingleImg src={Card1} alt="카드1이미지" />
+            <S.SingleImg src={Card2} alt="카드2이미지" />
+            <S.SingleImg src={Card3} alt="카드3이미지" />
+          </S.ImgBox>
+        </S.ImgContainer>
       </S.Section>
       <S.Section flexdirection="row-reverse">
         <S.DescriptionDiv>
@@ -33,7 +35,9 @@ const MainPage = () => {
           </S.MainH1>
           <S.MainH2>롤링 페이퍼에 이모지를 추가할 수 있어요.</S.MainH2>
         </S.DescriptionDiv>
-        <S.EmojiImg src={Emoji} alt="이모지이미지" />
+        <S.ImgContainer>
+          <S.EmojiImg src={Emoji} alt="이모지이미지" />
+        </S.ImgContainer>
       </S.Section>
       {/* 구경해보기 버튼 여기에 위치해주세요! */}
     </S.MainPageDiv>

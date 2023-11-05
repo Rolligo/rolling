@@ -30,16 +30,55 @@ export const EmojiImg = styled.img`
     width: 55rem;
   }
 `;
-
-export const ImgBox = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+export const ImgContainer = styled.div`
+  position: relative;
+  height: 25rem;
+  overflow: hidden;
   ${onTablet} {
+    height: 20rem;
   }
 
   ${onPc} {
-    width: 55rem;
+    width: 55.8rem;
+    height: 20rem;
+  }
+`;
+
+export const ImgBox = styled.div`
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+  display: flex;
+  position: absolute;
+  left: -16.3vw;
+
+  ${onTablet} {
+    position: static;
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+    overflow: visible;
+    left: 0;
+  }
+
+  ${onPc} {
+    position: static;
+    display: grid;
+    width: 55rem;
+    overflow: visible;
+    grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+    left: 0;
+  }
+`;
+
+export const SingleImg = styled.img`
+  // width: 27.4vw;
+  width: 40vw;
+  height: auto;
+  ${onTablet} {
+    width: 23.7rem;
+  }
+
+  ${onPc} {
+    width: 20rem;
   }
 `;
 
@@ -57,6 +96,7 @@ export const MainH1 = styled.div`
   }
 
   ${onPc} {
+    font-size: 2.4rem;
   }
 `;
 
@@ -72,6 +112,7 @@ export const MainH2 = styled.div`
   }
 
   ${onPc} {
+    font-size: 1.8rem;
   }
 `;
 
@@ -129,17 +170,5 @@ export const Section = styled.section`
       props.flexdirection ? props.flexdirection : "row"};
     gap: 10rem;
     justify-content: left;
-  }
-`;
-
-export const SingleImg = styled.img`
-  width: 27.4vw;
-  height: auto;
-  ${onTablet} {
-    width: 23.7rem;
-  }
-
-  ${onPc} {
-    width: 20rem;
   }
 `;
