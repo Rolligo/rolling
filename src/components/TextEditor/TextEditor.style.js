@@ -24,6 +24,7 @@ export const EditContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 1.5rem;
+  gap: 0.5rem;
 `;
 
 export const TextContainer = styled.textarea`
