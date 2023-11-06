@@ -4,6 +4,7 @@ import Card2 from "assets/images/card-img2.png";
 import Card3 from "assets/images/card-img3.png";
 import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
+import Toast from "components/Toasts";
 
 const MainPage = () => {
   return (
@@ -40,6 +41,9 @@ const MainPage = () => {
         </S.ImgContainer>
       </S.Section>
       {/* 구경해보기 버튼 여기에 위치해주세요! */}
+      <Toast.Portal>
+        <Toast />
+      </Toast.Portal>
     </S.MainPageDiv>
   );
 };
