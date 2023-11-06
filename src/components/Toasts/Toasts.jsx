@@ -3,14 +3,11 @@ import ReactDOM from "react-dom";
 import COMPLETED from "assets/icons/completed.svg";
 import CLOSE from "assets/icons/close.svg";
 
-function Toast() {
+function Toasts({ children, closeToast }) {
   return (
     <S.Container>
-      <S.Wrapper>
-        <img src={COMPLETED} />
-        <span>URL이 복사 되었습니다.</span>
-      </S.Wrapper>
-      <button>
+      <S.Wrapper>{children}</S.Wrapper>
+      <button onClick={closeToast}>
         <img src={CLOSE} />
       </button>
     </S.Container>
@@ -22,6 +19,6 @@ function Portal({ children }) {
   return ReactDOM.createPortal(children, toastElement);
 }
 
-Toast.Portal = Portal;
+Toasts.Portal = Portal;
 
-export default Toast;
+export default Toasts;

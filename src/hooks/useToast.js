@@ -1,18 +1,37 @@
 import { useState } from "react";
-import debounce from "utils/debounce";
+import Toasts from "components/Toasts";
+import CopyToClipboard from "components/Toasts/CopyToClipboard";
+
+const TOASTS = {
+  copyToClipboard: <CopyToClipboard />,
+};
 
 function useToast(wait) {
-  const [show, setShow] = useState(false);
+  const [Toast, setToast] = useState(null);
 
-  const showToast = debounce(() => {
-    if (show) return;
-    setShow(true);
+  const closeToast = () => {
+    setToast(null);
+  };
+
+  const toggleToast = (toast) => {
+    if (!toast) {
+      setToast(null);
+      return;
+    }
+
+    const newToast = createToast(TOASTS[toast], closeToast);
+    setToast(newToast);
+
     setTimeout(() => {
-      setShow(false);
+      setToast(null);
     }, wait);
-  }, 150);
+  };
 
-  return [show, showToast];
+  return [Toast, toggleToast];
+}
+
+function createToast(Toast, closeToast) {
+  return <Toasts closeToast={closeToast}>{Toast}</Toasts>;
 }
 
 export default useToast;
