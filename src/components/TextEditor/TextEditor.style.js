@@ -39,3 +39,8 @@ export const TextContainer = styled.textarea`
   line-height: 26px; /* 162.5% */
   letter-spacing: -0.16px;
 `;
+
+export const Button = styled.button`
+  width: 2.4rem;
+  height: 2.4rem;
+`;
