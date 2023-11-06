@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card1 from "assets/images/card-img1.png";
 import Card2 from "assets/images/card-img2.png";
 import Card3 from "assets/images/card-img3.png";
