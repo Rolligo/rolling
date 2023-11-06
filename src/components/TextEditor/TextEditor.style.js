@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { onPc, onTablet } from "styles/mediaQuery";
-import { COLORS } from "styles/palette";
 
 export const TextEditorContainer = styled.div`
   display: flex;
