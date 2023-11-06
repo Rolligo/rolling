@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import * as S from "./TextEditor.style";
+import DOMPurify from "dompurify";
 
 const TextEditor = () => {
   const [text, setText] = useState("");
@@ -15,7 +16,11 @@ const TextEditor = () => {
         <ReactQuill onChange={onChangeContents} />
       </S.TextEditorContainer>
       <S.TextEditorContainer>
-        <div dangerouslySetInnerHTML={{ __html: text }} />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(text),
+          }}
+        />
       </S.TextEditorContainer>
     </>
   );
