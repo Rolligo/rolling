@@ -1,10 +1,13 @@
+import ArrowButton from "components/StyledButtons/ArrowButton";
 import GlobalStyle from "styles/GlobalStyle";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <div></div>
+      <div>
+        <ArrowButton right />
+      </div>
     </>
   );
 }
