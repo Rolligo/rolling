@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
 
 export const DropdownContainer = styled.div`
@@ -22,9 +23,7 @@ export const ButtonContainer = styled.button`
     error ? COLORS.ERROR : active ? COLORS.GRAY_500 : COLORS.GRAY_300};
   color: ${({ error, active }) =>
     error || active ? COLORS.GRAY_900 : COLORS.GRAY_500};
-  font-size: 1.6rem;
-  line-height: 2.6rem;
-  letter-spacing: -0.016rem;
+  ${FONT_STYLE.REGULAR_16};
   background: ${({ disabled }) => disabled && COLORS.GRAY_100};
 
   &:hover {
@@ -42,9 +41,7 @@ export const ButtonContainer = styled.button`
 export const ErrorMessage = styled.p`
   margin-top: -0.4rem;
   color: ${COLORS.ERROR};
-  font-size: 1.2rem;
-  line-height: 150%;
-  letter-spacing: -0.006rem;
+  ${FONT_STYLE.REGULAR_12};
 `;
 
 export const ListContainer = styled.ul`
@@ -65,9 +62,7 @@ export const ListItem = styled.li`
   width: 31.6rem;
   padding: 1.2rem 1.6rem;
   align-items: center;
-  font-size: 1.6rem;
-  line-height: 2.6rem;
-  letter-spacing: -0.016rem;
+  ${FONT_STYLE.REGULAR_16};
 
   ${ListContainer} &:hover {
     background: ${COLORS.GRAY_100};
