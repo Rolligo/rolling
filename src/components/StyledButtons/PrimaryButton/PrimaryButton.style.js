@@ -9,7 +9,7 @@ const COLORS_OF_STATS = {
   disabled: COLORS.GRAY_300,
 };
 
-// possible props : width {Number}, margin {Number}, disabled {Boolean}
+// possible props : width{Number}, margin{Number}, disabled{Boolean}, smallSize{Boolean}
 export const ButtonContainer = styled.button`
   width: ${({ width }) => width};
   height: ${({ smallSize }) => (smallSize ? "4" : "5.6")}rem;

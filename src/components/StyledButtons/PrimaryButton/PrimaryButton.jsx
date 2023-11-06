@@ -1,7 +1,7 @@
 import * as S from "./PrimaryButton.style";
 
 function PrimaryButton({
-  children = "", // children : 버튼 텍스트 내용 (Button's innerText)
+  children = "Enabled", // children : 버튼 텍스트 내용 (Button's innerText)
   width = "auto",
   margin = 0,
   disabled = false,

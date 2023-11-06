@@ -10,22 +10,22 @@ const COLORS_OF_STATS = {
   disabled: { color: COLORS.GRAY_300, border: COLORS.GRAY_300 },
 };
 
-// possible props : width{Num(56,40,36,28)}, height, margin{Num}, disabled{Boolean}, smallSize{Boolean}
+// possible props : height{Num(56,40,36,28)}, width, margin{Num}, disabled{Boolean}, smallSize{Boolean}, padding{Num}
 export const ButtonContainer = styled.button`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
   position: relative;
+  display: flex;
+  align-items: center;
   border-radius: 1.2rem;
   border: 0.1rem solid
     ${({ disabled }) =>
       disabled
         ? COLORS_OF_STATS.disabled.border
         : COLORS_OF_STATS.enabled.border};
-  padding: ${({ smallSize }) =>
-    smallSize ? "0.2rem 1.6rem" : "1.4rem 2.4rem"};
+  padding: ${({ padding }) => padding};
   color: ${({ disabled }) => disabled && COLORS.WHITE};
-  font-weight: ${({ smallSize }) => (smallSize ? "400" : "700")};
   line-height: 2.8rem;
   font-size: ${({ smallSize }) => (smallSize ? "1.6" : "1.8")}rem;
   background-color: ${({ disabled }) =>
@@ -45,10 +45,10 @@ export const ButtonContainer = styled.button`
   }
 `;
 
-export const AddEmoji = styled.image`
-  width: 2.4rem;
-  height: 2.4rem;
-  position: absolute;
-  top: 1px;
-  left: 1px;
+export const InnerTextWrapper = styled.h4`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: ${({ smallSize }) => (smallSize ? "400" : "700")};
 `;

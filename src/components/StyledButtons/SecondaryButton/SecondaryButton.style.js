@@ -9,16 +9,17 @@ const BACKGROUND_STYLES = {
   disabled: COLORS.GRAY_300,
 };
 
-// possible props : width {Number}, margin {Number}, isEnabled {Boolean}
+// possible props : width {Number}, margin {Number}, isEnabled {Boolean}, smallSize{Boolean}
 export const ButtonContainer = styled.button`
   width: ${({ width }) => width};
-  height: ${({ smallSize }) => (smallSize ? "40" : "56")}px
+  height: ${({ smallSize }) => (smallSize ? "4.0" : "5.6")}rem
   margin: ${({ margin }) => margin};
-  border-radius: 12px;
-  padding: ${({ smallSize }) => (smallSize ? "7px 16px" : "14px 24px")};
+  border-radius: 1.2rem;
+  padding: ${({ smallSize }) =>
+    smallSize ? "0.7rem 1.6rem" : "1.4rem 2.4rem"};
   color: ${COLORS.WHITE};
   font-weight: ${({ smallSize }) => (smallSize ? "400" : "700")};
-  line-height: 28px;
+  line-height: 2.8rem;
   font-size: ${({ smallSize }) => (smallSize ? "1.8" : "1.6")}rem;
   background-color: ${({ isEnabled }) =>
     isEnabled ? BACKGROUND_STYLES.enabled : BACKGROUND_STYLES.disabled};
