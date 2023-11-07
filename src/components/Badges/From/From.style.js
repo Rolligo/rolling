@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
 
 export const Container = styled.div`
@@ -40,8 +41,5 @@ export const CountContainer = styled.div`
   border-radius: 3rem;
   background-color: ${COLORS.WHITE};
   color: ${COLORS.GRAY_500};
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1.8rem;
-  letter-spacing: -0.006rem;
+  ${FONT_STYLE.REGULAR_12};
 `;

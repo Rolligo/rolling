@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { onPc, onTablet } from "styles/mediaQuery";
+import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
 
 export const BrTag = styled.br`
@@ -82,11 +83,7 @@ export const SingleImg = styled.img`
 export const MainH1 = styled.div`
   margin-bottom: 0.4rem;
   color: ${COLORS.GRAY_900};
-  font-size: 1.8rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.8rem;
-  letter-spacing: -0.018rem;
+  ${FONT_STYLE.BOLD_18}
 
   ${onTablet} {
     font-size: 2.4rem;
@@ -99,11 +96,8 @@ export const MainH1 = styled.div`
 
 export const MainH2 = styled.div`
   color: ${COLORS.GRAY_500};
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2.2rem;
-  letter-spacing: -0.015rem;
+  ${FONT_STYLE.REGULAR_15};
+
   ${onTablet} {
     font-size: 1.8rem;
   }
@@ -137,11 +131,7 @@ export const PointDiv = styled.div`
   background: ${COLORS.PURPLE_600};
   width: 9rem;
   height: 3.2rem;
-  font-size: 1.4rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2rem;
-  letter-spacing: -0.007rem;
+  ${FONT_STYLE.BOLD_14};
   color: ${COLORS.WHITE};
   margin-bottom: 1.6rem;
 `;
