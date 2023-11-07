@@ -18,11 +18,19 @@ function PaperListPage() {
     },
   });
 
+  const reversedPopularPaper = {
+    ...popularPaper,
+    results: popularPaper?.results?.reverse(),
+  };
+
   return (
     <>
       <NavBar />
       <S.Container>
-        <PaperSection title="인기 롤링 페이퍼 🔥" papers={popularPaper} />
+        <PaperSection
+          title="인기 롤링 페이퍼 🔥"
+          papers={reversedPopularPaper}
+        />
         <PaperSection title="최근에 만든 롤링 페이퍼⭐️" papers={recentPaper} />
       </S.Container>
       <S.ButtonContainer>
@@ -33,7 +41,6 @@ function PaperListPage() {
 }
 
 function PaperSection({ title, papers }) {
-  papers?.results?.reverse();
   return (
     <S.Section>
       <S.Title>{title}</S.Title>
