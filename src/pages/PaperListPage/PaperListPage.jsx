@@ -1,7 +1,19 @@
-import PaperCard from "components/PaperCard";
 import * as S from "./PaperListPage.style";
+import { useEffect } from "react";
+import useRequest from "hooks/useRequest";
+import PaperCard from "components/PaperCard";
+import axios from "axios";
 
 function PaperListPage() {
+  const { data } = useRequest({
+    url: "recipients/",
+    method: "get",
+  });
+
+  useEffect(() => {
+    console.log(data);
+  }, data);
+
   return (
     <S.Container>
       <S.Section>
