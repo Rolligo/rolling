@@ -1,10 +1,10 @@
 import * as S from "./SecondaryButton.style";
 
-function PrimaryButton({
-  children = "", // children : 버튼 텍스트 내용 (Button's innerText)
-  width = "auto",
+function SecondaryButton({
+  children = "Enabled", // children : 버튼 텍스트 내용 (Button's innerText)
+  width = "100%",
   margin = 0,
-  disabled = true,
+  disabled = false,
   smallSize = false,
 }) {
   return (
@@ -19,4 +19,4 @@ function PrimaryButton({
   );
 }
 
-export default PrimaryButton;
+export default SecondaryButton;

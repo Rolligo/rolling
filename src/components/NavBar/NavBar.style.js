@@ -4,10 +4,8 @@ import { COLORS } from "styles/palette";
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  padding: 11px 0px;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
   background: ${COLORS.WHITE};
 `;
 
@@ -17,6 +15,7 @@ export const Container = styled.div`
   align-items: center;
   align-self: stretch;
   white-space: nowrap;
+  padding: 11px 0px;
 `;
 
 export const LogoImage = styled.img`
@@ -26,4 +25,11 @@ export const LogoImage = styled.img`
   padding: 6px 0px;
   justify-content: center;
   align-items: center;
+`;
+
+export const BottomLine = styled.div`
+  width: 1199px;
+  height: 1px;
+  flex-shrink: 0;
+  background: #ededed;
 `;
