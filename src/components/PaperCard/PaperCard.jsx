@@ -2,12 +2,6 @@ import * as S from "./PaperCard.style";
 import Emoji from "components/Badges/Emoji";
 import From from "components/Badges/From";
 
-const imgUrls = [
-  "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-  "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-  "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-];
-
 const BACKGROUND_COLOR = {
   purple: "PURPLE_200",
   beige: "ORANGE_200",
@@ -22,7 +16,14 @@ function PaperCard({ data = {} }) {
     backgroundImageUrl,
     messageCount,
     topReactions,
+    recentMessages,
   } = data;
+
+  const FromImgUrls = [
+    recentMessages?.[0]?.profileImageURL,
+    recentMessages?.[1]?.profileImageURL,
+    recentMessages?.[2]?.profileImageURL,
+  ];
 
   return (
     <S.Container
@@ -31,16 +32,21 @@ function PaperCard({ data = {} }) {
     >
       <S.TextContainer>
         <S.Title>{name}</S.Title>
-        <From imgUrls={imgUrls} count={messageCount} />
+        <From imgUrls={FromImgUrls} count={messageCount} />
         <S.Description>
           <S.Count>{messageCount}</S.Count>명이 작성했어요!
         </S.Description>
       </S.TextContainer>
       <S.Line />
       <Emoji.Container>
-        <Emoji emoji="😊" count={12} />
-        <Emoji emoji="👍" count={24} />
-        <Emoji emoji="🎉" count={7} />
+        {topReactions &&
+          topReactions?.map((reaction) => (
+            <Emoji
+              key={reaction.id}
+              emoji={reaction.emoji}
+              count={reaction.count}
+            />
+          ))}
       </Emoji.Container>
     </S.Container>
   );

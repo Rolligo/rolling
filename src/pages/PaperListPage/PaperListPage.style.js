@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { onTablet, onPc } from "styles/mediaQuery";
 
 export const Container = styled.main`
   display: flex;
@@ -24,5 +25,15 @@ export const CardContainer = styled.ul`
   display: flex;
   gap: 1.2rem;
   overflow: scroll;
+  width: 100%;
+  height: 23.2rem;
   padding: 0 2rem;
+
+  ${onTablet} {
+    height: 26rem;
+  }
+
+  ${onPc} {
+    height: 26rem;
+  }
 `;
