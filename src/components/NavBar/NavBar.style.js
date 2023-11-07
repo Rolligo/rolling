@@ -18,3 +18,12 @@ export const Container = styled.div`
   align-self: stretch;
   white-space: nowrap;
 `;
+
+export const LogoImage = styled.img`
+  width: 10.6rem;
+  height: 4.2rem;
+  display: flex;
+  padding: 6px 0px;
+  justify-content: center;
+  align-items: center;
+`;
