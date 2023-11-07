@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { COLORS } from "styles/palette";
+import { onPc, onTablet } from "styles/mediaQuery";
 
 const COLORS_OF_STATS = {
   enabled: COLORS.PURPLE_600, // default(enabled) 색상
@@ -47,5 +48,9 @@ export const ButtonContainer = styled.button`
   }
   &:focus {
     background-color: ${COLORS_OF_STATS.focus};
+  }
+
+  ${onPc} {
+    width: 28rem;
   }
 `;
