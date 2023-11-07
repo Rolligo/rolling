@@ -4,12 +4,15 @@ import Card2 from "assets/images/card-img2.png";
 import Card3 from "assets/images/card-img3.png";
 import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
+import NavBar from "components/NavBar";
 import PaperCard from "components/PaperCard";
+import PrimaryButton from "components/StyledButtons/PrimaryButton";
+import SecondaryButton from "components/StyledButtons/SecondaryButton";
 
 const MainPage = () => {
   return (
     <S.MainPageDiv>
-      {/* 네비게이션 바 태그 여기에 위치해주세요! */}
+      <NavBar />
       <S.Section>
         <S.DescriptionDiv>
           <S.PointDiv>Point. 01</S.PointDiv>
@@ -40,7 +43,7 @@ const MainPage = () => {
           <S.EmojiImg src={Emoji} alt="이모지이미지" />
         </S.ImgContainer>
       </S.Section>
-      {/* 구경해보기 버튼 여기에 위치해주세요! */}
+      <PrimaryButton margin="2.4rem 0">구경해보기</PrimaryButton>
     </S.MainPageDiv>
   );
 };
