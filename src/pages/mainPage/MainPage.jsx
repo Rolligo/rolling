@@ -5,12 +5,12 @@ import Card3 from "assets/images/card-img3.png";
 import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
 import NavBar from "components/NavBar";
+import PaperCard from "components/PaperCard";
 
 const MainPage = () => {
   return (
     <S.MainPageDiv>
       <NavBar />
-      {/* 네비게이션 바 태그 여기에 위치해주세요! */}
       <S.Section>
         <S.DescriptionDiv>
           <S.PointDiv>Point. 01</S.PointDiv>
