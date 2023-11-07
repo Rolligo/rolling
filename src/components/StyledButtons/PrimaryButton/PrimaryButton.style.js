@@ -50,7 +50,7 @@ export const ButtonContainer = styled.button`
     background-color: ${COLORS_OF_STATS.focus};
   }
 
-  ${onPc} {
+  ${({ fixBtnWidthOnPC }) => fixBtnWidthOnPC && onPc} {
     width: 28rem;
   }
 `;
