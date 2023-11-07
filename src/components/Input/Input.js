@@ -14,7 +14,7 @@ function Input({
         type="text"
         error={isError}
         placeholder={placeholder}
-        inputValue={inputValue}
+        value={inputValue}
         onChange={onChange}
         onBlur={onBlur}
       />

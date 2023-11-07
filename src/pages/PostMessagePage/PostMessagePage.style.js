@@ -21,7 +21,7 @@ export const Section = styled.section`
   width: 100%;
   background: ${COLORS.SURFACE};
   padding: 5rem 0 0 0;
-  margin-top: 2.4rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
 
@@ -47,5 +47,73 @@ export const H1 = styled.div`
   }
 
   ${onPc} {
+  }
+`;
+
+export const ImgDiv = styled.div`
+  display: flex;
+  width: 100%;
+  height: 20rem;
+  gap: 3.2rem;
+`;
+
+export const ChosenImgDiv = styled.div`
+  padding: 2.4rem 0;
+  width: 8rem;
+  height: 8rem;
+`;
+
+export const ImgContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+`;
+
+export const Div = styled.div`
+  padding-top: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const H2 = styled.h2`
+  ${FONT_STYLE.REGULAR_16};
+  color: ${COLORS.GRAY_500};
+  padding-bottom: 1.7rem;
+`;
+
+export const DefaultImage = styled.img`
+  width: 8rem;
+  height: 8rem;
+`;
+
+export const SingleImage = styled.img`
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10rem;
+  ${onTablet} {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
+  ${onPc} {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+`;
+
+export const SingleImageButton = styled.button`
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10rem;
+  ${onTablet} {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
+  ${onPc} {
+    width: 5.6rem;
+    height: 5.6rem;
   }
 `;
