@@ -1,4 +1,9 @@
-export const RELATIONSHIP = ["친구", "지인", "동료", "관계"];
+export const RELATIONSHIP = {
+  친구: "friend",
+  지인: "acquaintance",
+  동료: "colleague",
+  가족: "family",
+};
 
 export const FONT_SELECT = [
   "Noto Sans",
