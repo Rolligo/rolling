@@ -50,7 +50,6 @@ const TextEditor = ({ fontFamily = "Noto Sans" }) => {
     setText(contents);
   }
 
-  //페이지 컴포넌트에서 prop로 내려받은 폰트 선택 state(fontFamily)가 변경될 때 handleFontChange함수 호출
   function handleFontChange(ref) {
     ref.current.style.fontFamily = fontFamily;
   }
@@ -62,6 +61,7 @@ const TextEditor = ({ fontFamily = "Noto Sans" }) => {
   return (
     <S.TextEditorContainer>
       <ReactQuill
+        ref={quillRef}
         onChange={onChangeContents}
         modules={modules}
         formats={formats}
