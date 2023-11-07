@@ -19,7 +19,7 @@ function PaperCard({ data = {} }) {
     recentMessages,
   } = data;
 
-  const FromImgUrls = [
+  const fromImgUrls = [
     recentMessages?.[0]?.profileImageURL,
     recentMessages?.[1]?.profileImageURL,
     recentMessages?.[2]?.profileImageURL,
@@ -32,7 +32,7 @@ function PaperCard({ data = {} }) {
     >
       <S.TextContainer>
         <S.Title>{name}</S.Title>
-        <From imgUrls={FromImgUrls} count={messageCount} />
+        <From imgUrls={fromImgUrls} count={messageCount} />
         <S.Description>
           <S.Count>{messageCount}</S.Count>명이 작성했어요!
         </S.Description>

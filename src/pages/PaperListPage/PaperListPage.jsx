@@ -3,6 +3,7 @@ import useRequest from "hooks/useRequest";
 import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
+import ArrowButton from "components/StyledButtons/ArrowButton";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -51,6 +52,12 @@ function PaperSection({ title, papers }) {
               <PaperCard data={paper} />
             </li>
           ))}
+        <S.ArrowButtonContainer $left>
+          <ArrowButton left />
+        </S.ArrowButtonContainer>
+        <S.ArrowButtonContainer $right>
+          <ArrowButton right />
+        </S.ArrowButtonContainer>
       </S.CardContainer>
     </S.Section>
   );
