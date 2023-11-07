@@ -43,7 +43,7 @@ const MainPage = () => {
           <S.EmojiImg src={Emoji} alt="이모지이미지" />
         </S.ImgContainer>
       </S.Section>
-      <PrimaryButton>구경해보기</PrimaryButton>
+      <PrimaryButton margin="2.4rem 0">구경해보기</PrimaryButton>
     </S.MainPageDiv>
   );
 };
