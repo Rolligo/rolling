@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { COLORS } from "styles/palette";
 
 const COLORS_OF_STATS = {
@@ -14,8 +14,7 @@ export const RoundBtnContainer = styled.button`
   height: ${({ height }) => height};
   border-radius: 10rem;
   padding: 1.6rem;
-  background-color: ${({ disabled }) =>
-    disabled ? COLORS_OF_STATS.disabled : COLORS_OF_STATS.enabled};
+  
   &:hover {
     background-color: ${COLORS_OF_STATS.hover};
   }
