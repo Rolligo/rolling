@@ -8,6 +8,13 @@ import Dropdown from "components/Dropdown";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "관계"];
 
+const FONT_SELECT = [
+  "Noto Sans",
+  "Pretendard",
+  "나눔명조",
+  "나눔손글씨 손편지체",
+];
+
 const imageUrls = [
   "https://fastly.picsum.photos/id/1082/100/100.jpg?hmac=0rTbHjwuEo-KpMp2E4aCa2JWXFT_FPh6cqJwhTxcZl4",
   "https://fastly.picsum.photos/id/494/100/100.jpg?hmac=VY3bkvgk7NyiVsjLJ0_OBS_e_LWCFTrPEvndz6syOFQ",
@@ -28,7 +35,7 @@ const PostMessagePage = () => {
   const [singleUrl, setSingleUrl] = useState("");
   const [isDefaultImgClicked, setIsDefaultImgClicked] = useState(true);
   const [selectedValue, setSelectedValue] = useState(RELATIONSHIP[0]);
-
+  const [selectedFontValue, setSelectedFontValue] = useState(FONT_SELECT[0]);
   function handleInputChange(e) {
     e.preventDefault();
     setInputValue(e.target.value);
@@ -58,8 +65,12 @@ const PostMessagePage = () => {
     setSingleUrl("");
   }
 
-  function getSelectedValue(temp) {
-    setSelectedValue(temp);
+  function getSelectedValue(innerText) {
+    setSelectedValue(innerText);
+  }
+
+  function getFontSelectedValue(innerText) {
+    setSelectedFontValue(innerText);
   }
 
   return (
@@ -112,6 +123,10 @@ const PostMessagePage = () => {
       </S.Section>
       <S.Section>
         <S.H1>폰트 선택</S.H1>
+        <Dropdown
+          options={FONT_SELECT}
+          getSelectedValue={getFontSelectedValue}
+        />
       </S.Section>
     </S.PostMessagePageDiv>
   );
