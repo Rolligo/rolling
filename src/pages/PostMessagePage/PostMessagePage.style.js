@@ -130,3 +130,15 @@ export const DefaultImgButton = styled.button`
   background: ${COLORS.GRAY_300};
   color: ${COLORS.WHITE};
 `;
+
+export const TempDiv = styled.div`
+  width: 100%;
+  height: 18.2rem;
+  ${onTablet} {
+    height: 5rem;
+  }
+
+  ${onPc} {
+    height: 5rem;
+  }
+`;

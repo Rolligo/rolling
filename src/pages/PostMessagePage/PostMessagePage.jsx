@@ -30,20 +30,24 @@ const imageUrls = [
 
 const PostMessagePage = () => {
   const [isError, setIsError] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputNameValue, setInputNameValue] = useState("");
   const [isSingleImgClicked, setIsSingleImgClicked] = useState(false);
   const [singleUrl, setSingleUrl] = useState("");
   const [isDefaultImgClicked, setIsDefaultImgClicked] = useState(true);
-  const [selectedValue, setSelectedValue] = useState(RELATIONSHIP[0]);
+  const [selectedRelationValue, setSelectedRelationValue] = useState(
+    RELATIONSHIP[0]
+  );
   const [selectedFontValue, setSelectedFontValue] = useState(FONT_SELECT[0]);
+  const [inputTextValue, setInputTextValue] = useState("");
+
   function handleInputChange(e) {
     e.preventDefault();
-    setInputValue(e.target.value);
+    setInputNameValue(e.target.value);
     setIsError(false);
   }
 
   function blurHandler(e) {
-    if (inputValue === "") {
+    if (inputNameValue === "") {
       setIsError(true);
     }
   }
@@ -66,7 +70,7 @@ const PostMessagePage = () => {
   }
 
   function getSelectedValue(innerText) {
-    setSelectedValue(innerText);
+    setSelectedRelationValue(innerText);
   }
 
   function getFontSelectedValue(innerText) {
@@ -81,7 +85,7 @@ const PostMessagePage = () => {
           isError={isError}
           placeholder="이름을 입력해 주세요."
           errorMessage="값을 입력해 주세요."
-          inputValue={inputValue}
+          inputValue={inputNameValue}
           onChange={(e) => handleInputChange(e)}
           onBlur={(e) => blurHandler(e)}
         />
@@ -128,6 +132,7 @@ const PostMessagePage = () => {
           getSelectedValue={getFontSelectedValue}
         />
       </S.Section>
+      <S.TempDiv></S.TempDiv>
     </S.PostMessagePageDiv>
   );
 };
