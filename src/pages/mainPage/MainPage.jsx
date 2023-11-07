@@ -4,15 +4,11 @@ import Card2 from "assets/images/card-img2.png";
 import Card3 from "assets/images/card-img3.png";
 import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
-import CardEx from "components/Modal/CardEx";
 
 const MainPage = () => {
   return (
     <S.MainPageDiv>
       {/* 네비게이션 바 태그 여기에 위치해주세요! */}
-      
-      <CardEx></CardEx>
-
       <S.Section>
         <S.DescriptionDiv>
           <S.PointDiv>Point. 01</S.PointDiv>
