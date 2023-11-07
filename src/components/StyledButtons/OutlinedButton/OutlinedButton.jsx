@@ -1,6 +1,10 @@
 import * as S from "./OutlinedButton.style";
 import addEmoji from "assets/images/icons/add-emoticon.svg";
 
+// ** OutlinedButton은 height에 따른 모양이 다르기 때문에 기본 height가 56이 아닌 다른 height으로 이용하고 싶다면
+// 꼭 prop으로 width를 명시해주어야 합니다!! smallSize width=""를 같이 입력해주어야 해당 width에 맞는
+// 형태로 작동하고 smallSize만 적어 줄 경우에는 width가 40인 경우로 적용 됩니다!
+
 function OutlinedButton({
   children = "Enabled", // children : 버튼 텍스트 내용 (Button's innerText)
   margin = 0,
@@ -15,7 +19,6 @@ function OutlinedButton({
       return height >= "4.0rem" ? "0.8rem" : "1.6rem";
     }
     switch (height) {
-      //TODO: height 별 Object로 만들기
       case "5.6rem":
         return "1.4rem 2.4rem";
       case "4.0rem":

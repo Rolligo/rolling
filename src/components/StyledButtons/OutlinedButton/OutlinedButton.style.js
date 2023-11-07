@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { COLORS } from "styles/palette";
 
 const COLORS_OF_STATS = {
@@ -10,7 +10,6 @@ const COLORS_OF_STATS = {
   disabled: { color: COLORS.GRAY_300, border: COLORS.GRAY_300 },
 };
 
-// possible props : height{Num(56,40,36,28)}, width, margin{Num}, disabled{Boolean}, smallSize{Boolean}, padding{Num}
 export const ButtonContainer = styled.button`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -19,17 +18,33 @@ export const ButtonContainer = styled.button`
   display: flex;
   align-items: center;
   border-radius: 1.2rem;
+  font-weight: 700;
   border: 0.1rem solid
     ${({ disabled }) =>
       disabled
         ? COLORS_OF_STATS.disabled.border
         : COLORS_OF_STATS.enabled.border};
   padding: ${({ padding }) => padding};
-  color: ${({ disabled }) => disabled && COLORS.WHITE};
   line-height: 2.8rem;
-  font-size: ${({ smallSize }) => (smallSize ? "1.6" : "1.8")}rem;
-  background-color: ${({ disabled }) =>
-    disabled ? COLORS_OF_STATS.disabled.color : COLORS_OF_STATS.enabled.color};
+  font-size: 1.8rem;
+  background-color: ${COLORS_OF_STATS.enabled.color};
+
+  ${(props) =>
+    props.smallSize &&
+    css`
+      border-radius: 0.6rem;
+      font-weight: 400;
+      font-size: 1.8rem;
+    `};
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      color: ${COLORS.WHITE};
+      background-color: ${COLORS_OF_STATS.disabled};
+      cursor: not-allowed;
+      pointer-events: none;
+    `};
 
   &:hover {
     background-color: ${COLORS_OF_STATS.hover.color};

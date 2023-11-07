@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { COLORS } from "styles/palette";
 
 const COLORS_OF_STATS = {
@@ -9,20 +9,35 @@ const COLORS_OF_STATS = {
   disabled: COLORS.GRAY_300,
 };
 
-// possible props : width{Number}, margin{Number}, disabled{Boolean}, smallSize{Boolean}
 export const ButtonContainer = styled.button`
   width: ${({ width }) => width};
-  height: ${({ smallSize }) => (smallSize ? "4" : "5.6")}rem;
+  height: 5.6rem;
   margin: ${({ margin }) => margin};
   border-radius: 1.2rem;
-  padding: ${({ smallSize }) =>
-    smallSize ? "0.7rem 1.6rem" : "1.4rem 2.4rem"};
+  padding: 1.4rem 2.4rem;
   color: ${COLORS.WHITE};
-  font-weight: ${({ smallSize }) => (smallSize ? "400" : "700")};
+  font-weight: 700;
   line-height: 2.8rem;
-  font-size: ${({ smallSize }) => (smallSize ? "1.6" : "1.8")}rem;
-  background-color: ${({ disabled }) =>
-    disabled ? COLORS_OF_STATS.disabled : COLORS_OF_STATS.enabled};
+  font-size: 1.8rem;
+  background-color: ${COLORS_OF_STATS.enabled};
+
+  ${(props) =>
+    props.smallSize &&
+    css`
+      height: 4rem;
+      border-radius: 0.6rem;
+      padding: 0.7rem 1.6rem;
+      font-weight: 400;
+      font-size: 1.6rem;
+    `};
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      background-color: ${COLORS_OF_STATS.disabled};
+      cursor: not-allowed;
+      pointer-events: none;
+    `};
 
   &:hover {
     background-color: ${COLORS_OF_STATS.hover};

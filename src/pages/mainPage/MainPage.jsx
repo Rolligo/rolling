@@ -7,6 +7,7 @@ import * as S from "./MainPage.style";
 import NavBar from "components/NavBar";
 import PaperCard from "components/PaperCard";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
+import SecondaryButton from "components/StyledButtons/SecondaryButton";
 
 const MainPage = () => {
   return (
