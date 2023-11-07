@@ -8,14 +8,32 @@ const imgUrls = [
   "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
 ];
 
-function PaperCard() {
+const BACKGROUND_COLOR = {
+  purple: "PURPLE_200",
+  beige: "ORANGE_200",
+  blue: "BLUE_200",
+  green: "GREEN_200",
+};
+
+function PaperCard({ data = {} }) {
+  const {
+    name,
+    backgroundColor,
+    backgroundImageUrl,
+    messageCount,
+    topReactions,
+  } = data;
+
   return (
-    <S.Container>
+    <S.Container
+      $backgroundColor={BACKGROUND_COLOR?.[backgroundColor]}
+      $backgroundImageUrl={backgroundImageUrl}
+    >
       <S.TextContainer>
-        <S.Title>To. Sowon</S.Title>
-        <From imgUrls={imgUrls} count="27" />
+        <S.Title>{name}</S.Title>
+        <From imgUrls={imgUrls} count={messageCount} />
         <S.Description>
-          <S.Count>30</S.Count>명이 작성했어요!
+          <S.Count>{messageCount}</S.Count>명이 작성했어요!
         </S.Description>
       </S.TextContainer>
       <S.Line />

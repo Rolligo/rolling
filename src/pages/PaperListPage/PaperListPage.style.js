@@ -20,7 +20,7 @@ export const Title = styled.h1`
   line-height: 3rem;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.ul`
   display: flex;
   gap: 1.2rem;
   overflow: scroll;

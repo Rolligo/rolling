@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding: 3rem 2.2rem 2rem 2.4rem;
   border-radius: 1.6rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.1);
-  background: ${COLORS.PURPLE_200};
+  background-color: ${({ $backgroundColor }) => COLORS[$backgroundColor]};
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
 
   ${onTablet} {

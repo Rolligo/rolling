@@ -1,27 +1,32 @@
 import * as S from "./PaperListPage.style";
-import { useEffect } from "react";
 import useRequest from "hooks/useRequest";
 import PaperCard from "components/PaperCard";
-import axios from "axios";
 
 function PaperListPage() {
-  const { data } = useRequest({
+  const { data: recentPaper } = useRequest({
     url: "recipients/",
     method: "get",
   });
 
-  useEffect(() => {
-    console.log(data);
-  }, data);
+  const { data: popularPaper } = useRequest({
+    url: "recipients/",
+    method: "get",
+    params: {
+      sort: "like",
+    },
+  });
 
   return (
     <S.Container>
       <S.Section>
         <S.Title>인기 롤링 페이퍼 🔥</S.Title>
         <S.CardContainer>
-          <PaperCard />
-          <PaperCard />
-          <PaperCard />
+          {popularPaper &&
+            popularPaper?.results?.map((paper) => (
+              <li key={paper?.id}>
+                <PaperCard data={paper} />
+              </li>
+            ))}
         </S.CardContainer>
       </S.Section>
       <S.Section>
