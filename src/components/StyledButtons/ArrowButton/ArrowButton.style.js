@@ -11,6 +11,5 @@ export const ButtonContainer = styled.button`
   stroke: ${COLORS.GRAY_300};
   filter: drop-shadow(0 0.4rem 0.8rem rgba(0, 0, 0, 0.08));
   background-image: url(${background});
-  backdrop-filter: blur(0.2rem);
   background-size: cover;
 `;
