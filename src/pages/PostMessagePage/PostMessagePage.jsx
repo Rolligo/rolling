@@ -22,7 +22,9 @@ const PostMessagePage = () => {
   const [isError, setIsError] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isSingleImgClicked, setIsSingleImgClicked] = useState(false);
-  const [singleUrl, setSingleUrl] = useState();
+  const [singleUrl, setSingleUrl] = useState("");
+  const [isDefaultImgClicked, setIsDefaultImgClicked] = useState(true);
+
   function handleInputChange(e) {
     e.preventDefault();
     setInputValue(e.target.value);
@@ -41,7 +43,15 @@ const PostMessagePage = () => {
     if (e.target.src === url) {
       setSingleUrl(url);
       setIsSingleImgClicked(true);
+      setIsDefaultImgClicked(false);
     }
+  }
+
+  function handleDefaultImgClick(e) {
+    e.preventDefault();
+    setIsDefaultImgClicked(true);
+    setIsSingleImgClicked(false);
+    setSingleUrl("");
   }
 
   return (
@@ -64,6 +74,9 @@ const PostMessagePage = () => {
             <S.DefaultImage
               src={isSingleImgClicked ? singleUrl : DefaultProfile}
             />
+            <S.DefaultImgButton onClick={(e) => handleDefaultImgClick(e)}>
+              기본 이미지로 변경
+            </S.DefaultImgButton>
           </S.ChosenImgDiv>
           <S.Div>
             <S.H2>프로필 이미지를 선택해주세요!</S.H2>

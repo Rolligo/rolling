@@ -58,6 +58,8 @@ export const ImgDiv = styled.div`
 `;
 
 export const ChosenImgDiv = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 2.4rem 0;
   width: 8rem;
   height: 8rem;
@@ -117,4 +119,14 @@ export const SingleImageButton = styled.button`
     width: 5.6rem;
     height: 5.6rem;
   }
+`;
+
+export const DefaultImgButton = styled.button`
+  margin-top: 2rem;
+  width: 100%;
+  height: 4rem;
+  border-radius: 1rem;
+  border: 1px solid ${COLORS.GRAY_700};
+  background: ${COLORS.GRAY_300};
+  color: ${COLORS.WHITE};
 `;
