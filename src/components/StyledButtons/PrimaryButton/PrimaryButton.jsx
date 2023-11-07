@@ -7,6 +7,7 @@ function PrimaryButton({
   margin = 0,
   disabled = false,
   smallSize = false,
+  onClick
 }) {
   const currentPage = useLocation().pathname;
   const fixBtnWidthOnPC = currentPage === ("/" || "/list");
@@ -18,6 +19,7 @@ function PrimaryButton({
       disabled={disabled}
       smallSize={smallSize}
       fixBtnWidthOnPC={fixBtnWidthOnPC}
+      onClick={onClick}
     >
       {children}
     </S.ButtonContainer>
