@@ -4,6 +4,7 @@ import Card2 from "assets/images/card-img2.png";
 import Card3 from "assets/images/card-img3.png";
 import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
+import PaperCard from "components/PaperCard";
 
 const MainPage = () => {
   return (
