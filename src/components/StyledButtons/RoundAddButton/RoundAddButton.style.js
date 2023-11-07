@@ -16,7 +16,6 @@ export const RoundBtnContainer = styled.button`
   padding: 1.6rem;
   background-color: ${({ disabled }) =>
     disabled ? COLORS_OF_STATS.disabled : COLORS_OF_STATS.enabled};
-
   &:hover {
     background-color: ${COLORS_OF_STATS.hover};
   }
