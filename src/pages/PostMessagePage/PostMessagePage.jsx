@@ -4,6 +4,9 @@ import Input from "components/Input";
 import TextEditor from "components/TextEditor";
 import useRequest from "hooks/useRequest";
 import DefaultProfile from "assets/images/DefaultProfile.png";
+import Dropdown from "components/Dropdown";
+
+const RELATIONSHIP = ["지인", "친구", "동료", "관계"];
 
 const imageUrls = [
   "https://fastly.picsum.photos/id/1082/100/100.jpg?hmac=0rTbHjwuEo-KpMp2E4aCa2JWXFT_FPh6cqJwhTxcZl4",
@@ -24,6 +27,7 @@ const PostMessagePage = () => {
   const [isSingleImgClicked, setIsSingleImgClicked] = useState(false);
   const [singleUrl, setSingleUrl] = useState("");
   const [isDefaultImgClicked, setIsDefaultImgClicked] = useState(true);
+  const [selectedValue, setSelectedValue] = useState(RELATIONSHIP[0]);
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -52,6 +56,10 @@ const PostMessagePage = () => {
     setIsDefaultImgClicked(true);
     setIsSingleImgClicked(false);
     setSingleUrl("");
+  }
+
+  function getSelectedValue(temp) {
+    setSelectedValue(temp);
   }
 
   return (
@@ -97,6 +105,7 @@ const PostMessagePage = () => {
       </S.Section>
       <S.Section>
         <S.H1>상대와의 관계</S.H1>
+        <Dropdown options={RELATIONSHIP} getSelectedValue={getSelectedValue} />
       </S.Section>
       <S.Section>
         <S.H1>내용을 입력해 주세요</S.H1>

@@ -3,7 +3,7 @@ import arrowDown from "assets/icons/arrow_down.svg";
 import arrowUp from "assets/icons/arrow_top.svg";
 import { useEffect, useRef, useState } from "react";
 
-function Dropdown({ options }) {
+function Dropdown({ options, getSelectedValue }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isError, setIsError] = useState(false);
   const [selectedValue, setSelectedValue] = useState(options[0]);
@@ -22,6 +22,7 @@ function Dropdown({ options }) {
 
   const handleClickListItem = (e) => {
     setSelectedValue(e.target.innerText);
+    getSelectedValue(e.target.innerText);
     setIsOpen(false);
   };
 
