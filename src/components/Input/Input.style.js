@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
 
 export const InputContainer = styled.input`
@@ -7,14 +8,10 @@ export const InputContainer = styled.input`
   border-radius: 0.8rem;
   border-width: 0.1rem;
   border-style: solid;
-  border-color: ${({ error }) => error ? COLORS.ERROR : COLORS.GRAY_300};
+  border-color: ${({ error }) => (error ? COLORS.ERROR : COLORS.GRAY_300)};
   background-color: ${COLORS.WHITE};
-  color: ${({ error }) => error ? COLORS.GRAY_900 : COLORS.GRAY_500};
-  font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 162.5%;
-  letter-spacing: -0.016rem;
+  color: ${({ error }) => (error ? COLORS.GRAY_900 : COLORS.GRAY_500)};
+  ${FONT_STYLE.REGULAR_16};
 
   &:focus {
     border-width: 0.2rem;
@@ -30,18 +27,15 @@ export const InputContainer = styled.input`
     border-color: ${COLORS.GRAY_500};
     color: ${COLORS.GRAY_500};
   }
-  ${(props) => props.disabled &&
+  ${(props) =>
+    props.disabled &&
     css`
-    border-color: ${COLORS.GRAY_300};
-    background-color: ${COLORS.GRAY_100};
-  `}
+      border-color: ${COLORS.GRAY_300};
+      background-color: ${COLORS.GRAY_100};
+    `}
 `;
 export const InputError = styled.p`
-  color: ${COLORS.ERROR};
-  font-size: 1.2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  letter-spacing: -0.006rem;
   margin-top: 0.4rem;
-`;  
+  color: ${COLORS.ERROR};
+  ${FONT_STYLE.REGULAR_12};
+`;

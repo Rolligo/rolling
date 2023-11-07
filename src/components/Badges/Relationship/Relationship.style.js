@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
 
 export const Container = styled.div`
@@ -9,10 +10,7 @@ export const Container = styled.div`
   width: 4rem;
   height: 2rem;
   border-radius: 0.4rem;
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 2rem;
-  letter-spacing: -0.007rem;
+  ${FONT_STYLE.REGULAR_14};
   background-color: ${({ backgroundColor }) => COLORS[backgroundColor]};
   color: ${({ textColor }) => COLORS[textColor]};
 `;
