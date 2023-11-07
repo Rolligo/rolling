@@ -1,6 +1,8 @@
 import * as S from "./PaperListPage.style";
 import useRequest from "hooks/useRequest";
 import PaperCard from "components/PaperCard";
+import NavBar from "components/NavBar";
+import PrimaryButton from "components/StyledButtons/PrimaryButton";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -17,10 +19,16 @@ function PaperListPage() {
   });
 
   return (
-    <S.Container>
-      <PaperSection title="인기 롤링 페이퍼 🔥" papers={popularPaper} />
-      <PaperSection title="최근에 만든 롤링 페이퍼⭐️" papers={recentPaper} />
-    </S.Container>
+    <>
+      <NavBar />
+      <S.Container>
+        <PaperSection title="인기 롤링 페이퍼 🔥" papers={popularPaper} />
+        <PaperSection title="최근에 만든 롤링 페이퍼⭐️" papers={recentPaper} />
+      </S.Container>
+      <S.ButtonContainer>
+        <PrimaryButton smallSize>나도 만들어보기</PrimaryButton>
+      </S.ButtonContainer>
+    </>
   );
 }
 

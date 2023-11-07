@@ -37,3 +37,11 @@ export const CardContainer = styled.ul`
     height: 26rem;
   }
 `;
+
+export const ButtonContainer = styled.div`
+  position: fixed;
+  right: 50%;
+  bottom: 2.4rem;
+  transform: translateX(50%);
+  width: calc(100% - 4rem);
+`;
