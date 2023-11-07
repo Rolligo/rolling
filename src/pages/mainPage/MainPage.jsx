@@ -6,6 +6,7 @@ import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
 import NavBar from "components/NavBar";
 import PaperCard from "components/PaperCard";
+import PrimaryButton from "components/StyledButtons/PrimaryButton";
 
 const MainPage = () => {
   return (
@@ -41,7 +42,7 @@ const MainPage = () => {
           <S.EmojiImg src={Emoji} alt="이모지이미지" />
         </S.ImgContainer>
       </S.Section>
-      {/* 구경해보기 버튼 여기에 위치해주세요! */}
+      <PrimaryButton>구경해보기</PrimaryButton>
     </S.MainPageDiv>
   );
 };

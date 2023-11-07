@@ -7,7 +7,7 @@ function OutlinedButton({
   disabled = false,
   smallSize = false,
   withEmoji = false,
-  width = "auto",
+  width = "100%",
   height = smallSize ? "4.0rem" : "5.6rem", //height{Num(56,40,36,28)},
 }) {
   const calculatePadding = (height, withEmoji) => {
