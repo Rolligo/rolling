@@ -86,6 +86,7 @@ export const H2 = styled.h2`
 export const DefaultImage = styled.img`
   width: 8rem;
   height: 8rem;
+  border-radius: 10rem;
 `;
 
 export const SingleImage = styled.img`
