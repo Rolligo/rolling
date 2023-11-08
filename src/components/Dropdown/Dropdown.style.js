@@ -1,19 +1,25 @@
 import { styled } from "styled-components";
 import { FONT_STYLE } from "styles/fontStyle";
+import { onTabletAndPc } from "styles/mediaQuery";
 import { COLORS } from "styles/palette";
 
 export const DropdownContainer = styled.div`
-  width: 32rem;
+  max-width: 32rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+
+  ${onTabletAndPc} {
+    width: 32rem;
+  }
 `;
 
 export const ButtonContainer = styled.button`
   appearance: none;
   display: flex;
   justify-content: space-between;
-  width: 32rem;
+  width: 100%;
   padding: 1.2rem 1.6rem;
   align-items: center;
   border-radius: 0.8rem;
@@ -45,7 +51,7 @@ export const ErrorMessage = styled.p`
 `;
 
 export const ListContainer = styled.ul`
-  width: 32rem;
+  width: 100%;
   display: inline-flex;
   padding: 1rem 0.1rem;
   flex-direction: column;
@@ -59,7 +65,7 @@ export const ListContainer = styled.ul`
 
 export const ListItem = styled.li`
   display: flex;
-  width: 31.6rem;
+  width: 100%;
   padding: 1.2rem 1.6rem;
   align-items: center;
   ${FONT_STYLE.REGULAR_16};
