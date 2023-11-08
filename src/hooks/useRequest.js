@@ -3,6 +3,7 @@ import fetch from "apis/utils/fetch";
 
 function useRequest({ deps = [], skip = false, ...options }) {
   const [data, setData] = useState(null);
+  const [status, setStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -11,8 +12,12 @@ function useRequest({ deps = [], skip = false, ...options }) {
     setError(null);
 
     try {
-      const { data: fetchedData } = await fetch({ ...options, ...args });
+      const { data: fetchedData, status: fetchedStatus } = await fetch({
+        ...options,
+        ...args,
+      });
       setData(fetchedData);
+      setStatus(fetchedStatus);
     } catch (error) {
       setError(error);
     } finally {
@@ -25,7 +30,7 @@ function useRequest({ deps = [], skip = false, ...options }) {
     refetch();
   }, deps);
 
-  return { data, isLoading, error, refetch };
+  return { data, status, isLoading, error, refetch };
 }
 
 export default useRequest;
