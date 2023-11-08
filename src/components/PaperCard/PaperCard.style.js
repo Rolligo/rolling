@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FONT_STYLE } from "styles/fontStyle";
 import { onPc, onTablet } from "styles/mediaQuery";
 import { COLORS } from "styles/palette";
@@ -20,6 +20,10 @@ export const Container = styled.div`
   ${onPc} {
     width: 27.5rem;
     height: 26rem;
+
+    ${({ $slideIndex }) => css`
+      transform: translateX(-${$slideIndex * 300}rem);
+    `}
   }
 `;
 

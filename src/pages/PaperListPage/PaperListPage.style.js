@@ -1,3 +1,4 @@
+import ArrowButton from "components/StyledButtons/ArrowButton";
 import styled, { css } from "styled-components";
 import { onTablet, onPc } from "styles/mediaQuery";
 
@@ -8,7 +9,12 @@ export const Container = styled.main`
   padding-top: 4rem;
   max-width: 116rem;
 
+  ${onTablet} {
+    gap: 5rem;
+  }
+
   ${onPc} {
+    gap: 5rem;
     margin: 0 auto;
   }
 `;
@@ -34,7 +40,7 @@ export const CardContainer = styled.ul`
   overflow-y: visible;
   width: 100%;
   height: 24.8rem;
-  padding: 0rem 2rem;
+  padding: 0 2rem;
 
   ${onTablet} {
     height: 26rem;
@@ -54,7 +60,10 @@ export const ButtonContainer = styled.div`
   width: calc(100% - 4rem);
 
   ${onPc} {
-    width: auto;
+    position: static;
+    transform: translateX(0);
+    width: 28rem;
+    margin: 6.4rem auto;
   }
 `;
 
@@ -73,4 +82,10 @@ export const ArrowButtonContainer = styled.div`
     css`
       right: -2.2rem;
     `}
+`;
+
+export const ArrowButtonLeft = styled(ArrowButton)`
+  position: absolute;
+  top: 48%;
+  left: -1rem;
 `;

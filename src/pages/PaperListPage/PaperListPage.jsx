@@ -4,6 +4,7 @@ import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import ArrowButton from "components/StyledButtons/ArrowButton";
+import { useState } from "react";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -19,9 +20,11 @@ function PaperListPage() {
     },
   });
 
+  const popularPaperResults = popularPaper?.results;
+
   const reversedPopularPaper = {
     ...popularPaper,
-    results: popularPaper?.results?.reverse(),
+    results: popularPaperResults && [...popularPaperResults]?.reverse(),
   };
 
   return (
@@ -42,6 +45,20 @@ function PaperListPage() {
 }
 
 function PaperSection({ title, papers }) {
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  const slideLeft = () => {
+    // if (slideIndex <= 0) return;
+    setSlideIndex((prev) => prev - 1);
+  };
+  const slideRight = () => {
+    console.log("RUN");
+    if (slideIndex - 1 >= papers?.count) return;
+    setSlideIndex((prev) => prev + 1);
+  };
+
+  console.log("CHECK: " + slideIndex);
+
   return (
     <S.Section>
       <S.Title>{title}</S.Title>
@@ -49,14 +66,14 @@ function PaperSection({ title, papers }) {
         {papers &&
           papers?.results?.map((paper) => (
             <li key={paper?.id}>
-              <PaperCard data={paper} />
+              <PaperCard data={paper} slideIndex={slideIndex} />
             </li>
           ))}
         <S.ArrowButtonContainer $left>
-          <ArrowButton left />
+          <ArrowButton type="button" left onClick={slideLeft} />
         </S.ArrowButtonContainer>
         <S.ArrowButtonContainer $right>
-          <ArrowButton right />
+          <ArrowButton type="button" right onClick={slideRight} />
         </S.ArrowButtonContainer>
       </S.CardContainer>
     </S.Section>

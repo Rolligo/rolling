@@ -9,7 +9,7 @@ const BACKGROUND_COLOR = {
   green: "GREEN_200",
 };
 
-function PaperCard({ data = {} }) {
+function PaperCard({ data = {}, slideIndex = 0 }) {
   const {
     name,
     backgroundColor,
@@ -27,6 +27,7 @@ function PaperCard({ data = {} }) {
 
   return (
     <S.Container
+      $slideIndex={slideIndex}
       $backgroundColor={BACKGROUND_COLOR?.[backgroundColor]}
       $backgroundImageUrl={backgroundImageUrl}
     >
