@@ -1,13 +1,17 @@
 import Relationship from "components/Badges/Relationship";
 import * as S from "./Card.style";
 import deleteIcon from "assets/images/icons/delete-icon.svg";
-import { useState } from "react";
 import { RELATIONSHIP } from "utils/constants";
 import formatDate from "utils/formatDate";
+import { useEffect } from "react";
 
 function Card({ item, isEditMode }) {
   const relationship = RELATIONSHIP[item.relationship];
   const date = formatDate(item.createdAt);
+
+  useEffect(() => {
+    console.log(item);
+  });
 
   return (
     <>
@@ -26,7 +30,7 @@ function Card({ item, isEditMode }) {
         </S.IconContainer>
       )}
       <S.Content>
-        <S.Message>{item.content}</S.Message>
+        <S.Message font={item.font}>{item.content}</S.Message>
         <S.Date>{date}</S.Date>
       </S.Content>
     </>
