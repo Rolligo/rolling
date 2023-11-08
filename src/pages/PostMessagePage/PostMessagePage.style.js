@@ -8,12 +8,15 @@ export const PostMessagePageDiv = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 2.4rem;
 
   ${onTablet} {
     padding: 0 auto;
+    padding-bottom: 2.4rem;
   }
 
   ${onPc} {
+    padding-bottom: 2.4rem;
   }
 `;
 
@@ -29,7 +32,6 @@ export const Section = styled.section`
   }
 
   ${onPc} {
-    padding: 6rem 6rem;
     width: 100%;
     max-width: 72rem;
   }

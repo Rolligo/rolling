@@ -6,6 +6,7 @@ import useRequest from "hooks/useRequest";
 import DefaultProfile from "assets/images/DefaultProfile.png";
 import Dropdown from "components/Dropdown";
 import NavBar from "components/NavBar";
+import PrimaryButton from "components/StyledButtons/PrimaryButton";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "관계"];
 
@@ -143,7 +144,10 @@ const PostMessagePage = () => {
             getSelectedValue={getFontSelectedValue}
           />
         </S.Section>
-        <S.TempDiv></S.TempDiv>
+        {/* <S.TempDiv></S.TempDiv> */}
+        <S.Section>
+          <PrimaryButton>생성하기</PrimaryButton>
+        </S.Section>
       </S.PostMessagePageDiv>
     </>
   );
