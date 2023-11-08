@@ -35,7 +35,7 @@ function Card({ item, isEditMode }) {
         </S.Profile>
         {isEditMode && (
           <S.IconContainer>
-            <img src={deleteIcon} alt="삭제 버튼" />
+            <img src={deleteIcon} alt="카드 삭제 버튼" />
           </S.IconContainer>
         )}
         <S.Content>

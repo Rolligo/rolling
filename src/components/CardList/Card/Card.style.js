@@ -87,5 +87,19 @@ export const IconContainer = styled.button`
   align-items: center;
   border-radius: 0.6rem;
   border: 0.1rem solid ${COLORS.GRAY_300};
-  background: ${COLORS.WHITE};
+  background: ${({ disabled }) => (disabled ? COLORS.GRAY_300 : COLORS.WHITE)};
+
+  &:hover,
+  &:active {
+    background-color: ${COLORS.GRAY_100};
+  }
+
+  &:focus {
+    background-color: ${COLORS.WHITE};
+    border-color: ${COLORS.GRAY_500};
+  }
+
+  img {
+    filter: ${({ disabled }) => disabled && "brightness(1000%)"};
+  }
 `;
