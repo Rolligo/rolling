@@ -100,7 +100,7 @@ export const FONT_STYLE = {
   BOLD_24: css`
     /* Font/24 Bold */
     font-size: 2.4rem;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 3.6rem; /* 150% */
     letter-spacing: -0.024rem;
   `,

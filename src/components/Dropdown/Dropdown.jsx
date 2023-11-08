@@ -1,6 +1,6 @@
 import * as S from "./Dropdown.style";
-import arrowDown from "assets/icons/arrow_down.svg";
-import arrowUp from "assets/icons/arrow_top.svg";
+import arrowDown from "assets/images/icons/arrow_down.svg";
+import arrowUp from "assets/images/icons/arrow_top.svg";
 import { useEffect, useRef, useState } from "react";
 
 function Dropdown({ options, getSelectedValue }) {
