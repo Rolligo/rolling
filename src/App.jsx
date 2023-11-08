@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "styles/GlobalStyle";
 import MainPage from "pages/MainPage";
-import BackgroundSelectPage from "pages/BackgroundSelectPage";
+import PaperListPage from "pages/PaperListPage";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/list" element={<PaperListPage />} />
       </Routes>
     </BrowserRouter>
   );
