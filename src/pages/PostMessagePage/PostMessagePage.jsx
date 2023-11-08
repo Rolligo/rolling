@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./PostMessagePage.style";
 import Input from "components/Input";
 import TextEditor from "components/TextEditor";
-import useRequest from "hooks/useRequest";
 import DefaultProfile from "assets/images/DefaultProfile.png";
 import Dropdown from "components/Dropdown";
 import NavBar from "components/NavBar";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
+import useRequest from "hooks/useRequest";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "관계"];
 
@@ -41,6 +41,8 @@ const PostMessagePage = () => {
   );
   const [selectedFontValue, setSelectedFontValue] = useState(FONT_SELECT[0]);
   const [text, setText] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [isEditorEmpty, setIsEditorEmpty] = useState(true);
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -81,8 +83,22 @@ const PostMessagePage = () => {
 
   function onChangeContents(contents) {
     setText(contents);
+    if (contents === "<p><br></p>") {
+      setIsEditorEmpty(true);
+    } else {
+      setIsEditorEmpty(false);
+    }
   }
   console.log(typeof text, text);
+
+  useEffect(() => {
+    if (inputNameValue !== "" && !isEditorEmpty) {
+      setIsDisabled(false);
+    } else if (inputNameValue === "" || isEditorEmpty) {
+      setIsDisabled(true);
+    }
+  }, [inputNameValue, isEditorEmpty]);
+
   return (
     <>
       <NavBar showButton={false} />
@@ -144,9 +160,8 @@ const PostMessagePage = () => {
             getSelectedValue={getFontSelectedValue}
           />
         </S.Section>
-        {/* <S.TempDiv></S.TempDiv> */}
         <S.Section>
-          <PrimaryButton>생성하기</PrimaryButton>
+          <PrimaryButton disabled={isDisabled}>생성하기</PrimaryButton>
         </S.Section>
       </S.PostMessagePageDiv>
     </>
