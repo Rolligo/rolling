@@ -5,11 +5,8 @@ import { useState } from "react";
 import { RELATIONSHIP } from "utils/constants";
 import formatDate from "utils/formatDate";
 
-function Card({ item }) {
-  const [isEditMode, setIsEditMode] = useState(false);
-
+function Card({ item, isEditMode }) {
   const relationship = RELATIONSHIP[item.relationship];
-
   const date = formatDate(item.createdAt);
 
   return (

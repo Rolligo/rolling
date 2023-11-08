@@ -14,7 +14,8 @@ export const RoundBtnContainer = styled.button`
   height: ${({ height }) => height};
   border-radius: 10rem;
   padding: 1.6rem;
-  
+  background-color: ${COLORS_OF_STATS.enabled}; // 실제 카드리스트 렌더링 시 enabled 상태에서 보이지 않아서 추가 작성함
+
   &:hover {
     background-color: ${COLORS_OF_STATS.hover};
   }

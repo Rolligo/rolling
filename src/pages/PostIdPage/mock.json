@@ -1,0 +1,98 @@
+{
+  "id": 2,
+  "name": "강영훈",
+  "backgroundColor": "green",
+  "backgroundImageURL": null,
+  "createdAt": "2023-10-26T13:19:31.401765Z",
+  "messageCount": 3,
+  "recentMessages": [
+    {
+      "id": 32,
+      "recipientId": 2,
+      "sender": "김하은",
+      "profileImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+      "relationship": "가족",
+      "content": "열심히 일하는 모습 멋있습니다.",
+      "font": "Pretendard",
+      "createdAt": "2023-11-01T08:05:25.399056Z"
+    },
+    {
+      "id": 31,
+      "recipientId": 2,
+      "sender": "이영준",
+      "profileImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+      "relationship": "지인",
+      "content": "항상 응원합니다",
+      "font": "Noto Sans",
+      "createdAt": "2023-11-01T08:04:12.852691Z"
+    },
+    {
+      "id": 30,
+      "recipientId": 2,
+      "sender": "손동욱",
+      "profileImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+      "relationship": "지인",
+      "content": "일교차가 큰 시기입니다. 새벽에는 겨울, 한낮에는 여름, 아침저녁으로는 가을을 느껴보는 것도 좋을 것 같아요. 일교차가 큰 시기입니다. 새벽에는 겨울, 한낮에는 여름, 아침저녁으로는 가을을 느껴보는 것도 좋을 것 같아요. 일교차가 큰 시기입니다. 새벽에는 겨울, 한낮에는 여름, 아침저녁으로는 가을을 느껴보는 것도 좋을 것 같아요.",
+      "font": "Noto Sans",
+      "createdAt": "2023-11-01T08:01:52.605133Z"
+    },
+    {
+      "id": 29,
+      "recipientId": 2,
+      "sender": "김하은",
+      "profileImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+      "relationship": "가족",
+      "content": "멋있어요!",
+      "font": "Pretendard",
+      "createdAt": "2023-11-01T08:05:25.399056Z"
+    },
+    {
+      "id": 28,
+      "recipientId": 2,
+      "sender": "김하은",
+      "profileImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+      "relationship": "가족",
+      "content": "열심히 일하는 모습 멋있습니다.",
+      "font": "Pretendard",
+      "createdAt": "2023-11-01T08:05:25.399056Z"
+    },
+    {
+      "id": 27,
+      "recipientId": 2,
+      "sender": "김하은",
+      "profileImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+      "relationship": "가족",
+      "content": "열심히 일하는 모습 멋있습니다.",
+      "font": "Pretendard",
+      "createdAt": "2023-11-01T08:05:25.399056Z"
+    },
+    {
+      "id": 26,
+      "recipientId": 2,
+      "sender": "김하은",
+      "profileImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+      "relationship": "가족",
+      "content": "열심히 일하는 모습 멋있습니다.",
+      "font": "Pretendard",
+      "createdAt": "2023-11-01T08:05:25.399056Z"
+    }
+  ],
+  "reactionCount": 48,
+  "topReactions": [
+    {
+      "id": 27,
+      "emoji": "nice",
+      "count": 14
+    },
+    {
+      "id": 31,
+      "emoji": "sad",
+      "count": 11
+    },
+    {
+      "id": 26,
+      "emoji": "cool",
+      "count": 9
+    }
+  ]
+}
