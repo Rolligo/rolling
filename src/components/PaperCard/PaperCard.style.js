@@ -20,10 +20,17 @@ export const Container = styled.div`
   ${onPc} {
     width: 27.5rem;
     height: 26rem;
+    transition: transform 0.5s;
 
-    ${({ $slideIndex }) => css`
-      transform: translateX(-${$slideIndex * 300}rem);
-    `}
+    ${({ $slideIndex }) => {
+      let slideDistance;
+      if ($slideIndex === 1) {
+        slideDistance = $slideIndex * 30;
+      } else [(slideDistance = $slideIndex * 29.2)];
+      return css`
+        transform: translateX(-${slideDistance}rem);
+      `;
+    }}
   }
 `;
 

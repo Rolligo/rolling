@@ -48,16 +48,13 @@ function PaperSection({ title, papers }) {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const slideLeft = () => {
-    // if (slideIndex <= 0) return;
+    if (slideIndex <= 0) return;
     setSlideIndex((prev) => prev - 1);
   };
   const slideRight = () => {
-    console.log("RUN");
-    if (slideIndex - 1 >= papers?.count) return;
+    if (slideIndex - 1 >= papers?.count - 4) return;
     setSlideIndex((prev) => prev + 1);
   };
-
-  console.log("CHECK: " + slideIndex);
 
   return (
     <S.Section>
@@ -69,12 +66,16 @@ function PaperSection({ title, papers }) {
               <PaperCard data={paper} slideIndex={slideIndex} />
             </li>
           ))}
-        <S.ArrowButtonContainer $left>
-          <ArrowButton type="button" left onClick={slideLeft} />
-        </S.ArrowButtonContainer>
-        <S.ArrowButtonContainer $right>
-          <ArrowButton type="button" right onClick={slideRight} />
-        </S.ArrowButtonContainer>
+        {slideIndex > 0 && (
+          <S.ArrowButtonContainer $left>
+            <ArrowButton type="button" left onClick={slideLeft} />
+          </S.ArrowButtonContainer>
+        )}
+        {slideIndex < papers?.count - 4 && (
+          <S.ArrowButtonContainer $right>
+            <ArrowButton type="button" right onClick={slideRight} />
+          </S.ArrowButtonContainer>
+        )}
       </S.CardContainer>
     </S.Section>
   );
