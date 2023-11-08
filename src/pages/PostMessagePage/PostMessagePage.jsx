@@ -5,6 +5,7 @@ import TextEditor from "components/TextEditor";
 import useRequest from "hooks/useRequest";
 import DefaultProfile from "assets/images/DefaultProfile.png";
 import Dropdown from "components/Dropdown";
+import NavBar from "components/NavBar";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "관계"];
 
@@ -82,63 +83,69 @@ const PostMessagePage = () => {
   }
   console.log(typeof text, text);
   return (
-    <S.PostMessagePageDiv>
-      <S.Section>
-        <S.H1>From.</S.H1>
-        <Input
-          isError={isError}
-          placeholder="이름을 입력해 주세요."
-          errorMessage="값을 입력해 주세요."
-          inputValue={inputNameValue}
-          onChange={(e) => handleInputChange(e)}
-          onBlur={(e) => blurHandler(e)}
-        />
-      </S.Section>
-      <S.Section>
-        <S.H1>프로필 이미지</S.H1>
-        <S.ImgDiv>
-          <S.ChosenImgDiv>
-            <S.DefaultImage
-              src={isSingleImgClicked ? singleUrl : DefaultProfile}
-            />
-            <S.DefaultImgButton onClick={(e) => handleDefaultImgClick(e)}>
-              기본 이미지로 변경
-            </S.DefaultImgButton>
-          </S.ChosenImgDiv>
-          <S.Div>
-            <S.H2>프로필 이미지를 선택해주세요!</S.H2>
-            <S.ImgContainer>
-              {imageUrls.map((url, idx) => {
-                return (
-                  <S.SingleImageButton
-                    key={url}
-                    onClick={(e) => handleSingleImgClick(e, url)}
-                  >
-                    <S.SingleImage src={url} />
-                  </S.SingleImageButton>
-                );
-              })}
-            </S.ImgContainer>
-          </S.Div>
-        </S.ImgDiv>
-      </S.Section>
-      <S.Section>
-        <S.H1>상대와의 관계</S.H1>
-        <Dropdown options={RELATIONSHIP} getSelectedValue={getSelectedValue} />
-      </S.Section>
-      <S.Section>
-        <S.H1>내용을 입력해 주세요</S.H1>
-        <TextEditor onChangeContents={onChangeContents} />
-      </S.Section>
-      <S.Section>
-        <S.H1>폰트 선택</S.H1>
-        <Dropdown
-          options={FONT_SELECT}
-          getSelectedValue={getFontSelectedValue}
-        />
-      </S.Section>
-      <S.TempDiv></S.TempDiv>
-    </S.PostMessagePageDiv>
+    <>
+      <NavBar showButton={false} />
+      <S.PostMessagePageDiv>
+        <S.Section>
+          <S.H1>From.</S.H1>
+          <Input
+            isError={isError}
+            placeholder="이름을 입력해 주세요."
+            errorMessage="값을 입력해 주세요."
+            inputValue={inputNameValue}
+            onChange={(e) => handleInputChange(e)}
+            onBlur={(e) => blurHandler(e)}
+          />
+        </S.Section>
+        <S.Section>
+          <S.H1>프로필 이미지</S.H1>
+          <S.ImgDiv>
+            <S.ChosenImgDiv>
+              <S.DefaultImage
+                src={isSingleImgClicked ? singleUrl : DefaultProfile}
+              />
+              <S.DefaultImgButton onClick={(e) => handleDefaultImgClick(e)}>
+                기본 이미지로 변경
+              </S.DefaultImgButton>
+            </S.ChosenImgDiv>
+            <S.Div>
+              <S.H2>프로필 이미지를 선택해주세요!</S.H2>
+              <S.ImgContainer>
+                {imageUrls.map((url, idx) => {
+                  return (
+                    <S.SingleImageButton
+                      key={url}
+                      onClick={(e) => handleSingleImgClick(e, url)}
+                    >
+                      <S.SingleImage src={url} />
+                    </S.SingleImageButton>
+                  );
+                })}
+              </S.ImgContainer>
+            </S.Div>
+          </S.ImgDiv>
+        </S.Section>
+        <S.Section>
+          <S.H1>상대와의 관계</S.H1>
+          <Dropdown
+            options={RELATIONSHIP}
+            getSelectedValue={getSelectedValue}
+          />
+        </S.Section>
+        <S.Section>
+          <S.H1>내용을 입력해 주세요</S.H1>
+          <TextEditor onChangeContents={onChangeContents} />
+        </S.Section>
+        <S.Section>
+          <S.H1>폰트 선택</S.H1>
+          <Dropdown
+            options={FONT_SELECT}
+            getSelectedValue={getFontSelectedValue}
+          />
+        </S.Section>
+        <S.TempDiv></S.TempDiv>
+      </S.PostMessagePageDiv>
+    </>
   );
 };
 
