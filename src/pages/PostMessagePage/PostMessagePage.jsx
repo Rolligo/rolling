@@ -7,8 +7,9 @@ import Dropdown from "components/Dropdown";
 import NavBar from "components/NavBar";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import useRequest from "hooks/useRequest";
+import axios from "axios";
 
-const RELATIONSHIP = ["지인", "친구", "동료", "관계"];
+const RELATIONSHIP = ["지인", "친구", "동료", "가족"];
 
 const FONT_SELECT = [
   "Noto Sans",
@@ -89,7 +90,6 @@ const PostMessagePage = () => {
       setIsEditorEmpty(false);
     }
   }
-  console.log(typeof text, text);
 
   useEffect(() => {
     if (inputNameValue !== "" && !isEditorEmpty) {
@@ -98,6 +98,28 @@ const PostMessagePage = () => {
       setIsDisabled(true);
     }
   }, [inputNameValue, isEditorEmpty]);
+
+  const message = {
+    sender: inputNameValue,
+    relationship: selectedRelationValue,
+    content: text,
+    font: selectedFontValue,
+    profileImageURL: singleUrl !== "" ? singleUrl : "DefaultImage",
+  };
+
+  const { data, refetch } = useRequest({
+    skip: true,
+    url: "recipients/40/messages/",
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    data: message,
+  });
+
+  function handleCreatePostClick(e) {
+    e.preventDefault();
+    refetch();
+    console.log(data);
+  }
 
   return (
     <>
@@ -161,7 +183,12 @@ const PostMessagePage = () => {
           />
         </S.Section>
         <S.Section>
-          <PrimaryButton disabled={isDisabled}>생성하기</PrimaryButton>
+          <PrimaryButton
+            onClick={(e) => handleCreatePostClick(e)}
+            disabled={isDisabled}
+          >
+            생성하기
+          </PrimaryButton>
         </S.Section>
       </S.PostMessagePageDiv>
     </>
