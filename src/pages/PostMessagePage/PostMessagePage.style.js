@@ -19,7 +19,6 @@ export const PostMessagePageDiv = styled.main`
 
 export const Section = styled.section`
   width: 100%;
-  background: ${COLORS.SURFACE};
   padding: 5rem 0 0 0;
   margin-top: 1rem;
   display: flex;
@@ -32,7 +31,7 @@ export const Section = styled.section`
   ${onPc} {
     padding: 6rem 6rem;
     width: 100%;
-    max-width: 114rem;
+    max-width: 72rem;
   }
 `;
 

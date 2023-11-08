@@ -38,7 +38,7 @@ const PostMessagePage = () => {
     RELATIONSHIP[0]
   );
   const [selectedFontValue, setSelectedFontValue] = useState(FONT_SELECT[0]);
-  const [inputTextValue, setInputTextValue] = useState("");
+  const [text, setText] = useState("");
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -77,6 +77,10 @@ const PostMessagePage = () => {
     setSelectedFontValue(innerText);
   }
 
+  function onChangeContents(contents) {
+    setText(contents);
+  }
+  console.log(typeof text, text);
   return (
     <S.PostMessagePageDiv>
       <S.Section>
@@ -124,6 +128,7 @@ const PostMessagePage = () => {
       </S.Section>
       <S.Section>
         <S.H1>내용을 입력해 주세요</S.H1>
+        <TextEditor onChangeContents={onChangeContents} />
       </S.Section>
       <S.Section>
         <S.H1>폰트 선택</S.H1>
