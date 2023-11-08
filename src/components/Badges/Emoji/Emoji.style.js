@@ -3,7 +3,7 @@ import { FONT_STYLE } from "styles/fontStyle";
 import { onTablet, onPc } from "styles/mediaQuery";
 import { COLORS } from "styles/palette";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.ul`
   display: flex;
   align-items: center;
   gap: 0.8rem;
