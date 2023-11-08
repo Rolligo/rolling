@@ -1,13 +1,18 @@
 import * as S from "./Input.style";
-import { useState } from "react";
 
-function Input({ placeholder }) {
-  const [isError, setIsError] = useState(false);
+function Input({
+  placeholder, 
+  isError, 
+  errorMessage, 
+  inputValue, 
+  onChange, 
+  onBlur,
+}) {
 
   return(
     <>
-      <S.InputContainer type="text" error={isError} placeholder={placeholder} />
-      {isError && <S.InputError>Error message</S.InputError>}
+      <S.InputContainer type="text" value={inputValue} onBlur={onBlur} onChange={onChange} placeholder={placeholder} />
+      {isError && <S.InputError>{errorMessage}</S.InputError>}
     </>
   );
 }
