@@ -7,7 +7,7 @@ import Dropdown from "components/Dropdown";
 import NavBar from "components/NavBar";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import useRequest from "hooks/useRequest";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "가족"];
 
@@ -30,6 +30,7 @@ const imageUrls = [
   "https://fastly.picsum.photos/id/571/100/100.jpg?hmac=-fQ3pFGoTNXsXIgWPhYe3lTadQTWlLh5J1Xzc9vmlQE",
   "https://fastly.picsum.photos/id/866/100/100.jpg?hmac=ci1nxrYzr9SaVQenyuqBybKgVslILw_KRPf-cZjq4yg",
 ];
+const defaultImageUrl = "https://ifh.cc/g/nt96P0.png";
 
 const PostMessagePage = () => {
   const [isError, setIsError] = useState(false);
@@ -44,6 +45,8 @@ const PostMessagePage = () => {
   const [text, setText] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [isEditorEmpty, setIsEditorEmpty] = useState(true);
+  const [apiError, setApiError] = useState(null);
+  const navigate = useNavigate();
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -104,10 +107,10 @@ const PostMessagePage = () => {
     relationship: selectedRelationValue,
     content: text,
     font: selectedFontValue,
-    profileImageURL: singleUrl !== "" ? singleUrl : "DefaultImage",
+    profileImageURL: singleUrl !== "" ? singleUrl : "defaultImageUrl",
   };
 
-  const { data, refetch } = useRequest({
+  const { data, error, refetch } = useRequest({
     skip: true,
     url: "recipients/40/messages/",
     method: "post",
@@ -118,8 +121,18 @@ const PostMessagePage = () => {
   function handleCreatePostClick(e) {
     e.preventDefault();
     refetch();
-    console.log(data);
+
+    if (error === null) {
+      alert("롤링페이퍼에 메시지가 성공적으로 작성되었습니다!");
+      navigate("/post/1");
+    } else {
+      alert("메시지 작성을 실패했습니다. 서버 오류");
+    }
   }
+  console.log(`error is: ${error}`);
+  useEffect(() => {
+    setApiError(error);
+  }, [error]);
 
   return (
     <>
