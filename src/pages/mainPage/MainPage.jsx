@@ -8,11 +8,13 @@ import NavBar from "components/NavBar";
 import PaperCard from "components/PaperCard";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import SecondaryButton from "components/StyledButtons/SecondaryButton";
+import NavBarSub from "components/NavBarSub";
 
 const MainPage = () => {
   return (
     <S.MainPageDiv>
       <NavBar />
+      <NavBarSub />
       <S.Section>
         <S.DescriptionDiv>
           <S.PointDiv>Point. 01</S.PointDiv>
