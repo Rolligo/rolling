@@ -1,5 +1,4 @@
 import * as S from "./Input.style";
-import { useState } from "react";
 
 function Input({
   placeholder, 
