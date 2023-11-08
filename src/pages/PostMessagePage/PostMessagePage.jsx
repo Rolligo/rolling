@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as S from "./PostMessagePage.style";
 import Input from "components/Input";
 import TextEditor from "components/TextEditor";
@@ -45,8 +45,9 @@ const PostMessagePage = () => {
   const [text, setText] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [isEditorEmpty, setIsEditorEmpty] = useState(true);
-  const [apiError, setApiError] = useState(null);
+  const [apiStatus, setApiStatus] = useState(null);
   const navigate = useNavigate();
+  const mounted = useRef(false);
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -107,10 +108,10 @@ const PostMessagePage = () => {
     relationship: selectedRelationValue,
     content: text,
     font: selectedFontValue,
-    profileImageURL: singleUrl !== "" ? singleUrl : "defaultImageUrl",
+    profileImageURL: singleUrl !== "" ? singleUrl : defaultImageUrl,
   };
 
-  const { data, error, refetch } = useRequest({
+  const { status, refetch } = useRequest({
     skip: true,
     url: "recipients/40/messages/",
     method: "post",
@@ -121,18 +122,20 @@ const PostMessagePage = () => {
   function handleCreatePostClick(e) {
     e.preventDefault();
     refetch();
-
-    if (error === null) {
-      alert("롤링페이퍼에 메시지가 성공적으로 작성되었습니다!");
-      navigate("/post/1");
-    } else {
-      alert("메시지 작성을 실패했습니다. 서버 오류");
-    }
   }
-  console.log(`error is: ${error}`);
+
   useEffect(() => {
-    setApiError(error);
-  }, [error]);
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      if (status === 201) {
+        alert(
+          "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
+        );
+        navigate("/post/1");
+      }
+    }
+  }, [status]);
 
   return (
     <>
@@ -163,7 +166,7 @@ const PostMessagePage = () => {
             <S.Div>
               <S.H2>프로필 이미지를 선택해주세요!</S.H2>
               <S.ImgContainer>
-                {imageUrls.map((url, idx) => {
+                {imageUrls.map((url) => {
                   return (
                     <S.SingleImageButton
                       key={url}
