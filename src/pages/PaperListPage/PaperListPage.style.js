@@ -1,20 +1,23 @@
-import ArrowButton from "components/StyledButtons/ArrowButton";
 import styled, { css } from "styled-components";
 import { onTablet, onPc } from "styles/mediaQuery";
+import { zIndexStyle } from "styles/zIndexStyle";
 
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
   gap: 7.4rem;
   padding-top: 4rem;
-  max-width: 116rem;
+  padding-bottom: 7rem;
+  max-width: 114.5rem;
 
   ${onTablet} {
     gap: 5rem;
+    padding-bottom: 7rem;
   }
 
   ${onPc} {
     gap: 5rem;
+    padding-bottom: 0;
     margin: 0 auto;
   }
 `;
@@ -37,7 +40,6 @@ export const CardContainer = styled.ul`
   display: flex;
   gap: 1.2rem;
   overflow: scroll;
-  overflow-y: visible;
   width: 100%;
   height: 24.8rem;
   padding: 0 2rem;
@@ -48,6 +50,8 @@ export const CardContainer = styled.ul`
 
   ${onPc} {
     overflow: hidden;
+    padding: 0 0.6rem;
+    margin: 0 1.4rem;
     height: 26rem;
   }
 `;
@@ -56,6 +60,7 @@ export const ButtonContainer = styled.div`
   position: fixed;
   right: 50%;
   bottom: 2.4rem;
+  z-index: ${zIndexStyle.floating};
   transform: translateX(50%);
   width: calc(100% - 4rem);
 
@@ -68,24 +73,23 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ArrowButtonContainer = styled.div`
+  display: none;
   position: absolute;
   top: 48%;
 
   ${({ $left }) =>
     $left &&
     css`
-      left: -1rem;
+      left: -0.7rem;
     `}
 
   ${({ $right }) =>
     $right &&
     css`
-      right: -2.2rem;
+      right: -3.7rem;
     `}
-`;
 
-export const ArrowButtonLeft = styled(ArrowButton)`
-  position: absolute;
-  top: 48%;
-  left: -1rem;
+  ${onPc} {
+    display: block;
+  }
 `;

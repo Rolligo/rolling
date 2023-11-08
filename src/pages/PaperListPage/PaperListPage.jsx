@@ -1,10 +1,11 @@
 import * as S from "./PaperListPage.style";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import useRequest from "hooks/useRequest";
 import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import ArrowButton from "components/StyledButtons/ArrowButton";
-import { useState } from "react";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -38,7 +39,9 @@ function PaperListPage() {
         <PaperSection title="최근에 만든 롤링 페이퍼⭐️" papers={recentPaper} />
       </S.Container>
       <S.ButtonContainer>
-        <PrimaryButton smallSize>나도 만들어보기</PrimaryButton>
+        <Link to="/post">
+          <PrimaryButton smallSize>나도 만들어보기</PrimaryButton>
+        </Link>
       </S.ButtonContainer>
     </>
   );
