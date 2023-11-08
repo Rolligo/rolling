@@ -7,7 +7,7 @@ function PrimaryButton({
   margin = 0,
   disabled = false,
   smallSize = false,
-  onClick
+  onClick,
 }) {
   const currentPage = useLocation().pathname;
   const fixBtnWidthOnPC = currentPage === ("/" || "/list");

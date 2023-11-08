@@ -1,7 +1,7 @@
 import * as S from "./NavWhiteButton.style";
 
-function NavWhiteButton({ children }) {
-  return <S.ButtonContainer>{children}</S.ButtonContainer>;
+function NavWhiteButton({ children, onClick }) {
+  return <S.ButtonContainer onClick={onClick}>{children}</S.ButtonContainer>;
 }
 
 export default NavWhiteButton;

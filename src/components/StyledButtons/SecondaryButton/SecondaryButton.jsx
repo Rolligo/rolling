@@ -6,6 +6,7 @@ function SecondaryButton({
   margin = 0,
   disabled = false,
   smallSize = false,
+  onClick,
 }) {
   return (
     <S.ButtonContainer
@@ -13,6 +14,7 @@ function SecondaryButton({
       margin={margin}
       disabled={disabled}
       smallSize={smallSize}
+      onClick={onClick}
     >
       {children}
     </S.ButtonContainer>
