@@ -17,6 +17,7 @@ export const ButtonContainer = styled.button`
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 1.2rem;
   font-weight: 700;
   border: 0.1rem solid
