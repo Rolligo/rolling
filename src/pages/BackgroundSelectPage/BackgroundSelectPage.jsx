@@ -55,6 +55,7 @@ function BackgroundSelectPage() {
   const [value, setValue] = useState("");
   const [isColor, setIsColor] = useState(true);
   const [backgroundImageURL, setBackgroundImageURL] = useState("");
+  const [a, b] = useState();
 
   // backgroundImgURL: !isColor ? URL.createObjectURL(selectedChip) : null,
   const newRollingPerson = {
@@ -70,7 +71,7 @@ function BackgroundSelectPage() {
   //   return createdImgUrl;
   // }
 
-  const { data, refetch } = useRequest({
+  const { fetchedData, refetch } = useRequest({
     skip: true,
     url: "recipients/",
     method: "post",
@@ -105,6 +106,8 @@ function BackgroundSelectPage() {
   const handleSubmitForm = () => {
     // aa(getImgSrc(selectedChip));
     refetch();
+    console.log(fetchedData?.id);
+    // navigate("/LogIn");
 
     // const newPaper = {
     //   name: value,
