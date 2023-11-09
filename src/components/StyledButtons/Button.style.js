@@ -4,9 +4,13 @@ import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
 
 export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
   background-color: ${COLORS.PURPLE_600};
   color: ${COLORS.WHITE};
-  text-align: center;
 
   ${({ $size }) => {
     switch ($size) {

@@ -1,70 +1,83 @@
 import styled, { css } from "styled-components";
+import { onPc, onTablet } from "styles/mediaQuery";
 import { COLORS } from "styles/palette";
-
-const COLORS_OF_STATS = {
-  // 각 상태에 대한 background 속성
-  enabled: { color: COLORS.WHITE, border: COLORS.GRAY_300 }, // default(enabled) 속성
-  hover: { color: COLORS.GRAY_100, border: COLORS.GRAY_300 },
-  active: { color: COLORS.GRAY_100, border: COLORS.GRAY_300 },
-  focus: { color: COLORS.WHITE, border: COLORS.GRAY_500 },
-  disabled: { color: COLORS.GRAY_300, border: COLORS.GRAY_300 },
-};
+import { FONT_STYLE } from "styles/fontStyle";
 
 export const ButtonContainer = styled.button`
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  margin: ${({ margin }) => margin};
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1.2rem;
-  font-weight: 700;
-  border: 0.1rem solid
-    ${({ disabled }) =>
-      disabled
-        ? COLORS_OF_STATS.disabled.border
-        : COLORS_OF_STATS.enabled.border};
-  padding: ${({ padding }) => padding};
-  line-height: 2.8rem;
-  font-size: 1.8rem;
-  background-color: ${COLORS_OF_STATS.enabled.color};
-
-  ${(props) =>
-    props.smallSize &&
-    css`
-      border-radius: 0.6rem;
-      font-weight: 400;
-      font-size: 1.8rem;
-    `};
-
-  ${(props) =>
-    props.disabled &&
-    css`
-      color: ${COLORS.WHITE};
-      background-color: ${COLORS_OF_STATS.disabled};
-      cursor: not-allowed;
-      pointer-events: none;
-    `};
-
-  &:hover {
-    background-color: ${COLORS_OF_STATS.hover.color};
-    border: 0.1rem solid ${COLORS_OF_STATS.hover.border};
-  }
-  &:active {
-    background-color: ${COLORS_OF_STATS.active.color};
-    border: 0.1rem solid ${COLORS_OF_STATS.active.border};
-  }
-  &:focus {
-    background-color: ${COLORS_OF_STATS.focus.color};
-    border: 0.1rem solid ${COLORS_OF_STATS.focus.border};
-  }
-`;
-
-export const InnerTextWrapper = styled.h4`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.4rem;
-  font-weight: ${({ smallSize }) => (smallSize ? "400" : "700")};
+  flex-shrink: 0;
+  border: 0.1rem solid ${COLORS.GRAY_300};
+  color: ${COLORS.GRAY_900};
+  text-align: center;
+
+  ${({ $size }) => {
+    switch ($size) {
+      case "full":
+        return css`
+          width: 100%;
+          height: 5.6rem;
+          padding: 1.4rem 2.4rem;
+          border-radius: 1.2rem;
+          ${FONT_STYLE.BOLD_18};
+        `;
+      case "lg":
+        return css`
+          min-width: 20.8rem;
+          height: 5.6rem;
+          padding: 1.4rem 2.4rem;
+          border-radius: 1.2rem;
+          ${FONT_STYLE.BOLD_18};
+        `;
+      case "md":
+        return css`
+          min-width: 9rem;
+          height: 4rem;
+          padding: 0.8rem 1.6rem;
+          border-radius: 0.6rem;
+          ${FONT_STYLE.REGULAR_16};
+        `;
+      case "sm":
+        return css`
+          min-width: 5.6rem;
+          height: 3.6rem;
+          padding: 0.6rem 0.8rem;
+          border-radius: 0.6rem;
+          font-size: 1.6rem;
+          font-weight: 500;
+          line-height: 2.4rem;
+
+          ${onTablet} {
+            padding: 0.6rem 1.6rem;
+          }
+
+          ${onPc} {
+            padding: 0.6rem 1.6rem;
+          }
+        `;
+    }
+  }};
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: ${COLORS.GRAY_300};
+      color: ${COLORS.WHITE};
+      cursor: not-allowed;
+      pointer-events: none;
+    `}
+
+  &:hover {
+    border: 0.1rem solid ${COLORS.GRAY_300};
+    background-color: ${COLORS.GRAY_100};
+  }
+  &:active {
+    border: 0.1rem solid ${COLORS.GRAY_300};
+    background-color: ${COLORS.GRAY_100};
+  }
+  &:focus {
+    border: 0.1rem solid ${COLORS.GRAY_500};
+  }
 `;

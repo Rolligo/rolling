@@ -4,9 +4,13 @@ import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
 
 export const ButtonContainer = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
   border: 0.1rem solid ${COLORS.PURPLE_600};
   color: ${COLORS.PURPLE_700};
-  text-align: center;
 
   ${({ $size }) => {
     switch ($size) {
@@ -58,7 +62,9 @@ export const ButtonContainer = styled.button`
   ${({ disabled }) =>
     disabled &&
     css`
+      border: 0.1rem solid ${COLORS.GRAY_300};
       background-color: ${COLORS.GRAY_300};
+      color: ${COLORS.WHITE};
       cursor: not-allowed;
       pointer-events: none;
     `}
@@ -75,7 +81,6 @@ export const ButtonContainer = styled.button`
   }
   &:focus {
     border: 0.1rem solid ${COLORS.PURPLE_800};
-    background-color: ${COLORS.WHITE};
     color: ${COLORS.PURPLE_600};
   }
 `;
