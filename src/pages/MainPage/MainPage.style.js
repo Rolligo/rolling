@@ -24,7 +24,7 @@ export const EmojiImg = styled.img`
   height: auto;
 
   ${onTablet} {
-    width: 70rem;
+    width: 63rem;
   }
 
   ${onPc} {
@@ -33,10 +33,10 @@ export const EmojiImg = styled.img`
 `;
 export const ImgContainer = styled.div`
   position: relative;
-  height: 25rem;
+  height: 22rem;
   overflow: hidden;
   ${onTablet} {
-    height: 20rem;
+    height: 18rem;
   }
 
   ${onPc} {
@@ -71,6 +71,7 @@ export const ImgBox = styled.div`
 export const SingleImg = styled.img`
   width: 40vw;
   height: auto;
+  max-height: 22rem;
   ${onTablet} {
     width: 23.7rem;
   }
