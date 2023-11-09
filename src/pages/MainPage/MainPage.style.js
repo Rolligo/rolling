@@ -173,11 +173,11 @@ export const ButtonContainer = styled.div`
 export const StyledButton = styled(Button)`
   width: 100%;
 
-  /* ${onTablet} {
+  ${onTablet} {
     width: 100%;
   }
 
   ${onPc} {
-    width: 28rem;
-  } */
+    width: unset;
+  }
 `;
