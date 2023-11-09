@@ -24,7 +24,7 @@ export const ButtonContainer = styled.button`
         `;
       case "lg":
         return css`
-          min-width: 20.8rem;
+          min-width: 28rem;
           height: 5.6rem;
           padding: 1.4rem 2.4rem;
           border-radius: 1.2rem;
@@ -32,7 +32,7 @@ export const ButtonContainer = styled.button`
         `;
       case "md":
         return css`
-          min-width: 9rem;
+          min-width: 12rem;
           height: 4rem;
           padding: 0.8rem 1.6rem;
           border-radius: 0.6rem;
@@ -40,7 +40,16 @@ export const ButtonContainer = styled.button`
         `;
       case "sm":
         return css`
-          min-width: 5.6rem;
+          min-width: 9rem;
+          height: 4rem;
+          padding: 0.8rem 1.6rem;
+          border-radius: 0.6rem;
+          font-size: 1.6rem;
+          font-weight: 500;
+          line-height: 2.4rem;
+        `;
+      case "xs":
+        return css`
           height: 3.6rem;
           padding: 0.6rem 0.8rem;
           border-radius: 0.6rem;
@@ -55,6 +64,16 @@ export const ButtonContainer = styled.button`
           ${onPc} {
             padding: 0.6rem 1.6rem;
           }
+        `;
+      case "square":
+        return css`
+          width: 4rem;
+          height: 4rem;
+          padding: 0.8rem 0.8rem;
+          border-radius: 0.6rem;
+          font-size: 1.6rem;
+          font-weight: 500;
+          line-height: 2.4rem;
         `;
     }
   }};

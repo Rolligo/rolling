@@ -1,5 +1,6 @@
 import { Button } from "components/StyledButtons/";
 import AddEmoticon from "assets/images/icons/add-emoticon.svg";
+import Delete from "assets/images/icons/delete-icon.svg";
 
 function Test() {
   const topStyle = {
@@ -15,31 +16,24 @@ function Test() {
   return (
     <div style={topStyle}>
       <div style={style}>
-        <Button size="lg">TEST</Button>
-        <Button size="md">TEST</Button>
-        <Button size="sm">TEST</Button>
-        <Button size="sm" disabled>
-          TEST
-        </Button>
+        <Button size="lg">large</Button>
+        <Button size="md">medium</Button>
+        <Button size="sm">small</Button>
+        <Button size="xs">xs</Button>
       </div>
       <div style={style}>
-        <Button.Secondary size="lg">TEST</Button.Secondary>
-        <Button.Secondary size="md">TEST</Button.Secondary>
-        <Button.Secondary size="sm">TEST</Button.Secondary>
-        <Button.Secondary size="sm" disabled>
-          TEST
-        </Button.Secondary>
+        <Button.Secondary size="lg">large</Button.Secondary>
+        <Button.Secondary size="md">medium</Button.Secondary>
+        <Button.Secondary size="sm">small</Button.Secondary>
+        <Button.Secondary size="xs">xs</Button.Secondary>
       </div>
       <div style={style}>
-        <Button.Outline size="lg">TEST</Button.Outline>
-        <Button.Outline size="md">TEST</Button.Outline>
-        <Button.Outline size="sm">TEST</Button.Outline>
-        <Button.Outline size="sm" disabled>
-          TEST
-        </Button.Outline>
-        <Button.Outline size="sm">
-          <img src={AddEmoticon} />
-          TEST
+        <Button.Outline size="lg">large</Button.Outline>
+        <Button.Outline size="md">medium</Button.Outline>
+        <Button.Outline size="sm">small</Button.Outline>
+        <Button.Outline size="xs">xs</Button.Outline>
+        <Button.Outline size="square">
+          <img src={Delete} />
         </Button.Outline>
       </div>
       <div style={style}>
