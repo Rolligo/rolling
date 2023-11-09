@@ -50,8 +50,10 @@ function Test() {
         <Button.Add />
         <Button.Add disabled />
       </div>
+      <div style={style}>
+        <Button.Toggle />
+      </div>
     </div>
   );
 }
-
 export default Test;
