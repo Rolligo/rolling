@@ -3,7 +3,6 @@ import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
 
 export const InputContainer = styled.input`
-  width: 32rem;
   width: 100%;
   padding: 1.2rem 1.6rem;
   border-radius: 0.8rem;
