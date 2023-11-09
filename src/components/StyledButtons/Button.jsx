@@ -1,8 +1,13 @@
 import * as S from "./Button.style";
 
-function ButtonMain({ disabled, children, size, onClick }) {
+function ButtonMain({ className, disabled, children, size, onClick }) {
   return (
-    <S.Button disabled={disabled} $size={size} onClick={onClick}>
+    <S.Button
+      className={className}
+      disabled={disabled}
+      $size={size}
+      onClick={onClick}
+    >
       {children}
     </S.Button>
   );

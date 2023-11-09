@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { onPc, onTablet } from "styles/mediaQuery";
 import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
+import { Button } from "components/StyledButtons";
 
 export const BrTag = styled.br`
   display: none;
@@ -159,4 +160,24 @@ export const Section = styled.section`
     gap: 10rem;
     justify-content: left;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2.4rem 0;
+`;
+
+export const StyledButton = styled(Button)`
+  width: 100%;
+
+  /* ${onTablet} {
+    width: 100%;
+  }
+
+  ${onPc} {
+    width: 28rem;
+  } */
 `;
