@@ -6,6 +6,7 @@ import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import ArrowButton from "components/StyledButtons/ArrowButton";
+import NavBarSub from "components/NavBarSub";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -31,6 +32,7 @@ function PaperListPage() {
   return (
     <>
       <NavBar />
+      <NavBarSub />
       <S.Container>
         <PaperSection
           title="인기 롤링 페이퍼 🔥"

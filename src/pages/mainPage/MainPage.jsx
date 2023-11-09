@@ -14,7 +14,6 @@ const MainPage = () => {
   return (
     <S.MainPageDiv>
       <NavBar />
-      <NavBarSub />
       <S.Section>
         <S.DescriptionDiv>
           <S.PointDiv>Point. 01</S.PointDiv>

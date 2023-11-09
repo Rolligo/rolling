@@ -15,6 +15,13 @@ function NavBarSub() {
         </S.Header>
         <S.HeaderService>
           <S.Container2>
+            <S.BadgeContainer>
+              <S.ProfileWrapper>
+                <S.Group></S.Group>
+                <S.Count><span>23</span>명이 작성했어요!</S.Count>
+              </S.ProfileWrapper>
+              <S.Border />
+            </S.BadgeContainer>
             <S.EmojiContainer>
               <S.EmojiWrapper>
                 <Emoji />
@@ -24,10 +31,10 @@ function NavBarSub() {
               <S.Button><img src={ArrowIcon} /></S.Button>
             </S.EmojiContainer>
             <S.ButtonContainer>
-              <OutlinedButton width="3.6rem" height="3.2rem" smallSize>
+            <OutlinedButton width="3.6rem" height="3.2rem" smallSize>
                 <img src={addEmoticon} />
               </OutlinedButton>
-              <S.Border />
+              <S.ButtonBorder />
               <OutlinedButton width="3.6rem" height="3.2rem" smallSize>
                 <img src={addEmoticon} />
               </OutlinedButton>
