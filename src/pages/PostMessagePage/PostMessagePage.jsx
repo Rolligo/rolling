@@ -108,22 +108,16 @@ const PostMessagePage = () => {
     relationship: selectedRelationValue,
     content: text,
     font: selectedFontValue,
-    profileImageURL: singleUrl !== "" ? singleUrl : "defaultImageUrl",
+    profileImageURL: singleUrl !== "" ? singleUrl : defaultImageUrl,
   };
 
-  const { error, status, refetch } = useRequest({
+  const { status, refetch } = useRequest({
     skip: true,
     url: "recipients/40/messages/",
     method: "post",
     headers: { "Content-Type": "application/json" },
     data: message,
   });
-
-  // async function handleCreatePostClick(e) {
-  //   e.preventDefault();
-  //   await refetch();
-  //   console.log(`error is: ${error}`);
-  // }
 
   async function handleCreatePostClick(e) {
     e.preventDefault();
