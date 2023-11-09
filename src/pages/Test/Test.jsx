@@ -46,6 +46,10 @@ function Test() {
         <Button.Arrow left />
         <Button.Arrow right />
       </div>
+      <div style={style}>
+        <Button.Add />
+        <Button.Add disabled />
+      </div>
     </div>
   );
 }
