@@ -3,90 +3,78 @@ import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
 import { onPc, onTablet } from "styles/mediaQuery";
 
-export const Wrapper = styled.div`
-  // width: 100%;
-  // display: flex;
+export const Container = styled.div`
+  width: 100%;
+  white-space: nowrap;
   
-  // ${onTablet} {
-  //   // padding: 1.3rem 0; 
-  // }
+  ${onTablet} {
+    padding: 1.3rem 0;
+  }
   
   ${onPc} {
-    border: 1px solid red;
-    width: 100%;
-    // padding: 1.3rem 36rem;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
-  }
-`;
-
-export const Container = styled.div`
-  white-space: nowrap;
+  `;
+  
+export const Wrapper = styled.div`
 
   ${onTablet} {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2.4rem;
   }
-  ${onPc} {
-    border: 1px solid #000;
-    min-width: 120rem;
-    display: flex;
-    justify-content: space-between;
-    margin: 1.3rem 0;
-`;
+
+    ${onPc} {
+      width: 120rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  `;
 
 export const Header = styled.div`
-  border: 1px solid #000;
-  width: 100%;
   padding: 1.2rem 2rem;
+  border-bottom: 1px solid ${COLORS.GRAY_200};
 
   ${onTablet} {
     padding: 0;
-    width: 22.7rem;
+    border: none;
   }
 
   ${onPc} {
-    width: 22.7rem;
+    padding: 0;
+    border: none;
   }
 `;
   
   export const ToContainer = styled.div`
-  width: 100%;
   color: ${COLORS.GRAY_800};
   ${FONT_STYLE.BOLD_18};
 
   ${onTablet} {
-    width: 22.7rem;
-    color: ${COLORS.GRAY_800};
     ${FONT_STYLE.BOLD_28};
   }
-
   ${onPc} {
-    width: 100%;
+    ${FONT_STYLE.BOLD_28};
   }
 `;
 
 export const HeaderService = styled.div`
   padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
 
   ${onTablet} {
-    gap: 0.8rem;
+    padding: 0;
+  }
+  ${onPc} {
+    padding: 0;
   }
 `;
 
-export const Container2 = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const BadgeContainer = styled.div`
+export const ProfileContainer = styled.div`
   display: none;
   
   ${onTablet} {
@@ -96,8 +84,10 @@ export const BadgeContainer = styled.div`
   ${onPc} {
     display: block;
     display: flex;
-    border: 1px solid #000;
     align-items: center;
+    justify-content: space-between;
+    gap: 2.8rem;
+    margin-right: 2.8rem;
   }
 `;
 
@@ -105,22 +95,36 @@ export const ProfileWrapper = styled.div`
   display: flex;
   gap: 1.1rem;
 `;
-
-export const Group = styled.div`
-  border: 1px solid #000;
-  width: 7.6rem;
-  height: 2.8rem;
+export const ProfileGroup = styled.div`
+  display: flex;
 `;
-export const Count = styled.div`
-  color: var(--gray-900, #181818);
-  font-size: 18px;
+export const Profile = styled.div`
+  border: 1px solid #000;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+`;
+export const ProfileText = styled.div`
+  color: ${COLORS.GRAY_900};
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 150%;
+  white-space: nowrap;
+  
+`;
+export const Count = styled(ProfileText)`
+  display: inline-block;
   font-weight: 700;
-  line-height: 150% 
 `;
 
 export const EmojiContainer = styled.div`
   display: flex;
-  width: 100%;
+  align-items: center;
+  gap: 0.2rem;
+
+  ${onPc} {
+    margin-right: 0.8rem;
+  }
 `;
 
 export const EmojiWrapper = styled.div`
@@ -128,7 +132,7 @@ export const EmojiWrapper = styled.div`
   gap: 0.8rem;
 `;
 
-export const Button = styled.button`
+export const EmojiButton = styled.button`
   width: 3.6rem;
   height: 3.6rem;
   padding: 0.6rem;
@@ -137,24 +141,25 @@ export const Button = styled.button`
   align-items: center;
 `;
 
-export const ButtonContainer = styled.span`
+export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-item: center;
+  height: 100%;
   gap: 1.5rem;
 
   ${onTablet} {
     gap: 1.3rem;
   }
+  ${onPc} {
+    gap: 1.3rem;
+  }
 `;
+
 
 export const Border = styled.div`
   background-color: ${COLORS.GRAY_200};
   width: 0.1rem;
   height: 2.8rem;
-  margin: auto 2.8rem;
+  margin: auto 0;
 `;
-export const ButtonBorder = styled(Border)`
-  margin: auto 1.3rem;
-`;
-
