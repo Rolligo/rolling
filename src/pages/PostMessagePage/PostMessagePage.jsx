@@ -45,7 +45,7 @@ const PostMessagePage = () => {
   const [text, setText] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [isEditorEmpty, setIsEditorEmpty] = useState(true);
-  const [apiStatus, setApiStatus] = useState(null);
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const navigate = useNavigate();
   const mounted = useRef(false);
 
@@ -108,10 +108,10 @@ const PostMessagePage = () => {
     relationship: selectedRelationValue,
     content: text,
     font: selectedFontValue,
-    profileImageURL: singleUrl !== "" ? singleUrl : defaultImageUrl,
+    profileImageURL: singleUrl !== "" ? singleUrl : "defaultImageUrl",
   };
 
-  const { status, refetch } = useRequest({
+  const { error, status, refetch } = useRequest({
     skip: true,
     url: "recipients/40/messages/",
     method: "post",
@@ -119,9 +119,16 @@ const PostMessagePage = () => {
     data: message,
   });
 
-  function handleCreatePostClick(e) {
+  // async function handleCreatePostClick(e) {
+  //   e.preventDefault();
+  //   await refetch();
+  //   console.log(`error is: ${error}`);
+  // }
+
+  async function handleCreatePostClick(e) {
     e.preventDefault();
-    refetch();
+    await refetch();
+    setIsSubmitClicked(!isSubmitClicked);
   }
 
   useEffect(() => {
@@ -133,9 +140,11 @@ const PostMessagePage = () => {
           "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
         );
         navigate("/post/1");
+      } else {
+        alert("서버 오류로 메시지 작성에 실패했습니다..");
       }
     }
-  }, [status]);
+  }, [isSubmitClicked]);
 
   return (
     <>
