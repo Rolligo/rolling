@@ -1,9 +1,9 @@
 import * as S from "./Input.style";
 
 function Input({
-  isError,
+  isError = false,
   placeholder,
-  errorMessage,
+  errorMessage = "값을 입력해 주세요.",
   inputValue,
   onChange,
   onBlur,
