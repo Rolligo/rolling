@@ -13,6 +13,7 @@ function CardList({ isEditMode, id }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [hasNext, setHasNext] = useState(true);
+  const [deleteId, setDeleteId] = useState(null);
   const target = useRef(null);
 
   const loadData = async (offset) => {
@@ -54,6 +55,34 @@ function CardList({ isEditMode, id }) {
     return () => observer.disconnect();
   }, [target]);
 
+  const getDeleteCardId = (e) => {
+    e.stopPropagation();
+    setDeleteId(e.currentTarget.id);
+  };
+
+  const deleteCard = async () => {
+    try {
+      if (!deleteId) return;
+      setIsLoading(true);
+      const response = await fetch({
+        url: `/messages/${deleteId}/`,
+        method: "DELETE",
+      });
+      if (response.status !== 204) {
+        throw new Error("메시지 카드 삭제 실패");
+      }
+      setData((prevData) => prevData.filter((card) => card.id !== +deleteId));
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    deleteCard();
+  }, [deleteId]);
+
   return (
     <>
       <S.ListContainer>
@@ -68,7 +97,11 @@ function CardList({ isEditMode, id }) {
           cards.map((card) => {
             return (
               <S.CardContainer key={card?.id}>
-                <Card item={card} isEditMode={isEditMode} />
+                <Card
+                  item={card}
+                  isEditMode={isEditMode}
+                  getDeleteCardId={getDeleteCardId}
+                />
               </S.CardContainer>
             );
           })}

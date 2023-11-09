@@ -6,7 +6,7 @@ import formatDate from "utils/formatDate";
 import { useState } from "react";
 import Modal from "components/Modal";
 
-function Card({ item, isEditMode }) {
+function Card({ item, isEditMode, getDeleteCardId }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const relationship = RELATIONSHIP[item.relationship];
   const date = formatDate(item.createdAt);
@@ -34,7 +34,7 @@ function Card({ item, isEditMode }) {
           </S.ProfileText>
         </S.Profile>
         {isEditMode && (
-          <S.IconContainer>
+          <S.IconContainer id={item.id} onClick={getDeleteCardId}>
             <img src={deleteIcon} alt="카드 삭제 버튼" />
           </S.IconContainer>
         )}
