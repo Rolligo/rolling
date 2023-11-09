@@ -1,17 +1,23 @@
 import * as S from "./Input.style";
 
 function Input({
-  placeholder, 
-  isError, 
-  errorMessage, 
-  inputValue, 
-  onChange, 
+  isError,
+  placeholder,
+  errorMessage,
+  inputValue,
+  onChange,
   onBlur,
 }) {
-
-  return(
+  return (
     <>
-      <S.InputContainer type="text" value={inputValue} onBlur={onBlur} onChange={onChange} placeholder={placeholder} />
+      <S.InputContainer
+        type="text"
+        error={isError}
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
       {isError && <S.InputError>{errorMessage}</S.InputError>}
     </>
   );

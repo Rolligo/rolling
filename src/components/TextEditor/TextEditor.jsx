@@ -4,10 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import * as S from "./TextEditor.style";
 import "./Editor.css";
 
-const TextEditor = ({ fontFamily = "Noto Sans" }) => {
-  const [text, setText] = useState("");
-  const quillRef = useRef(null);
-
+const TextEditor = ({ onChangeContents }) => {
   const formats = [
     "font",
     "header",
@@ -46,22 +43,9 @@ const TextEditor = ({ fontFamily = "Noto Sans" }) => {
     };
   }, []);
 
-  function onChangeContents(contents) {
-    setText(contents);
-  }
-
-  function handleFontChange(ref) {
-    ref.current.style.fontFamily = fontFamily;
-  }
-
-  useEffect(() => {
-    handleFontChange(quillRef);
-  }, [fontFamily]);
-
   return (
     <S.TextEditorContainer>
       <ReactQuill
-        ref={quillRef}
         onChange={onChangeContents}
         modules={modules}
         formats={formats}
