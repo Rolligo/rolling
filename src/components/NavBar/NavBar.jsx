@@ -1,7 +1,7 @@
 import logoIcon from "assets/images/icons/logoIcon.png";
 import * as S from "./NavBar.style";
 import { Link } from "react-router-dom";
-import { Button } from "components/StyledButtons";
+import { Button } from "components/Button";
 
 function NavBar({ showButton = true }) {
   return (

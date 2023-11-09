@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useRequest from "hooks/useRequest";
 import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
-import { Button } from "components/StyledButtons";
+import { Button } from "components/Button";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({

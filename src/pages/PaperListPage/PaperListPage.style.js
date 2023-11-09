@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { onTablet, onPc } from "styles/mediaQuery";
 import { zIndexStyle } from "styles/zIndexStyle";
-import { Button } from "components/StyledButtons";
+import { Button } from "components/Button";
 
 export const Container = styled.main`
   display: flex;

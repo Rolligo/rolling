@@ -6,7 +6,7 @@ import { COLORS } from "styles/palette";
 import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
-import { Button } from "components/StyledButtons";
+import { Button } from "components/Button";
 
 const ORANGE = COLORS.ORANGE_200;
 const PURPLE = COLORS.PURPLE_200;

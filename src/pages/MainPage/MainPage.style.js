@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { onPc, onTablet } from "styles/mediaQuery";
 import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
-import { Button } from "components/StyledButtons";
+import { Button } from "components/Button";
 
 export const BrTag = styled.br`
   display: none;

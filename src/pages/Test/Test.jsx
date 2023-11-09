@@ -1,4 +1,4 @@
-import { Button } from "components/StyledButtons/";
+import { Button } from "components/Button";
 import AddEmoticon from "assets/images/icons/add-emoticon.svg";
 import Delete from "assets/images/icons/delete-icon.svg";
 

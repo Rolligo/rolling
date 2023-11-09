@@ -5,7 +5,7 @@ import TextEditor from "components/TextEditor";
 import DefaultProfile from "assets/images/DefaultProfile.png";
 import Dropdown from "components/Dropdown";
 import NavBar from "components/NavBar";
-import { Button } from "components/StyledButtons";
+import { Button } from "components/Button";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
 
