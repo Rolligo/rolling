@@ -9,28 +9,32 @@ import OutlinedButton from "components/StyledButtons/OutlinedButton";
 function NavBarSub() {
   return (
     <S.Wrapper>
-      <S.Header>
-        <S.ToContainer>To. Ashley Kim</S.ToContainer>
-      </S.Header>
-      <S.HeaderService>
-        <S.EmojiContainer>
-          <S.EmojiWrapper>
-            <Emoji />
-            <Emoji />
-            <Emoji />
-          </S.EmojiWrapper>
-          <S.Button><img src={ArrowIcon} /></S.Button>
-        </S.EmojiContainer>
-        <S.ButtonContainer>
-          <OutlinedButton width="3.6rem" height="3.6rem"  smallSize>
-            <img src={addEmoticon} />
-          </OutlinedButton>
-          <S.Border />
-          <OutlinedButton width="3.6rem" height="3.6rem"  smallSize>
-            <img src={addEmoticon} />
-          </OutlinedButton>
-        </S.ButtonContainer>
-      </S.HeaderService>
+      <S.Container>
+        <S.Header>
+          <S.ToContainer>To. Ashley Kim</S.ToContainer>
+        </S.Header>
+        <S.HeaderService>
+          <S.Container2>
+            <S.EmojiContainer>
+              <S.EmojiWrapper>
+                <Emoji />
+                <Emoji />
+                <Emoji />
+              </S.EmojiWrapper>
+              <S.Button><img src={ArrowIcon} /></S.Button>
+            </S.EmojiContainer>
+            <S.ButtonContainer>
+              <OutlinedButton width="3.6rem" height="3.2rem" smallSize>
+                <img src={addEmoticon} />
+              </OutlinedButton>
+              <S.Border />
+              <OutlinedButton width="3.6rem" height="3.2rem" smallSize>
+                <img src={addEmoticon} />
+              </OutlinedButton>
+            </S.ButtonContainer>
+          </S.Container2>
+        </S.HeaderService>
+      </S.Container>
     </S.Wrapper>
   );
 }
