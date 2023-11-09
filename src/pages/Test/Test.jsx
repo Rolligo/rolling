@@ -42,6 +42,10 @@ function Test() {
           TEST
         </Button.Outline>
       </div>
+      <div style={style}>
+        <Button.Arrow left />
+        <Button.Arrow right />
+      </div>
     </div>
   );
 }
