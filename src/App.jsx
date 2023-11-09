@@ -4,7 +4,6 @@ import MainPage from "pages/MainPage";
 import PostMessagePage from "pages/PostMessagePage";
 import PaperListPage from "pages/PaperListPage";
 import BackgroundSelectPage from "pages/BackgroundSelectPage";
-import Test from "pages/Test";
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route path="/post/1/message" element={<PostMessagePage />} />
         <Route path="/list" element={<PaperListPage />} />
         <Route path="/post" element={<BackgroundSelectPage />} />
-        <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );
