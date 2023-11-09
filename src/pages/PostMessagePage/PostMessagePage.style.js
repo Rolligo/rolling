@@ -39,16 +39,10 @@ export const Section = styled.section`
 
 export const H1 = styled.div`
   margin-bottom: 1.2rem;
-
   color: ${COLORS.GRAY_900};
+
   ${FONT_STYLE.BOLD_24}
   font-weight: 700;
-
-  ${onTablet} {
-  }
-
-  ${onPc} {
-  }
 `;
 
 export const ImgDiv = styled.div`
