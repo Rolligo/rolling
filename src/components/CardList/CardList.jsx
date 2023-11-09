@@ -1,7 +1,7 @@
-import RoundAddButton from "components/StyledButtons/RoundAddButton";
 import * as S from "./CardList.style";
 import Card from "components/CardList/Card";
 import { Link } from "react-router-dom";
+import { Button } from "components/StyledButtons";
 
 function CardList({ items }) {
   const cards = items.recentMessages;
@@ -10,7 +10,7 @@ function CardList({ items }) {
     <S.ListContainer>
       <S.ButtonContainer>
         <Link to={`/post/{items.id}/message`}>
-          <RoundAddButton />
+          <Button.Add />
         </Link>
       </S.ButtonContainer>
       {cards &&
