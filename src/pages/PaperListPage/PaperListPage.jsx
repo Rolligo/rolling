@@ -55,7 +55,7 @@ function PaperSection({ title, papers }) {
     setSlideIndex((prev) => prev - 1);
   };
   const slideRight = () => {
-    if (slideIndex - 1 >= papers?.count - 4) return;
+    if (slideIndex - 1 >= papers?.results?.length - 4) return;
     setSlideIndex((prev) => prev + 1);
   };
 
@@ -74,7 +74,7 @@ function PaperSection({ title, papers }) {
             <ArrowButton type="button" left onClick={slideLeft} />
           </S.ArrowButtonContainer>
         )}
-        {slideIndex < papers?.count - 4 && (
+        {slideIndex < papers?.results?.length - 4 && (
           <S.ArrowButtonContainer $right>
             <ArrowButton type="button" right onClick={slideRight} />
           </S.ArrowButtonContainer>
