@@ -1,54 +1,81 @@
 import styled, { css } from "styled-components";
+import { onPc, onTablet } from "styles/mediaQuery";
 import { COLORS } from "styles/palette";
-
-const COLORS_OF_STATS = {
-  enabled: COLORS.WHITE, // default(enabled) 색상
-  hover: COLORS.PURPLE_100,
-  active: COLORS.PURPLE_100,
-  focus: COLORS.WHITE,
-  disabled: COLORS.GRAY_300,
-};
+import { FONT_STYLE } from "styles/fontStyle";
 
 export const ButtonContainer = styled.button`
-  width: ${({ width }) => width};
-  height: 5.6rem;
-  margin: ${({ margin }) => margin};
-  border-radius: 1.2rem;
-  border: 1px solid ${COLORS.PURPLE_600};
-  padding: 1.4rem 2.4rem;
+  border: 0.1rem solid ${COLORS.PURPLE_600};
   color: ${COLORS.PURPLE_700};
-  font-weight: 700;
-  line-height: 2.8rem;
-  font-size: 1.8rem;
-  background-color: ${COLORS_OF_STATS.enabled};
+  text-align: center;
 
-  ${(props) =>
-    props.smallSize &&
-    css`
-      height: 4rem;
-      border-radius: 0.6rem;
-      padding: 0.7rem 1.6rem;
-      font-weight: 400;
-      font-size: 1.6rem;
-    `};
+  ${({ $size }) => {
+    switch ($size) {
+      case "full":
+        return css`
+          width: 100%;
+          height: 5.6rem;
+          padding: 1.4rem 2.4rem;
+          border-radius: 1.2rem;
+          ${FONT_STYLE.BOLD_18};
+        `;
+      case "lg":
+        return css`
+          min-width: 20.8rem;
+          height: 5.6rem;
+          padding: 1.4rem 2.4rem;
+          border-radius: 1.2rem;
+          ${FONT_STYLE.BOLD_18};
+        `;
+      case "md":
+        return css`
+          min-width: 9rem;
+          height: 4rem;
+          padding: 0.8rem 1.6rem;
+          border-radius: 0.6rem;
+          ${FONT_STYLE.REGULAR_16};
+        `;
+      case "sm":
+        return css`
+          min-width: 5.6rem;
+          height: 3.6rem;
+          padding: 0.6rem 0.8rem;
+          border-radius: 0.6rem;
+          font-size: 1.6rem;
+          font-weight: 500;
+          line-height: 2.4rem;
 
-  ${(props) =>
-    props.disabled &&
+          ${onTablet} {
+            padding: 0.6rem 1.6rem;
+          }
+
+          ${onPc} {
+            padding: 0.6rem 1.6rem;
+          }
+        `;
+    }
+  }};
+
+  ${({ disabled }) =>
+    disabled &&
     css`
-      border: none;
-      color: ${COLORS.WHITE};
-      background-color: ${COLORS_OF_STATS.disabled};
+      background-color: ${COLORS.GRAY_300};
       cursor: not-allowed;
       pointer-events: none;
-    `};
+    `}
 
   &:hover {
-    background-color: ${COLORS_OF_STATS.hover};
+    border: 0.1rem solid ${COLORS.PURPLE_700};
+    background-color: ${COLORS.PURPLE_100};
+    color: ${COLORS.PURPLE_600};
   }
   &:active {
-    background-color: ${COLORS_OF_STATS.active};
+    border: 0.1rem solid ${COLORS.PURPLE_800};
+    background-color: ${COLORS.PURPLE_100};
+    color: ${COLORS.PURPLE_600};
   }
   &:focus {
-    background-color: ${COLORS_OF_STATS.focus};
+    border: 0.1rem solid ${COLORS.PURPLE_800};
+    background-color: ${COLORS.WHITE};
+    color: ${COLORS.PURPLE_600};
   }
 `;

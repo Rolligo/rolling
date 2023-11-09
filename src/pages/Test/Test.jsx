@@ -11,6 +11,9 @@ function Test() {
       <Button size="lg">TEST</Button>
       <Button size="md">TEST</Button>
       <Button size="sm">TEST</Button>
+      <Button.Secondary size="lg">TEST</Button.Secondary>
+      <Button.Secondary size="md">TEST</Button.Secondary>
+      <Button.Secondary size="sm">TEST</Button.Secondary>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
-import { FONT_STYLE } from "styles/fontStyle";
 import { onPc, onTablet } from "styles/mediaQuery";
 import { COLORS } from "styles/palette";
+import { FONT_STYLE } from "styles/fontStyle";
 
 export const Button = styled.button`
   background-color: ${COLORS.PURPLE_600};
