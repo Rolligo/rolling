@@ -15,7 +15,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
   }
-  `;
+`;
   
 export const Wrapper = styled.div`
 
@@ -26,13 +26,13 @@ export const Wrapper = styled.div`
     padding: 0 2.4rem;
   }
 
-    ${onPc} {
-      width: 120rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  `;
+  ${onPc} {
+    width: 120rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
 
 export const Header = styled.div`
   padding: 1.2rem 2rem;
@@ -49,7 +49,7 @@ export const Header = styled.div`
   }
 `;
   
-  export const ToContainer = styled.div`
+export const ToContainer = styled.div`
   color: ${COLORS.GRAY_800};
   ${FONT_STYLE.BOLD_18};
 
