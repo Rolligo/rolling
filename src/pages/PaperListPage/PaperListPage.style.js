@@ -1,18 +1,19 @@
 import styled, { css } from "styled-components";
 import { onTablet, onPc } from "styles/mediaQuery";
 import { zIndexStyle } from "styles/zIndexStyle";
+import { Button } from "components/StyledButtons";
 
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
   gap: 7.4rem;
   padding-top: 4rem;
-  padding-bottom: 7rem;
+  padding-bottom: 10rem;
   max-width: 114.5rem;
 
   ${onTablet} {
     gap: 5rem;
-    padding-bottom: 7rem;
+    padding-bottom: 10rem;
   }
 
   ${onPc} {
@@ -69,6 +70,18 @@ export const ButtonContainer = styled.div`
     transform: translateX(0);
     width: 28rem;
     margin: 6.4rem auto;
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  width: 100%;
+
+  ${onTablet} {
+    width: 100%;
+  }
+
+  ${onPc} {
+    width: unset;
   }
 `;
 
