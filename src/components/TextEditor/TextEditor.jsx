@@ -1,8 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import React, { useMemo } from "react";
 import * as S from "./TextEditor.style";
-import "./Editor.css";
 
 const TextEditor = ({ onChangeContents }) => {
   const formats = [
@@ -45,7 +42,7 @@ const TextEditor = ({ onChangeContents }) => {
 
   return (
     <S.TextEditorContainer>
-      <ReactQuill
+      <S.CustomQuill
         onChange={onChangeContents}
         modules={modules}
         formats={formats}
