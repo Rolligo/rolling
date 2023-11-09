@@ -29,8 +29,8 @@ function CardList({ isEditMode, id }) {
       });
       const currentData = data?.results;
       setData((prevData) => [...prevData, ...currentData]);
-      const next = data?.next;
-      if (!next) setHasNext(false);
+      if (!data?.next) setHasNext(false);
+      console.log(hasNext);
     } catch (error) {
       setError(error);
     } finally {
@@ -41,7 +41,7 @@ function CardList({ isEditMode, id }) {
   const cards = data;
 
   const onIntersect = async ([entry], observer) => {
-    if (entry.isIntersecting) {
+    if (entry.isIntersecting && !isLoading) {
       observer.unobserve(entry.target);
       await loadData(offset);
       offset += LIMIT;
@@ -106,7 +106,7 @@ function CardList({ isEditMode, id }) {
             );
           })}
       </S.ListContainer>
-      <S.ScrollTarget ref={target}></S.ScrollTarget>
+      {hasNext && <S.ScrollTarget ref={target}></S.ScrollTarget>}
     </>
   );
 }
