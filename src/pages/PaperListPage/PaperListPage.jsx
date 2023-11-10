@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import useRequest from "hooks/useRequest";
 import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
-import PrimaryButton from "components/StyledButtons/PrimaryButton";
-import ArrowButton from "components/StyledButtons/ArrowButton";
+import { Button } from "components/Button";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -40,7 +39,7 @@ function PaperListPage() {
       </S.Container>
       <S.ButtonContainer>
         <Link to="/post">
-          <PrimaryButton smallSize>나도 만들어보기</PrimaryButton>
+          <S.StyledButton size="lg">나도 만들어보기</S.StyledButton>
         </Link>
       </S.ButtonContainer>
     </>
@@ -71,12 +70,12 @@ function PaperSection({ title, papers }) {
           ))}
         {slideIndex > 0 && (
           <S.ArrowButtonContainer $left>
-            <ArrowButton type="button" left onClick={slideLeft} />
+            <Button.Arrow type="button" left onClick={slideLeft} />
           </S.ArrowButtonContainer>
         )}
         {slideIndex < papers?.results?.length - 4 && (
           <S.ArrowButtonContainer $right>
-            <ArrowButton type="button" right onClick={slideRight} />
+            <Button.Arrow type="button" right onClick={slideRight} />
           </S.ArrowButtonContainer>
         )}
       </S.CardContainer>

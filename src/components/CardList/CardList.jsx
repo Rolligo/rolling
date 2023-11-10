@@ -1,9 +1,9 @@
-import RoundAddButton from "components/StyledButtons/RoundAddButton";
 import * as S from "./CardList.style";
 import Card from "components/CardList/Card";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import fetch from "apis/utils/fetch";
+import { Button } from "components/Button";
 
 const LIMIT = 3;
 let offset = 0;
@@ -92,7 +92,7 @@ function CardList({ isEditMode, id }) {
         {!isEditMode && (
           <S.ButtonContainer>
             <Link to={`/post/${id}/message`}>
-              <RoundAddButton />
+              <Button.Add />
             </Link>
           </S.ButtonContainer>
         )}
