@@ -6,6 +6,7 @@ import useRequest from "hooks/useRequest";
 import { useEffect, useState } from "react";
 import fetch from "apis/utils/fetch";
 import { Button } from "components/Button";
+import NavBarSub from "components/NavBarSub";
 
 function PostIdPage() {
   const [wishDelete, setWishDelete] = useState(false);
@@ -53,7 +54,7 @@ function PostIdPage() {
       <S.NavBarContainer>
         <NavBar showButton={false} />
       </S.NavBarContainer>
-      {/* <Header /> */}
+      <NavBarSub data={data} />
       <S.MainDiv>
         {isEditMode ? (
           <>
