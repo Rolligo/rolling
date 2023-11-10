@@ -1,6 +1,12 @@
 import * as S from "./OutlinedButton.style";
 
-function OutlinedButton({ className, children, disabled, size, onClick }) {
+function OutlinedButton({
+  className,
+  children,
+  disabled = false,
+  size = "md",
+  onClick,
+}) {
   return (
     <S.ButtonContainer
       className={className}

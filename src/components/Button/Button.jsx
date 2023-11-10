@@ -1,6 +1,12 @@
 import * as S from "./Button.style";
 
-function ButtonMain({ className, disabled, children, size, onClick }) {
+function ButtonMain({
+  className,
+  children,
+  disabled = false,
+  size = "md",
+  onClick,
+}) {
   return (
     <S.Button
       className={className}

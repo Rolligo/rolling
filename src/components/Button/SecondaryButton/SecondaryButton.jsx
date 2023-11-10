@@ -1,6 +1,12 @@
 import * as S from "./SecondaryButton.style";
 
-function SecondaryButton({ className, children, disabled, size, onClick }) {
+function SecondaryButton({
+  className,
+  children,
+  disabled = false,
+  size = "md",
+  onClick,
+}) {
   return (
     <S.ButtonContainer
       className={className}
