@@ -6,7 +6,7 @@ const BUTTON_TEXT = {
   right: "이미지",
 };
 
-function ToggleButtton() {
+function ToggleButtton({ setIsColor }) {
   const [selectedText, setSelectedText] = useState(BUTTON_TEXT.left);
 
   const [toggle, setToggle] = useState(false);
@@ -15,6 +15,7 @@ function ToggleButtton() {
     setSelectedText((prevText) =>
       prevText === BUTTON_TEXT.left ? BUTTON_TEXT.right : BUTTON_TEXT.left
     );
+    setIsColor(toggle);
   };
   return (
     <div>

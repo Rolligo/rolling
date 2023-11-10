@@ -6,7 +6,7 @@ import addEmoji from "assets/images/icons/add-emoticon.svg";
 // 형태로 작동하고 smallSize만 적어 줄 경우에는 width가 40인 경우로 적용 됩니다!
 
 function OutlinedButton({
-  children = "Enabled", // children : 버튼 텍스트 내용 (Button's innerText)
+  children = "", // children : 버튼 텍스트 내용 (Button's innerText)
   margin = 0,
   disabled = false,
   smallSize = false,
