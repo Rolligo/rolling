@@ -12,12 +12,15 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/post/1/message" element={<PostMessagePage />} />
-        <Route path="/list" element={<PaperListPage />} />
-        <Route path="/post/:id" element={<PostIdPage />}>
-          <Route path="edit" element={<PostIdPage />} />
+        <Route path="list" element={<PaperListPage />} />
+        <Route path="post">
+          <Route index element={<BackgroundSelectPage />} />
+          <Route path=":id">
+            <Route index element={<PostIdPage />} />
+            <Route path="edit" element={<PostIdPage />} />
+            <Route path="message" element={<PostMessagePage />} />
+          </Route>
         </Route>
-        <Route path="/post" element={<BackgroundSelectPage />} />
       </Routes>
     </BrowserRouter>
   );
