@@ -32,3 +32,5 @@ function useRequest({ deps = [], skip = false, options }) {
 
   return { data, isLoading, error, refetch: fetch };
 }
+
+export default useRequest;
