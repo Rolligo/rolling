@@ -6,8 +6,16 @@ import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
 import NavBar from "components/NavBar";
 import { Button } from "components/Button";
+import { useNavigate } from "react-router-dom";
 
 function MainPage() {
+  const navigate = useNavigate();
+
+  function handleMovetoListClick(e) {
+    e.preventDefault();
+    navigate("/list");
+  }
+
   return (
     <>
       <NavBar />
@@ -43,7 +51,9 @@ function MainPage() {
           </S.ImgContainer>
         </S.Section>
         <S.ButtonContainer>
-          <Button size="full">구경해보기</Button>
+          <Button size="full" onClick={(e) => handleMovetoListClick(e)}>
+            구경해보기
+          </Button>
         </S.ButtonContainer>
       </S.MainPageDiv>
     </>
