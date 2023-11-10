@@ -5,11 +5,15 @@ import { RELATIONSHIP } from "utils/constants";
 import formatDate from "utils/formatDate";
 import { useState } from "react";
 import Modal from "components/Modal";
+import DOMPurify from "dompurify";
 
 function Card({ item, isEditMode, getDeleteCardId }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const relationship = RELATIONSHIP[item.relationship];
   const date = formatDate(item.createdAt);
+  const content = {
+    __html: DOMPurify.sanitize(item.content),
+  };
 
   const handleClickCard = () => {
     if (window.innerWidth > 768) {
@@ -39,7 +43,7 @@ function Card({ item, isEditMode, getDeleteCardId }) {
           </S.IconContainer>
         )}
         <S.Content>
-          <S.Message font={item.font}>{item.content}</S.Message>
+          <S.Message font={item.font} dangerouslySetInnerHTML={content} />
           <S.Date>{date}</S.Date>
         </S.Content>
       </div>
@@ -48,6 +52,7 @@ function Card({ item, isEditMode, getDeleteCardId }) {
           close={handleClickBackdropOrButton}
           item={item}
           relationship={relationship}
+          content={content}
           date={date}
         />
       )}
