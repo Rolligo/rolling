@@ -2,7 +2,7 @@ import Relationship from "components/Badges/Relationship";
 import * as S from "./Modal.style";
 import { Button } from "components/Button";
 
-function Modal({ close, item, relationship, date }) {
+function Modal({ close, item, relationship, content, date }) {
   return (
     <>
       <S.ModalBackdrop onClick={close} />
@@ -20,7 +20,10 @@ function Modal({ close, item, relationship, date }) {
           <S.ProfileDate>{date}</S.ProfileDate>
         </S.ModalHeader>
         <S.ModalContent>
-          <S.ModalTextField font={item.font}>{item.content}</S.ModalTextField>
+          <S.ModalTextField
+            font={item.font}
+            dangerouslySetInnerHTML={content}
+          ></S.ModalTextField>
           <Button onClick={close} size="md">
             확인
           </Button>
