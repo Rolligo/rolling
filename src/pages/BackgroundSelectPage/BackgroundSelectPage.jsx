@@ -5,12 +5,9 @@ import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import Input from "components/Input";
 import checkedIcon from "assets/images/icons/checked-icon.png";
 import { COLORS } from "styles/palette";
-import { useEffect, useState } from "react";
-import imageChip1 from "assets/images/imagechip-1.jpg";
-import imageChip2 from "assets/images/imagechip-2.jpg";
-import imageChip3 from "assets/images/imagechip-3.jpg";
-import imageChip4 from "assets/images/imagechip-4.jpg";
+import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
+import { useNavigate } from "react-router-dom";
 
 const ORANGE = COLORS.ORANGE_200;
 const PURPLE = COLORS.PURPLE_200;
@@ -18,7 +15,12 @@ const GREEN = COLORS.GREEN_200;
 const BLUE = COLORS.BLUE_200;
 
 const COLORCHIP = [ORANGE, PURPLE, BLUE, GREEN];
-const IMAGECHIP = [imageChip1, imageChip2, imageChip3, imageChip4];
+const IMAGECHIP = [
+  "https://ifh.cc/g/LMjp5Q.jpg",
+  "https://ifh.cc/g/9LLavj.jpg",
+  "https://ifh.cc/g/7QKVfm.jpg",
+  "https://ifh.cc/g/Zw6WCW.jpg",
+];
 
 function ColorChip({ background, onClick, isSelected }) {
   return (
@@ -44,34 +46,20 @@ function BackgroundSelectPage() {
     "#d0f5c3": "green",
   };
 
-  const getImgSrc = (imgPath) => {
-    if (imgPath.indexOf("imagechip-1")) return "https://ifh.cc/g/LMjp5Q.jpg";
-    if (imgPath.indexOf("imagechip-2")) return "https://ifh.cc/g/9LLavj.jpg";
-    if (imgPath.indexOf("imagechip-3")) return "https://ifh.cc/g/7QKVfm.jpg";
-    if (imgPath.indexOf("imagechip-4")) return "https://ifh.cc/g/Zw6WCW.jpg";
-  };
-
   const [selectedChip, setSelectedChip] = useState("");
   const [value, setValue] = useState("");
   const [isColor, setIsColor] = useState(true);
-  const [backgroundImageURL, setBackgroundImageURL] = useState("");
-  const [a, b] = useState();
+  const [isClicked, setIsClicked] = useState(false);
+  const mounted = useRef(false);
+  const navigate = useNavigate();
 
-  // backgroundImgURL: !isColor ? URL.createObjectURL(selectedChip) : null,
   const newRollingPerson = {
     name: value,
     backgroundColor: isColor ? COLOR_NAME[selectedChip] : "beige",
-    backgroundImageURL: getImgSrc(selectedChip),
+    backgroundImageURL: isColor ? null : selectedChip,
   };
-  console.log(imageChip1);
 
-  // function foo(data) {
-  //   const blob = new Blob(data, { type: "image/png" });
-  //   const createdImgUrl = window.URL.createObjectURL(new Blob(blob));
-  //   return createdImgUrl;
-  // }
-
-  const { fetchedData, refetch } = useRequest({
+  const { data, status, refetch } = useRequest({
     skip: true,
     url: "recipients/",
     method: "post",
@@ -83,60 +71,29 @@ function BackgroundSelectPage() {
 
   useEffect(() => {}, [selectedChip]);
   useEffect(() => {}, [isColor]);
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      if (status === 201) {
+        alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
+        navigate(`/post/${data.id}`);
+      } else {
+        console.log(status);
+        alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
+      }
+    }
+  }, [isClicked]);
 
   const handleColorChipClick = (e) =>
     setSelectedChip(e.target.getAttribute("background"));
 
-  const handleInputChange = (e) => {
-    setValue(e.target.value);
+  const handleInputChange = (e) => setValue(e.target.value);
+
+  const handleSubmitForm = async () => {
+    await refetch();
+    setIsClicked((prev) => !prev);
   };
-  // const getSelectedType = (selectedType) => setSelectedType(selectedType);
-
-  async function aa(imageURL) {
-    const res = await fetch(imageURL);
-    const blob = await res.blob();
-    const createdImgUrl = window.URL.createObjectURL(new Blob([blob]));
-    setBackgroundImageURL(createdImgUrl.substring(5));
-    console.log(backgroundImageURL);
-
-    refetch();
-    console.log(createdImgUrl);
-  }
-
-  const handleSubmitForm = () => {
-    // aa(getImgSrc(selectedChip));
-    refetch();
-    console.log(fetchedData?.id);
-    // navigate("/LogIn");
-
-    // const newPaper = {
-    //   name: value,
-    //   backgroundColor: background,
-    //   backgroundImageURL: "www.naver.com",
-    // };
-
-    // const { data } = useRequest({
-    //   url: "recipients/",
-    //   method: "post",
-    //   header: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   data: {
-    //     ...newPaper,
-    //   },
-    // });
-    // console.log(data);
-  };
-
-  // console.log(data);
-
-  // POST https://rolling-api.vercel.app/0-3/recipients/
-  // Content-Type: application/json
-
-  // {
-  // 	"name": "강영훈",
-  //   "backgroundColor": "purple"
-  // }
 
   return (
     <div>
@@ -149,6 +106,7 @@ function BackgroundSelectPage() {
               placeholder="받는 사람 이름을 입력해 주세요"
               value={value}
               onChange={handleInputChange}
+              isError={!value}
             ></Input>
           </S.ToInputWrapper>
           <div>
