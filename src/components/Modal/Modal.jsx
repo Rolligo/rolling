@@ -1,6 +1,5 @@
 import Relationship from "components/Badges/Relationship";
 import * as S from "./Modal.style";
-import { Button } from "components/Button";
 
 function Modal({ close, item, relationship, content, date }) {
   return (
@@ -24,9 +23,11 @@ function Modal({ close, item, relationship, content, date }) {
             font={item.font}
             dangerouslySetInnerHTML={content}
           ></S.ModalTextField>
-          <Button onClick={close} size="md">
-            확인
-          </Button>
+          <S.ButtonContainer>
+            <S.StyledButton onClick={close} size="md">
+              확인
+            </S.StyledButton>
+          </S.ButtonContainer>
         </S.ModalContent>
       </S.ModalContainer>
     </>

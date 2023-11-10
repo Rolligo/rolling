@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
+import { Button } from "components/Button";
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -89,4 +90,15 @@ export const ModalTextField = styled.div`
     border-radius: 0.4rem;
     background: ${COLORS.GRAY_300};
   }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StyledButton = styled(Button)`
+  width: 1.2rem;
 `;
