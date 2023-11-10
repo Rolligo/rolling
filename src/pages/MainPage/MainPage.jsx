@@ -42,7 +42,7 @@ function MainPage() {
           </S.ImgContainer>
         </S.Section>
         <S.ButtonContainer>
-          <S.StyledButton size="lg">구경해보기</S.StyledButton>
+          <S.StyledButton size="full">구경해보기</S.StyledButton>
         </S.ButtonContainer>
       </S.MainPageDiv>
     </>
