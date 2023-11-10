@@ -5,7 +5,7 @@ import TextEditor from "components/TextEditor";
 import DefaultProfile from "assets/images/DefaultProfile.png";
 import Dropdown from "components/Dropdown";
 import NavBar from "components/NavBar";
-import PrimaryButton from "components/StyledButtons/PrimaryButton";
+import { Button } from "components/Button";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
 
@@ -202,12 +202,13 @@ const PostMessagePage = () => {
           />
         </S.Section>
         <S.Section>
-          <PrimaryButton
+          <Button
+            size="full"
             onClick={(e) => handleCreatePostClick(e)}
             disabled={isDisabled}
           >
             생성하기
-          </PrimaryButton>
+          </Button>
         </S.Section>
       </S.PostMessagePageDiv>
     </>

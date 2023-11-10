@@ -6,7 +6,7 @@ const BUTTON_TEXT = {
   right: "이미지",
 };
 
-function ToggleButtton({ setIsColor }) {
+function ToggleButton({ setIsColor }) {
   const [selectedText, setSelectedText] = useState(BUTTON_TEXT.left);
 
   const [toggle, setToggle] = useState(false);
@@ -32,4 +32,4 @@ function ToggleButtton({ setIsColor }) {
   );
 }
 
-export default ToggleButtton;
+export default ToggleButton;
