@@ -1,36 +1,34 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import fetch from "apis/utils/fetch";
 
 function useRequest({ deps = [], skip = false, ...options }) {
   const [data, setData] = useState(null);
-  const [status, setStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const refetch = async (...args) => {
-    setIsLoading(true);
-    setError(null);
+  const refetch = useCallback(
+    async (...args) => {
+      setIsLoading(true);
+      setError(null);
 
-    try {
-      const { data: fetchedData, status: fetchedStatus } = await fetch({
-        ...options,
-        ...args,
-      });
-      setData(fetchedData);
-      setStatus(fetchedStatus);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      try {
+        const { data } = await fetch({ ...options, ...args });
+        setData(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+
+      return { data, error };
+    },
+    [options?.url, options?.method]
+  );
 
   useEffect(() => {
     if (skip) return;
     refetch();
   }, deps);
 
-  return { data, status, isLoading, error, refetch };
+  return { data, isLoading, error, refetch };
 }
-
-export default useRequest;
