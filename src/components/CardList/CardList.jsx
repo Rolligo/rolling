@@ -6,7 +6,6 @@ import fetch from "apis/utils/fetch";
 import { Button } from "components/Button";
 
 const LIMIT = 3;
-let offset = 0;
 
 function CardList({ isEditMode, id }) {
   const [cards, setCards] = useState([]);
@@ -15,6 +14,7 @@ function CardList({ isEditMode, id }) {
   const [hasNext, setHasNext] = useState(true);
   const [deleteId, setDeleteId] = useState(null);
   const target = useRef(null);
+  const [offset, setOffset] = useState(0);
 
   const loadData = async (offset) => {
     try {
@@ -45,16 +45,20 @@ function CardList({ isEditMode, id }) {
     if (entry.isIntersecting && !isLoading) {
       observer.unobserve(entry.target);
       await loadData(offset);
-      offset += LIMIT;
-      observer.observe(entry.target);
+      setOffset((prevOffset) => prevOffset + LIMIT);
+      if (hasNext && target.current) {
+        observer.observe(target.current);
+      }
     }
   };
 
   useEffect(() => {
     const observer = new IntersectionObserver(onIntersect, { threshold: 0.1 });
-    observer.observe(target.current);
+    if (target.current) {
+      observer.observe(target.current);
+    }
     return () => observer.disconnect();
-  }, [target]);
+  }, [offset, target]);
 
   const getDeleteCardId = (e) => {
     e.stopPropagation();
