@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
+import { Button } from "components/Button";
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -27,7 +28,7 @@ export const ModalContainer = styled.div`
 
 export const ModalHeader = styled.div`
   width: 100%;
-  height: 11.6rem;  
+  height: 11.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,8 +41,7 @@ export const ProfileWrapper = styled.div`
   gap: 1.6rem;
 `;
 
-export const ProfileImg = styled.div`
-  border: 1px solid #000; 
+export const ProfileImg = styled.img`
   width: 5.6rem;
   height: 5.6rem;
   border-radius: 50%;
@@ -52,6 +52,9 @@ export const ProfileInfo = styled.div`
   font-size: 2rem;
   font-weight: 400;
   line-height: 120%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 `;
 
 export const Name = styled.span`
@@ -75,9 +78,10 @@ export const ModalContent = styled.div`
 export const ModalTextField = styled.div`
   width: 100%;
   height: 24rem;
-  color: #5A5A5A;
+  color: #5a5a5a;
+  font-family: ${({ font }) => font};
   ${FONT_STYLE.REGULAR_18};
-  
+
   overflow: auto;
   &::-webkit-scrollbar {
     width: 0.4rem;
@@ -86,4 +90,15 @@ export const ModalTextField = styled.div`
     border-radius: 0.4rem;
     background: ${COLORS.GRAY_300};
   }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StyledButton = styled(Button)`
+  width: 1.2rem;
 `;

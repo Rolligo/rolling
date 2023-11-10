@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { onPc, onTablet } from "styles/mediaQuery";
 import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
+import { Button } from "components/Button";
 
 export const BrTag = styled.br`
   display: none;
@@ -158,5 +159,28 @@ export const Section = styled.section`
       props.flexdirection ? props.flexdirection : "row"};
     gap: 10rem;
     justify-content: left;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 6rem 0 2.4rem 0;
+  ${onPc} {
+    width: 28rem;
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  width: 100%;
+
+  ${onTablet} {
+    width: 100%;
+  }
+
+  ${onPc} {
+    width: unset;
   }
 `;

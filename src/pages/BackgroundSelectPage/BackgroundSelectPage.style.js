@@ -85,3 +85,7 @@ export const CheckedIcon = styled.img`
   height: 4.4rem;
   visibility: ${({ visibility }) => (visibility ? "visible" : "hidden")};
 `;
+
+export const ButtonContainer = styled.div`
+  padding: 2.4rem 0;
+`;

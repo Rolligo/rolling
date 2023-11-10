@@ -5,11 +5,17 @@ import Card3 from "assets/images/card-img3.png";
 import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
 import NavBar from "components/NavBar";
-import PaperCard from "components/PaperCard";
-import PrimaryButton from "components/StyledButtons/PrimaryButton";
-import SecondaryButton from "components/StyledButtons/SecondaryButton";
+import { Button } from "components/Button";
+import { useNavigate } from "react-router-dom";
 
-const MainPage = () => {
+function MainPage() {
+  const navigate = useNavigate();
+
+  function handleMovetoListClick(e) {
+    e.preventDefault();
+    navigate("/list");
+  }
+
   return (
     <>
       <NavBar />
@@ -44,10 +50,14 @@ const MainPage = () => {
             <S.EmojiImg src={Emoji} alt="이모지이미지" />
           </S.ImgContainer>
         </S.Section>
-        <PrimaryButton margin="2.4rem 0">구경해보기</PrimaryButton>
+        <S.ButtonContainer>
+          <Button size="full" onClick={(e) => handleMovetoListClick(e)}>
+            구경해보기
+          </Button>
+        </S.ButtonContainer>
       </S.MainPageDiv>
     </>
   );
-};
+}
 
 export default MainPage;
