@@ -203,7 +203,7 @@ const PostMessagePage = () => {
         </S.Section>
         <S.Section>
           <Button
-            size="full"
+            size="lg"
             onClick={(e) => handleCreatePostClick(e)}
             disabled={isDisabled}
           >
