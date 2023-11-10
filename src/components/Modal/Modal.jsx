@@ -1,6 +1,6 @@
 import Relationship from "components/Badges/Relationship";
 import * as S from "./Modal.style";
-import PrimaryButton from "components/StyledButtons/PrimaryButton";
+import { Button } from "components/Button";
 
 function Modal({ close, item, relationship, date }) {
   return (
@@ -21,14 +21,9 @@ function Modal({ close, item, relationship, date }) {
         </S.ModalHeader>
         <S.ModalContent>
           <S.ModalTextField font={item.font}>{item.content}</S.ModalTextField>
-          <PrimaryButton
-            onClick={close}
-            width="12rem"
-            margin="4rem auto 1rem"
-            smallSize
-          >
+          <Button onClick={close} size="md">
             확인
-          </PrimaryButton>
+          </Button>
         </S.ModalContent>
       </S.ModalContainer>
     </>

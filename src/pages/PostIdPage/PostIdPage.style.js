@@ -1,3 +1,4 @@
+import { Button } from "components/Button";
 import styled from "styled-components";
 import { onPc, onTablet, onTabletAndPc } from "styles/mediaQuery";
 import { COLORS } from "styles/palette";
@@ -54,6 +55,10 @@ export const EditButton = styled.div`
   ${onPc} {
     display: none;
   }
+`;
+
+export const StyledOutlinedButton = styled(Button.Outline)`
+  background-color: ${COLORS.WHITE};
 `;
 
 export const DeleteButton = styled.div`

@@ -1,12 +1,11 @@
 import CardList from "components/CardList";
 import * as S from "./PostIdPage.style";
 import NavBar from "components/NavBar";
-import OutlinedButton from "components/StyledButtons/OutlinedButton";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import useRequest from "hooks/useRequest";
 import { useEffect, useState } from "react";
 import fetch from "apis/utils/fetch";
+import { Button } from "components/Button";
 
 function PostIdPage() {
   const [wishDelete, setWishDelete] = useState(false);
@@ -57,26 +56,22 @@ function PostIdPage() {
         {isEditMode ? (
           <>
             <S.DeleteButton>
-              <PrimaryButton onClick={handleDeleteClick}>
+              <Button size="full" onClick={handleDeleteClick}>
                 삭제하기
-              </PrimaryButton>
+              </Button>
             </S.DeleteButton>
             <S.DeleteButtonOnPc>
-              <PrimaryButton
-                onClick={handleDeleteClick}
-                smallSize
-                width="9.2rem"
-              >
+              <Button size="sm" onClick={handleDeleteClick}>
                 삭제하기
-              </PrimaryButton>
+              </Button>
             </S.DeleteButtonOnPc>
           </>
         ) : (
           <S.EditButton>
             <Link to={editURL}>
-              <OutlinedButton smallSize width="9rem">
+              <S.StyledOutlinedButton size="sm">
                 편집하기
-              </OutlinedButton>
+              </S.StyledOutlinedButton>
             </Link>
           </S.EditButton>
         )}
