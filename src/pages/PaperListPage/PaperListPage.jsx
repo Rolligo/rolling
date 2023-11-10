@@ -8,15 +8,19 @@ import { Button } from "components/Button";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
-    url: "recipients/",
-    method: "get",
+    options: {
+      url: "recipients/",
+      method: "get",
+    },
   });
 
   const { data: popularPaper } = useRequest({
-    url: "recipients/",
-    method: "get",
-    params: {
-      sort: "like",
+    options: {
+      url: "recipients/",
+      method: "get",
+      params: {
+        sort: "like",
+      },
     },
   });
 
