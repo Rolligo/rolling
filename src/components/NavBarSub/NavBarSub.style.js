@@ -1,24 +1,26 @@
 import styled from "styled-components";
 import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
-import { onPc, onTablet } from "styles/mediaQuery";
+import { onPc, onTablet, onTabletAndPc } from "styles/mediaQuery";
 
 export const Container = styled.div`
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+  background-color: ${COLORS.WHITE};
   width: 100%;
   white-space: nowrap;
-  
+
   ${onTablet} {
     padding: 1.3rem 0;
   }
-  
+
   ${onPc} {
     display: flex;
     justify-content: center;
   }
 `;
-  
-export const Wrapper = styled.div`
 
+export const Wrapper = styled.div`
   ${onTablet} {
     display: flex;
     justify-content: space-between;
@@ -48,7 +50,7 @@ export const Header = styled.div`
     border: none;
   }
 `;
-  
+
 export const ToContainer = styled.div`
   color: ${COLORS.GRAY_800};
   ${FONT_STYLE.BOLD_18};
@@ -76,7 +78,7 @@ export const HeaderService = styled.div`
 
 export const ProfileContainer = styled.div`
   display: none;
-  
+
   ${onTablet} {
     display: none;
   }
@@ -110,7 +112,6 @@ export const ProfileText = styled.div`
   font-weight: 400;
   line-height: 150%;
   white-space: nowrap;
-  
 `;
 export const Count = styled(ProfileText)`
   display: inline-block;
@@ -144,7 +145,7 @@ export const EmojiButton = styled.button`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-item: center;
+  align-items: center;
   height: 100%;
   gap: 1.5rem;
 
@@ -156,6 +157,13 @@ export const ButtonContainer = styled.div`
   }
 `;
 
+export const ButtonText = styled.p`
+  display: none;
+
+  ${onTabletAndPc} {
+    display: block;
+  }
+`;
 
 export const Border = styled.div`
   background-color: ${COLORS.GRAY_200};
