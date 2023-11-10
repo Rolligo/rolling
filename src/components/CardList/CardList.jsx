@@ -9,7 +9,7 @@ const LIMIT = 3;
 let offset = 0;
 
 function CardList({ isEditMode, id }) {
-  const [data, setData] = useState([]);
+  const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [hasNext, setHasNext] = useState(true);
@@ -20,25 +20,26 @@ function CardList({ isEditMode, id }) {
     try {
       if (!hasNext) return;
       setIsLoading(true);
-      const { data } = await fetch({
+      const { data: cards, status } = await fetch({
         url: `/recipients/${id}/messages/`,
         params: {
           limit: LIMIT,
           offset: offset,
         },
       });
-      const currentData = data?.results;
-      setData((prevData) => [...prevData, ...currentData]);
-      if (!data?.next) setHasNext(false);
-      console.log(hasNext);
+      if (status !== 200) {
+        throw new Error("메시지 카드 불러오기 실패");
+      }
+      const currentCards = cards?.results;
+      setCards((prevCards) => [...prevCards, ...currentCards]);
+      if (!cards?.next) setHasNext(false);
     } catch (error) {
       setError(error);
+      setHasNext(false);
     } finally {
       setIsLoading(false);
     }
   };
-
-  const cards = data;
 
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoading) {
@@ -71,7 +72,9 @@ function CardList({ isEditMode, id }) {
       if (response.status !== 204) {
         throw new Error("메시지 카드 삭제 실패");
       }
-      setData((prevData) => prevData.filter((card) => card.id !== +deleteId));
+      setCards((prevCards) =>
+        prevCards.filter((card) => card.id !== +deleteId)
+      );
     } catch (error) {
       setError(error);
     } finally {

@@ -5,14 +5,15 @@ import OutlinedButton from "components/StyledButtons/OutlinedButton";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import useRequest from "hooks/useRequest";
+import { useEffect, useState } from "react";
+import fetch from "apis/utils/fetch";
 
 function PostIdPage() {
+  const [wishDelete, setWishDelete] = useState(false);
   const { id } = useParams();
   const { data } = useRequest({
-    deps: [id],
     url: `recipients/${id}/`,
   });
-
   const location = useLocation();
   const currentPath = location.pathname;
   const editURL = `${currentPath}/edit`;
@@ -21,6 +22,7 @@ function PostIdPage() {
 
   const deletePaper = async () => {
     try {
+      if (!wishDelete) return;
       const response = await fetch({
         url: `/recipients/${id}/`,
         method: "DELETE",
@@ -28,15 +30,19 @@ function PostIdPage() {
       if (response.status !== 204) {
         throw new Error("롤링 페이퍼 삭제 실패");
       }
+      navigate("/list");
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleDeleteClick = () => {
-    deletePaper();
-    navigate("/list");
+    setWishDelete(true);
   };
+
+  useEffect(() => {
+    deletePaper();
+  }, [wishDelete]);
 
   return (
     <S.Background
