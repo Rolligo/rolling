@@ -16,10 +16,10 @@ function CardList({ isEditMode, id }) {
   const target = useRef(null);
   const [offset, setOffset] = useState(0);
 
-  const loadData = async (offset) => {
+  const loadData = async () => {
     try {
-      if (!hasNext) return;
       setIsLoading(true);
+      if (!hasNext) return;
       const { data: cards, status } = await fetch({
         url: `/recipients/${id}/messages/`,
         params: {
@@ -32,6 +32,7 @@ function CardList({ isEditMode, id }) {
       }
       const currentCards = cards?.results;
       setCards((prevCards) => [...prevCards, ...currentCards]);
+      setOffset((prevOffset) => prevOffset + LIMIT);
       if (!cards?.next) setHasNext(false);
     } catch (error) {
       setError(error);
@@ -44,8 +45,7 @@ function CardList({ isEditMode, id }) {
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoading) {
       observer.unobserve(entry.target);
-      await loadData(offset);
-      setOffset((prevOffset) => prevOffset + LIMIT);
+      await loadData();
       if (hasNext && target.current) {
         observer.observe(target.current);
       }
@@ -113,7 +113,7 @@ function CardList({ isEditMode, id }) {
             );
           })}
       </S.ListContainer>
-      {hasNext && <S.ScrollTarget ref={target}></S.ScrollTarget>}
+      {hasNext && !isLoading && <S.ScrollTarget ref={target}></S.ScrollTarget>}
     </>
   );
 }
