@@ -1,7 +1,15 @@
 import Relationship from "components/Badges/Relationship";
 import * as S from "./Modal.style";
+import { useEffect } from "react";
 
 function Modal({ close, item, relationship, content, date }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
   return (
     <>
       <S.ModalBackdrop onClick={close} />
