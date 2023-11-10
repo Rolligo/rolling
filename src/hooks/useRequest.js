@@ -12,15 +12,15 @@ function useRequest({ deps = [], skip = false, options }) {
       setError(null);
 
       try {
-        const { data } = await fetch({ ...options, ...args });
-        setData(data);
-      } catch (error) {
-        setError(error);
+        const { data: fetchedData } = await fetch({ ...options, ...args });
+        setData(() => fetchedData);
+        return { data: fetchedData };
+      } catch (err) {
+        setError(() => err);
+        return { error: err };
       } finally {
         setIsLoading(false);
       }
-
-      return { data, error };
     },
     [options?.url, options?.method]
   );
@@ -30,7 +30,7 @@ function useRequest({ deps = [], skip = false, options }) {
     refetch();
   }, deps);
 
-  return { data, isLoading, error, refetch: fetch };
+  return { data, isLoading, error, fetch: refetch };
 }
 
 export default useRequest;
