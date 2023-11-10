@@ -11,7 +11,9 @@ function PostIdPage() {
   const [wishDelete, setWishDelete] = useState(false);
   const { id } = useParams();
   const { data } = useRequest({
-    url: `recipients/${id}/`,
+    options: {
+      url: `recipients/${id}/`,
+    },
   });
   const location = useLocation();
   const currentPath = location.pathname;
