@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import fetch from "apis/utils/fetch";
 
-function useRequest({ deps = [], skip = false, ...options }) {
+function useRequest({ deps = [], skip = false, options }) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -30,5 +30,5 @@ function useRequest({ deps = [], skip = false, ...options }) {
     refetch();
   }, deps);
 
-  return { data, isLoading, error, refetch };
+  return { data, isLoading, error, refetch: fetch };
 }
