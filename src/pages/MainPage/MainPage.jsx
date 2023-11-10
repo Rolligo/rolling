@@ -5,6 +5,7 @@ import Card3 from "assets/images/card-img3.png";
 import Emoji from "assets/images/Emoji.png";
 import * as S from "./MainPage.style";
 import NavBar from "components/NavBar";
+import { Button } from "components/Button";
 
 function MainPage() {
   return (
@@ -42,7 +43,7 @@ function MainPage() {
           </S.ImgContainer>
         </S.Section>
         <S.ButtonContainer>
-          <S.StyledButton size="full">구경해보기</S.StyledButton>
+          <Button size="full">구경해보기</Button>
         </S.ButtonContainer>
       </S.MainPageDiv>
     </>

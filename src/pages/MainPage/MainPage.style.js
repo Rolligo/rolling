@@ -167,7 +167,10 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 2.4rem 0;
+  padding: 6rem 0 2.4rem 0;
+  ${onPc} {
+    width: 28rem;
+  }
 `;
 
 export const StyledButton = styled(Button)`
