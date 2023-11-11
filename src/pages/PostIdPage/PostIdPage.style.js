@@ -51,10 +51,6 @@ export const EditButton = styled.div`
   margin-bottom: 1.6rem;
   display: flex;
   justify-content: end;
-
-  ${onPc} {
-    display: none;
-  }
 `;
 
 export const StyledOutlinedButton = styled(Button.Outline)`
