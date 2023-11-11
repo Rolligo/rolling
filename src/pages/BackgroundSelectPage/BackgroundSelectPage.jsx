@@ -6,7 +6,6 @@ import { COLORS } from "styles/palette";
 import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
-import SecondaryButton from "components/StyledButtons/SecondaryButton";
 import { Button } from "components/Button";
 
 const ORANGE = COLORS.ORANGE_200;
@@ -51,6 +50,7 @@ function BackgroundSelectPage() {
   const [value, setValue] = useState("");
   const [isColor, setIsColor] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
+  const [isInputError, setIsInputError] = useState(false);
   const mounted = useRef(false);
   const navigate = useNavigate();
 
@@ -75,11 +75,22 @@ function BackgroundSelectPage() {
   const handleColorChipClick = (e) =>
     setSelectedChip(e.target.getAttribute("background"));
 
-  const handleInputChange = (e) => setValue(e.target.value);
+  const handleInputChange = (e) => {
+    setValue(e.target.value);
+    if (value) {
+      setIsInputError(false);
+    }
+  };
 
   const handleSubmitForm = async () => {
     await refetch();
     setIsClicked((prev) => !prev);
+  };
+
+  const handleInputOnBlur = () => {
+    if (!value) {
+      setIsInputError(true);
+    }
   };
 
   // useEffects
@@ -110,7 +121,8 @@ function BackgroundSelectPage() {
               placeholder="받는 사람 이름을 입력해 주세요"
               value={value}
               onChange={handleInputChange}
-              isError={!value}
+              isError={isInputError}
+              onBlur={handleInputOnBlur}
             ></Input>
           </S.ToInputWrapper>
           <div>

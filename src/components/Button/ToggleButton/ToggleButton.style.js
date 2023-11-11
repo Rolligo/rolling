@@ -9,7 +9,8 @@ export const ToggleBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: ${COLORS.GRAY_100};
 `;
 
 export const Selected = styled.div`
@@ -25,22 +26,18 @@ export const Selected = styled.div`
   color: ${COLORS.PURPLE_700};
   text-align: center;
   left: 0%;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   ${(props) =>
     props.toggle &&
     css`
       transform: translate(12.2rem, 0);
-      transition: all 0.5s ease-in-out;
     `}
 `;
 
 export const Container = styled.div`
   display: flex;
   padding: 0.7rem 1.6rem;
-  background-color: ${COLORS.GRAY_100};
-  background-color: ${(props) =>
-    !props.toggle ? COLORS.WHITE : COLORS.GRAY_100};
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 `;
 
 export const Text = styled.h4`
