@@ -7,7 +7,7 @@ import Dropdown from "components/Dropdown";
 import NavBar from "components/NavBar";
 import { Button } from "components/Button";
 import useRequest from "hooks/useRequest";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "가족"];
 
@@ -48,6 +48,7 @@ const PostMessagePage = () => {
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const navigate = useNavigate();
   const mounted = useRef(false);
+  const { id } = useParams();
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -113,7 +114,7 @@ const PostMessagePage = () => {
 
   const { status, refetch } = useRequest({
     skip: true,
-    url: "recipients/40/messages/",
+    url: `recipients/${id}/messages/`,
     method: "post",
     headers: { "Content-Type": "application/json" },
     data: message,
@@ -133,7 +134,7 @@ const PostMessagePage = () => {
         alert(
           "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
         );
-        navigate("/post/1");
+        navigate(`/post/${id}`);
       } else {
         alert("서버 오류로 메시지 작성에 실패했습니다..");
       }
@@ -203,7 +204,7 @@ const PostMessagePage = () => {
         </S.Section>
         <S.Section>
           <Button
-            size="full"
+            size="lg"
             onClick={(e) => handleCreatePostClick(e)}
             disabled={isDisabled}
           >
