@@ -6,7 +6,6 @@ import fetch from "apis/utils/fetch";
 import { Button } from "components/Button";
 
 const LIMIT = 3;
-let offset = 0;
 
 function CardList({ isEditMode, id }) {
   const [cards, setCards] = useState([]);
@@ -15,11 +14,12 @@ function CardList({ isEditMode, id }) {
   const [hasNext, setHasNext] = useState(true);
   const [deleteId, setDeleteId] = useState(null);
   const target = useRef(null);
+  const [offset, setOffset] = useState(0);
 
-  const loadData = async (offset) => {
+  const loadData = async () => {
     try {
-      if (!hasNext) return;
       setIsLoading(true);
+      if (!hasNext) return;
       const { data: cards, status } = await fetch({
         url: `/recipients/${id}/messages/`,
         params: {
@@ -32,6 +32,7 @@ function CardList({ isEditMode, id }) {
       }
       const currentCards = cards?.results;
       setCards((prevCards) => [...prevCards, ...currentCards]);
+      setOffset((prevOffset) => prevOffset + LIMIT);
       if (!cards?.next) setHasNext(false);
     } catch (error) {
       setError(error);
@@ -44,17 +45,20 @@ function CardList({ isEditMode, id }) {
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoading) {
       observer.unobserve(entry.target);
-      await loadData(offset);
-      offset += LIMIT;
-      observer.observe(entry.target);
+      await loadData();
+      if (hasNext && target.current) {
+        observer.observe(target.current);
+      }
     }
   };
 
   useEffect(() => {
     const observer = new IntersectionObserver(onIntersect, { threshold: 0.1 });
-    observer.observe(target.current);
+    if (target.current) {
+      observer.observe(target.current);
+    }
     return () => observer.disconnect();
-  }, [target]);
+  }, [offset, target]);
 
   const getDeleteCardId = (e) => {
     e.stopPropagation();
@@ -109,7 +113,7 @@ function CardList({ isEditMode, id }) {
             );
           })}
       </S.ListContainer>
-      {hasNext && <S.ScrollTarget ref={target}></S.ScrollTarget>}
+      {hasNext && !isLoading && <S.ScrollTarget ref={target}></S.ScrollTarget>}
     </>
   );
 }

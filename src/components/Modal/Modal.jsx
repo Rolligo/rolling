@@ -1,9 +1,17 @@
 import Relationship from "components/Badges/Relationship";
 import * as S from "./Modal.style";
-import { Button } from "components/Button";
+import { useEffect } from "react";
+import ReactDOM from "react-dom";
 
-function Modal({ close, item, relationship, date }) {
-  return (
+function Modal({ close, item, relationship, content, date }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
+  return ReactDOM.createPortal(
     <>
       <S.ModalBackdrop onClick={close} />
       <S.ModalContainer>
@@ -20,13 +28,19 @@ function Modal({ close, item, relationship, date }) {
           <S.ProfileDate>{date}</S.ProfileDate>
         </S.ModalHeader>
         <S.ModalContent>
-          <S.ModalTextField font={item.font}>{item.content}</S.ModalTextField>
-          <Button onClick={close} size="md">
-            확인
-          </Button>
+          <S.ModalTextField
+            font={item.font}
+            dangerouslySetInnerHTML={content}
+          ></S.ModalTextField>
+          <S.ButtonContainer>
+            <S.StyledButton onClick={close} size="md">
+              확인
+            </S.StyledButton>
+          </S.ButtonContainer>
         </S.ModalContent>
       </S.ModalContainer>
-    </>
+    </>,
+    document.getElementById("modal")
   );
 }
 
