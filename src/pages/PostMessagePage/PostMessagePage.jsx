@@ -112,34 +112,61 @@ const PostMessagePage = () => {
     profileImageURL: singleUrl !== "" ? singleUrl : defaultImageUrl,
   };
 
-  const { status, refetch } = useRequest({
+  const { fetch } = useRequest({
     skip: true,
-    url: `recipients/${id}/messages/`,
-    method: "post",
-    headers: { "Content-Type": "application/json" },
-    data: message,
+    options: {
+      url: `recipients/${id}/messages/`,
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      data: message,
+    }
   });
 
   async function handleCreatePostClick(e) {
     e.preventDefault();
-    await refetch();
-    setIsSubmitClicked(!isSubmitClicked);
-  }
+    const {data: fetchedData, error: fetchedError} = await fetch();
+    console.log(fetchedData, fetchedError);
+  
 
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-    } else {
-      if (status === 201) {
-        alert(
-          "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
-        );
-        navigate(`/post/${id}`);
-      } else {
-        alert("서버 오류로 메시지 작성에 실패했습니다..");
-      }
-    }
-  }, [isSubmitClicked]);
+    // if (error === null) {
+    //   alert(
+    //     "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
+    //   );
+    //   navigate(`/post/${id}`);
+    // } else {
+    //   alert("서버 오류로 메시지 작성에 실패했습니다..");
+    // }
+  }
+  // console.log(`data is: ${data}`);
+  // console.log(`error is: ${error}`);
+  // const { status, refetch } = useRequest({
+  //   skip: true,
+  //   url: `recipients/${id}/messages/`,
+  //   method: "post",
+  //   headers: { "Content-Type": "application/json" },
+  //   data: message,
+  // });
+
+  // async function handleCreatePostClick(e) {
+  //   e.preventDefault();
+  //   await refetch();
+  //   setIsSubmitClicked(!isSubmitClicked);
+  // }
+
+  // useEffect(() => {
+  //   if (!mounted.current) {
+  //     mounted.current = true;
+  //   } else {
+  //     if (status === 201) {
+  //       alert(
+  //         "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
+  //       );
+  //       navigate(`/post/${id}`);
+  //     } else {
+  //       alert("서버 오류로 메시지 작성에 실패했습니다..");
+  //     }
+  //   }
+  // }, [isSubmitClicked]);
 
   return (
     <>
