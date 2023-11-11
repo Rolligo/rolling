@@ -28,7 +28,7 @@ export const InputContainer = styled.input`
     color: ${COLORS.GRAY_900};
   }
   &:hover {
-    border-color: ${COLORS.GRAY_500};
+    border-color: ${({ error }) => (error ? COLORS.ERROR : COLORS.GRAY_500)};
     color: ${COLORS.GRAY_500};
   }
   ${(props) =>
