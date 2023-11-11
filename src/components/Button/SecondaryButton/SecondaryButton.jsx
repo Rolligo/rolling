@@ -1,19 +1,17 @@
 import * as S from "./SecondaryButton.style";
 
 function SecondaryButton({
-  children = "Enabled", // children : 버튼 텍스트 내용 (Button's innerText)
-  width = "100%",
-  margin = 0,
+  className,
+  children,
   disabled = false,
-  smallSize = false,
+  size = "md",
   onClick,
 }) {
   return (
     <S.ButtonContainer
-      width={width}
-      margin={margin}
+      className={className}
       disabled={disabled}
-      smallSize={smallSize}
+      $size={size}
       onClick={onClick}
     >
       {children}

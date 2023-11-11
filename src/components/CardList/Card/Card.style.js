@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FONT_STYLE } from "styles/fontStyle";
-import { onTabletAndPc } from "styles/mediaQuery";
+import { onPc, onTablet, onTabletAndPc } from "styles/mediaQuery";
 import { COLORS } from "styles/palette";
 
 export const Profile = styled.div`
@@ -50,22 +50,35 @@ export const Sender = styled.p`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
   margin-top: 1.6rem;
   gap: 1.6rem;
 `;
 
 export const Message = styled.p`
+  display: block;
+  height: 4.4rem;
+  margin-bottom: 1.2rem;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   color: ${COLORS.GRAY_600};
+  font-family: ${({ font }) => font};
   ${FONT_STYLE.REGULAR_15};
 
   ${onTabletAndPc} {
     ${FONT_STYLE.REGULAR_18};
+    -webkit-line-clamp: 3;
+  }
+
+  ${onTablet} {
+    height: 8.4rem;
+    margin-bottom: 2.6rem;
+  }
+
+  ${onPc} {
+    height: 8.4rem;
+    margin-bottom: 2.4rem;
   }
 `;
 
@@ -86,5 +99,19 @@ export const IconContainer = styled.button`
   align-items: center;
   border-radius: 0.6rem;
   border: 0.1rem solid ${COLORS.GRAY_300};
-  background: ${COLORS.WHITE};
+  background: ${({ disabled }) => (disabled ? COLORS.GRAY_300 : COLORS.WHITE)};
+
+  &:hover,
+  &:active {
+    background-color: ${COLORS.GRAY_100};
+  }
+
+  &:focus {
+    background-color: ${COLORS.WHITE};
+    border-color: ${COLORS.GRAY_500};
+  }
+
+  img {
+    filter: ${({ disabled }) => disabled && "brightness(1000%)"};
+  }
 `;

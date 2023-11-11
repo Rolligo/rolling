@@ -1,7 +1,5 @@
 import NavBar from "components/NavBar";
 import * as S from "./BackgroundSelectPage.style";
-import ToggleButton from "components/StyledButtons/ToggleButton";
-import PrimaryButton from "components/StyledButtons/PrimaryButton";
 import Input from "components/Input";
 import checkedIcon from "assets/images/icons/checked-icon.png";
 import { COLORS } from "styles/palette";
@@ -9,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
 import SecondaryButton from "components/StyledButtons/SecondaryButton";
+import { Button } from "components/Button";
 
 const ORANGE = COLORS.ORANGE_200;
 const PURPLE = COLORS.PURPLE_200;
@@ -121,7 +120,7 @@ function BackgroundSelectPage() {
                 컬러를 선택하거나, 이미지를 선택할 수 있습니다.
               </S.SubText>
             </S.DescriptionWrapper>
-            <ToggleButton setIsColor={setIsColor} />
+            <Button.Toggle setIsColor={setIsColor} />
           </div>
           <S.ColorChipContainer>
             {isColor &&
@@ -143,14 +142,11 @@ function BackgroundSelectPage() {
                 />
               ))}
           </S.ColorChipContainer>
-          <S.TitleText2>내 컴퓨터에서 이미지 업로드 하기</S.TitleText2>
-          <PrimaryButton
-            margin="2.4rem 0"
-            disabled={!value}
-            onClick={handleSubmitForm}
-          >
-            생성하기
-          </PrimaryButton>
+          <S.ButtonContainer>
+            <Button size="full" disabled={!value} onClick={handleSubmitForm}>
+              생성하기
+            </Button>
+          </S.ButtonContainer>
         </S.Container>
       </S.Wrapper>
     </div>

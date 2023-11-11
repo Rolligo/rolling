@@ -1,18 +1,19 @@
 import styled, { css } from "styled-components";
 import { onTablet, onPc } from "styles/mediaQuery";
 import { zIndexStyle } from "styles/zIndexStyle";
+import { Button } from "components/Button";
 
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
   gap: 7.4rem;
   padding-top: 4rem;
-  padding-bottom: 7rem;
+  padding-bottom: 10rem;
   max-width: 114.5rem;
 
   ${onTablet} {
     gap: 5rem;
-    padding-bottom: 7rem;
+    padding-bottom: 10rem;
   }
 
   ${onPc} {
@@ -36,7 +37,7 @@ export const Title = styled.h1`
   line-height: 3rem;
 `;
 
-export const CardContainer = styled.ul`
+export const CardContainer = styled.div`
   display: flex;
   gap: 1.2rem;
   overflow: scroll;
@@ -69,6 +70,18 @@ export const ButtonContainer = styled.div`
     transform: translateX(0);
     width: 28rem;
     margin: 6.4rem auto;
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  width: 100%;
+
+  ${onTablet} {
+    width: 100%;
+  }
+
+  ${onPc} {
+    width: unset;
   }
 `;
 

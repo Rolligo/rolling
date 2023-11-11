@@ -22,6 +22,7 @@ export const ListContainer = styled.ul`
   }
 `;
 export const ButtonContainer = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   height: 23rem;
@@ -53,5 +54,15 @@ export const CardContainer = styled.li`
 
   ${onPc} {
     height: 28rem;
+  }
+`;
+
+export const ScrollTarget = styled.div`
+  position: absolute;
+  bottom: 0;
+  height: 26.8rem;
+
+  ${onTabletAndPc} {
+    height: 32.2rem;
   }
 `;
