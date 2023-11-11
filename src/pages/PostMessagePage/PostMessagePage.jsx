@@ -45,9 +45,7 @@ const PostMessagePage = () => {
   const [text, setText] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [isEditorEmpty, setIsEditorEmpty] = useState(true);
-  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const navigate = useNavigate();
-  const mounted = useRef(false);
   const { id } = useParams();
 
   function handleInputChange(e) {
@@ -124,49 +122,16 @@ const PostMessagePage = () => {
 
   async function handleCreatePostClick(e) {
     e.preventDefault();
-    const {data: fetchedData, error: fetchedError} = await fetch();
-    console.log(fetchedData, fetchedError);
-  
-
-    // if (error === null) {
-    //   alert(
-    //     "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
-    //   );
-    //   navigate(`/post/${id}`);
-    // } else {
-    //   alert("서버 오류로 메시지 작성에 실패했습니다..");
-    // }
+    const {error: fetchedError} = await fetch();
+    if (fetchedError === undefined) {
+      alert(
+        "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
+      );
+      navigate(`/post/${id}`);
+    } else {
+      alert("서버 오류로 메시지 작성에 실패했습니다..");
+    }
   }
-  // console.log(`data is: ${data}`);
-  // console.log(`error is: ${error}`);
-  // const { status, refetch } = useRequest({
-  //   skip: true,
-  //   url: `recipients/${id}/messages/`,
-  //   method: "post",
-  //   headers: { "Content-Type": "application/json" },
-  //   data: message,
-  // });
-
-  // async function handleCreatePostClick(e) {
-  //   e.preventDefault();
-  //   await refetch();
-  //   setIsSubmitClicked(!isSubmitClicked);
-  // }
-
-  // useEffect(() => {
-  //   if (!mounted.current) {
-  //     mounted.current = true;
-  //   } else {
-  //     if (status === 201) {
-  //       alert(
-  //         "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
-  //       );
-  //       navigate(`/post/${id}`);
-  //     } else {
-  //       alert("서버 오류로 메시지 작성에 실패했습니다..");
-  //     }
-  //   }
-  // }, [isSubmitClicked]);
 
   return (
     <>
