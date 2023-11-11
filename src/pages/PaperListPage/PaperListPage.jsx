@@ -68,9 +68,9 @@ function PaperSection({ title, papers }) {
       <S.CardContainer>
         {papers &&
           papers?.results?.map((paper) => (
-            <li key={paper?.id}>
+            <Link key={paper?.id} to={`/post/${paper?.id}`}>
               <PaperCard data={paper} slideIndex={slideIndex} />
-            </li>
+            </Link>
           ))}
         {slideIndex > 0 && (
           <S.ArrowButtonContainer $left>
