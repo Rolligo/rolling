@@ -9,7 +9,7 @@ function Input({
   onBlur,
 }) {
   return (
-    <>
+    <S.InputArea>
       <S.InputContainer
         type="text"
         error={isError}
@@ -19,7 +19,7 @@ function Input({
         onBlur={onBlur}
       />
       {isError && <S.InputError>{errorMessage}</S.InputError>}
-    </>
+    </S.InputArea>
   );
 }
 
