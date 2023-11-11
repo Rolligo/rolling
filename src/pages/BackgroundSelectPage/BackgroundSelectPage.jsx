@@ -45,59 +45,86 @@ function BackgroundSelectPage() {
     "#d0f5c3": "green",
   };
 
+  // useStates
   const [selectedChip, setSelectedChip] = useState("");
   const [value, setValue] = useState("");
   const [isColor, setIsColor] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
+  const [isInputError, setIsInputError] = useState(false);
   const mounted = useRef(false);
   const navigate = useNavigate();
 
+  // 새로운 롤링페이퍼 생성 대상 데이터
   const newRollingPerson = {
     name: value,
     backgroundColor: isColor ? COLOR_NAME[selectedChip] : "beige",
     backgroundImageURL: isColor ? null : selectedChip,
   };
 
-  const { data, status, refetch } = useRequest({
-    skip: true,
-    url: "recipients/",
-    method: "post",
-    header: {
-      "Content-Type": "application/json",
-    },
-    data: newRollingPerson,
-  });
-
-  useEffect(() => {}, [selectedChip]);
-  useEffect(() => {}, [isColor]);
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-    } else {
-      if (status === 201) {
-        alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
-        navigate(`/post/${data.id}`);
-      } else {
-        console.log(status);
-        alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
-      }
-    }
-  }, [isClicked]);
-
+  // event handlers
   const handleColorChipClick = (e) =>
     setSelectedChip(e.target.getAttribute("background"));
 
-  const handleInputChange = (e) => setValue(e.target.value);
+  const handleInputChange = (e) => {
+    setValue(e.target.value);
+    if (value) {
+      setIsInputError(false);
+    }
+  };
+
+  const { fetch, data, error } = useRequest({
+    skip: true,
+    options: {
+      url: "recipients/",
+      method: "post",
+      header: {
+        "Content-Type": "application/json",
+      },
+      data: newRollingPerson,
+    },
+  });
 
   const handleSubmitForm = async () => {
-    await refetch();
+    const { error, data } = await fetch();
+    if (!error) {
+      console.log(data);
+      alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
+      navigate(`/post/${data.id}`);
+    } else {
+      alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
+    }
     setIsClicked((prev) => !prev);
   };
 
+  const handleInputOnBlur = () => {
+    if (!value) {
+      setIsInputError(true);
+    }
+  };
+
+  // useEffects
+  useEffect(() => {}, [selectedChip]);
+  useEffect(() => {}, [isColor]);
+  // useEffect(() => {
+  //   if (!mounted.current) {
+  //     mounted.current = true;
+  //   } else {
+  //     if (status === 201) {
+  //       alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
+  //       navigate(`/post/${data.id}`);
+  //     } else {
+  //       console.log(status);
+  //       alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
+  //     }
+  //   }
+  // }, [isClicked]);
+
   return (
     <div>
-      <NavBar showButton={false} />
       <S.Wrapper>
+        <S.NavContainer>
+          <NavBar showButton={false} />
+        </S.NavContainer>
         <S.Container>
           <S.ToInputWrapper>
             <S.TitleText1>To.</S.TitleText1>
@@ -105,7 +132,8 @@ function BackgroundSelectPage() {
               placeholder="받는 사람 이름을 입력해 주세요"
               value={value}
               onChange={handleInputChange}
-              isError={!value}
+              isError={isInputError}
+              onBlur={handleInputOnBlur}
             ></Input>
           </S.ToInputWrapper>
           <div>

@@ -12,9 +12,13 @@ function ToggleButton({ setIsColor }) {
   const [toggle, setToggle] = useState(false);
   const clickedToggle = () => {
     setToggle((prev) => !prev);
-    setSelectedText((prevText) =>
-      prevText === BUTTON_TEXT.left ? BUTTON_TEXT.right : BUTTON_TEXT.left
-    );
+
+    setTimeout(() => {
+      setSelectedText((prevText) =>
+        prevText === BUTTON_TEXT.left ? BUTTON_TEXT.right : BUTTON_TEXT.left
+      );
+    }, 200);
+
     setIsColor(toggle);
   };
   return (

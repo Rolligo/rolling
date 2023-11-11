@@ -1,23 +1,39 @@
 import styled, { css } from "styled-components";
 import { COLORS } from "styles/palette";
-import checkedIcon from "assets/images/icons/checked-icon.png";
+import { onPc, onTablet, onTabletAndPc } from "styles/mediaQuery";
+
+export const NavContainer = styled.div`
+  display: none;
+
+  ${onTabletAndPc} {
+    display: contents;
+  }
+`;
 
 export const Wrapper = styled.div`
-  margin-top: 5rem;
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 export const Container = styled.div`
-  width: 72rem;
+  ${onPc} {
+    width: 72rem;
+  }
+  ${onTablet} {
+    width: 72rem;
+  }
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 5rem;
+  position: relative;
 `;
 
 export const ToInputWrapper = styled.div`
+  margin-top: 5rem;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -33,9 +49,19 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const ColorChipContainer = styled.div`
-  display: inline-flex;
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(2, 1fr);
   align-items: flex-start;
   gap: 1.6rem;
+
+  ${onPc} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  ${onTablet} {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 export const Chip = styled.button`
@@ -88,4 +114,11 @@ export const CheckedIcon = styled.img`
 
 export const ButtonContainer = styled.div`
   padding: 2.4rem 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  ${onPc} {
+    position: relative;
+  }
 `;
