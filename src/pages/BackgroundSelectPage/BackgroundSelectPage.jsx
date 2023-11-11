@@ -61,16 +61,6 @@ function BackgroundSelectPage() {
     backgroundImageURL: isColor ? null : selectedChip,
   };
 
-  const { data, status, refetch } = useRequest({
-    skip: true,
-    url: "recipients/",
-    method: "post",
-    header: {
-      "Content-Type": "application/json",
-    },
-    data: newRollingPerson,
-  });
-
   // event handlers
   const handleColorChipClick = (e) =>
     setSelectedChip(e.target.getAttribute("background"));
@@ -82,8 +72,27 @@ function BackgroundSelectPage() {
     }
   };
 
+  const { fetch, data, error } = useRequest({
+    skip: true,
+    options: {
+      url: "recipients/",
+      method: "post",
+      header: {
+        "Content-Type": "application/json",
+      },
+      data: newRollingPerson,
+    },
+  });
+
   const handleSubmitForm = async () => {
-    await refetch();
+    const { error, data } = await fetch();
+    if (!error) {
+      console.log(data);
+      alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
+      navigate(`/post/${data.id}`);
+    } else {
+      alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
+    }
     setIsClicked((prev) => !prev);
   };
 
@@ -96,19 +105,19 @@ function BackgroundSelectPage() {
   // useEffects
   useEffect(() => {}, [selectedChip]);
   useEffect(() => {}, [isColor]);
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-    } else {
-      if (status === 201) {
-        alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
-        navigate(`/post/${data.id}`);
-      } else {
-        console.log(status);
-        alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
-      }
-    }
-  }, [isClicked]);
+  // useEffect(() => {
+  //   if (!mounted.current) {
+  //     mounted.current = true;
+  //   } else {
+  //     if (status === 201) {
+  //       alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
+  //       navigate(`/post/${data.id}`);
+  //     } else {
+  //       console.log(status);
+  //       alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
+  //     }
+  //   }
+  // }, [isClicked]);
 
   return (
     <div>
