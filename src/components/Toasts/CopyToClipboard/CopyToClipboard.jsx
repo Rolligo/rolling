@@ -1,4 +1,4 @@
-import COMPLETED from "assets/icons/completed.svg";
+import COMPLETED from "assets/images/icons/completed.svg";
 
 function CopyToClipboard() {
   return (

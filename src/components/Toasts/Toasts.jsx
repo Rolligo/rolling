@@ -1,6 +1,6 @@
 import * as S from "./Toasts.style";
 import ReactDOM from "react-dom";
-import CLOSE from "assets/icons/close.svg";
+import CLOSE from "assets/images/icons/close.svg";
 
 function Toasts({ children, closeToast }) {
   return (

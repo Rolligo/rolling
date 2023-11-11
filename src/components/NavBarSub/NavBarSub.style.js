@@ -145,6 +145,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   height: 100%;
   gap: 1.5rem;
 

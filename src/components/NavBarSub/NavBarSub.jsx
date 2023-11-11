@@ -5,6 +5,8 @@ import shareIcon from "assets/images/icons/shareIcon.svg";
 import ArrowIcon from "assets/images/icons/arrow_down.svg";
 import { Button } from "components/Button";
 import From from "components/Badges/From";
+import { useEffect, useRef, useState } from "react";
+import Share from "./Share";
 
 function NavBarSub({ data }) {
   const name = data?.name;
@@ -17,6 +19,22 @@ function NavBarSub({ data }) {
     recentMessages?.[1]?.profileImageURL,
     recentMessages?.[2]?.profileImageURL,
   ];
+
+  const [showShare, setShowShare] = useState(false);
+  const shareRef = useRef(null);
+
+  const closeShare = (e) => {
+    if (shareRef.current && !shareRef.current.contains(e.target)) {
+      setShowShare(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", closeShare);
+    return () => {
+      document.removeEventListener("click", closeShare);
+    };
+  }, []);
 
   return (
     <S.Container>
@@ -57,9 +75,18 @@ function NavBarSub({ data }) {
               <S.ButtonText>추가</S.ButtonText>
             </Button.Outline>
             <S.Border />
-            <Button.Outline size="xs">
-              <img src={shareIcon} />
-            </Button.Outline>
+            <div ref={shareRef}>
+              <Button.Outline
+                size="xs"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowShare((curr) => !curr);
+                }}
+              >
+                <img src={shareIcon} />
+              </Button.Outline>
+              {showShare && <Share />}
+            </div>
           </S.ButtonContainer>
         </S.HeaderService>
       </S.Wrapper>
