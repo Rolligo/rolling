@@ -12,7 +12,14 @@ export const reset = css`
   body {
     font-size: 62.5%;
   }
-  
+
+  body {
+    -ms-overflow-style: none;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
