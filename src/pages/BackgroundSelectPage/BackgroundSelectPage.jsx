@@ -8,6 +8,7 @@ import { COLORS } from "styles/palette";
 import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
+import SecondaryButton from "components/StyledButtons/SecondaryButton";
 
 const ORANGE = COLORS.ORANGE_200;
 const PURPLE = COLORS.PURPLE_200;
@@ -46,6 +47,7 @@ function BackgroundSelectPage() {
     "#d0f5c3": "green",
   };
 
+  // useStates
   const [selectedChip, setSelectedChip] = useState("");
   const [value, setValue] = useState("");
   const [isColor, setIsColor] = useState(true);
@@ -53,6 +55,7 @@ function BackgroundSelectPage() {
   const mounted = useRef(false);
   const navigate = useNavigate();
 
+  // 새로운 롤링페이퍼 생성 대상 데이터
   const newRollingPerson = {
     name: value,
     backgroundColor: isColor ? COLOR_NAME[selectedChip] : "beige",
@@ -69,6 +72,18 @@ function BackgroundSelectPage() {
     data: newRollingPerson,
   });
 
+  // event handlers
+  const handleColorChipClick = (e) =>
+    setSelectedChip(e.target.getAttribute("background"));
+
+  const handleInputChange = (e) => setValue(e.target.value);
+
+  const handleSubmitForm = async () => {
+    await refetch();
+    setIsClicked((prev) => !prev);
+  };
+
+  // useEffects
   useEffect(() => {}, [selectedChip]);
   useEffect(() => {}, [isColor]);
   useEffect(() => {
@@ -84,16 +99,6 @@ function BackgroundSelectPage() {
       }
     }
   }, [isClicked]);
-
-  const handleColorChipClick = (e) =>
-    setSelectedChip(e.target.getAttribute("background"));
-
-  const handleInputChange = (e) => setValue(e.target.value);
-
-  const handleSubmitForm = async () => {
-    await refetch();
-    setIsClicked((prev) => !prev);
-  };
 
   return (
     <div>
@@ -138,6 +143,7 @@ function BackgroundSelectPage() {
                 />
               ))}
           </S.ColorChipContainer>
+          <S.TitleText2>내 컴퓨터에서 이미지 업로드 하기</S.TitleText2>
           <PrimaryButton
             margin="2.4rem 0"
             disabled={!value}
