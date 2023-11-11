@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   position: absolute;
   z-index: ${zIndexStyle.floating};
-  top: 4rem;
+  top: 4.2rem;
   right: 0rem;
   padding: 1rem 0;
   border-radius: 0.8rem;
