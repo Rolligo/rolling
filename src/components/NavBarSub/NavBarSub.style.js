@@ -4,8 +4,6 @@ import { FONT_STYLE } from "styles/fontStyle";
 import { onPc, onTablet, onTabletAndPc } from "styles/mediaQuery";
 
 export const Container = styled.div`
-  padding-top: 1.3rem;
-  padding-bottom: 1.3rem;
   background-color: ${COLORS.WHITE};
   width: 100%;
   white-space: nowrap;
@@ -15,6 +13,7 @@ export const Container = styled.div`
   }
 
   ${onPc} {
+    padding: 1.3rem 0;
     display: flex;
     justify-content: center;
   }
