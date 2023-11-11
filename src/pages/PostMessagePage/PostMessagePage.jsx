@@ -162,6 +162,12 @@ const PostMessagePage = () => {
             <S.Div>
               <S.H2>프로필 이미지를 선택해주세요!</S.H2>
               <S.ImgContainer>
+                <S.SingleImageButton>
+                  <S.SingleImage 
+                    src={defaultImageUrl}
+                    onClick={(e) => handleDefaultImgClick(e)}
+                  />
+                </S.SingleImageButton>
                 {imageUrls.map((url) => {
                   return (
                     <S.SingleImageButton
