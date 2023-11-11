@@ -37,7 +37,7 @@ export const Title = styled.h1`
   line-height: 3rem;
 `;
 
-export const CardContainer = styled.ul`
+export const CardContainer = styled.div`
   display: flex;
   gap: 1.2rem;
   overflow: scroll;
