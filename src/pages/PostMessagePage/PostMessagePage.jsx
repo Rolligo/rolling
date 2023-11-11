@@ -155,9 +155,6 @@ const PostMessagePage = () => {
               <S.DefaultImage
                 src={isSingleImgClicked ? singleUrl : DefaultProfile}
               />
-              <S.DefaultImgButton onClick={(e) => handleDefaultImgClick(e)}>
-                기본 이미지로 변경
-              </S.DefaultImgButton>
             </S.ChosenImgDiv>
             <S.Div>
               <S.H2>프로필 이미지를 선택해주세요!</S.H2>
