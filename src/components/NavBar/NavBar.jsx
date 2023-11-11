@@ -5,8 +5,8 @@ import { Button } from "components/Button";
 
 function NavBar({ showButton = true }) {
   return (
-    <div>
-      <S.Wrapper>
+    <S.Wrapper>
+      <S.Content>
         <S.Container>
           <Link to="/">
             <S.LogoImage img src={logoIcon} alt="logo" />
@@ -17,9 +17,9 @@ function NavBar({ showButton = true }) {
             )}
           </Link>
         </S.Container>
-      </S.Wrapper>
+      </S.Content>
       <S.BottomLine />
-    </div>
+    </S.Wrapper>
   );
 }
 

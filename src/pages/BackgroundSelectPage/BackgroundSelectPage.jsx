@@ -112,8 +112,10 @@ function BackgroundSelectPage() {
 
   return (
     <div>
-      <NavBar showButton={false} />
       <S.Wrapper>
+        <S.NavContainer>
+          <NavBar showButton={false} />
+        </S.NavContainer>
         <S.Container>
           <S.ToInputWrapper>
             <S.TitleText1>To.</S.TitleText1>
