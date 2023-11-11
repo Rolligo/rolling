@@ -115,32 +115,3 @@ export const SingleImageButton = styled.button`
     height: 5.6rem;
   }
 `;
-
-export const DefaultImgButton = styled.button`
-  margin-top: 2rem;
-  width: 100%;
-  height: 5.5rem;
-  border-radius: 1rem;
-  border: 0.2rem solid ${COLORS.GRAY_400};
-  background: ${COLORS.GRAY_300};
-  color: ${COLORS.WHITE};
-  padding: 0.5rem 0.5rem;
-  font-weight: 600;
-  font-size: 1.2rem;
-  &:hover {
-    background-color: ${COLORS.GRAY_400};
-    border: 0.2rem solid ${COLORS.GRAY_500};
-  }
-`;
-
-export const TempDiv = styled.div`
-  width: 100%;
-  height: 18.2rem;
-  ${onTablet} {
-    height: 5rem;
-  }
-
-  ${onPc} {
-    height: 5rem;
-  }
-`;
