@@ -2,6 +2,10 @@ import styled, { css } from "styled-components";
 import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
 
+export const InputArea = styled.div`
+  width: 100%;
+`;
+
 export const InputContainer = styled.input`
   width: 100%;
   padding: 1.2rem 1.6rem;
@@ -24,7 +28,7 @@ export const InputContainer = styled.input`
     color: ${COLORS.GRAY_900};
   }
   &:hover {
-    border-color: ${COLORS.GRAY_500};
+    border-color: ${({ error }) => (error ? COLORS.ERROR : COLORS.GRAY_500)};
     color: ${COLORS.GRAY_500};
   }
   ${(props) =>
