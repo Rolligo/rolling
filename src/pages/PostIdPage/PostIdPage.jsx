@@ -32,6 +32,12 @@ function PostIdPage() {
 
   const deletePaper = async () => {
     if (!wishDelete) return;
+
+    if (!window.confirm("정말 삭제하시겠습니까?")) {
+      setWishDelete(false);
+      return;
+    }
+
     const { error } = await fetchDelete();
     if (error) {
       throw new Error("롤링 페이퍼 삭제 실패");
