@@ -7,6 +7,7 @@ import { Button } from "components/Button";
 import From from "components/Badges/From";
 import { useEffect, useRef, useState } from "react";
 import Share from "./Share";
+import EmojiPicker from "emoji-picker-react";
 
 function NavBarSub({ data }) {
   const name = data?.name;
@@ -19,6 +20,22 @@ function NavBarSub({ data }) {
     recentMessages?.[1]?.profileImageURL,
     recentMessages?.[2]?.profileImageURL,
   ];
+
+  const [showPicker, setShowPicker] = useState(false);
+  const pickerRef = useRef(null);
+
+  const closePicker = (e) => {
+    if (pickerRef.current && !pickerRef.current.contains(e.target)) {
+      setShowPicker(false);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", closePicker);
+    return () => {
+      document.removeEventListener("click", closePicker);
+    };
+  }, []);
 
   const [showShare, setShowShare] = useState(false);
   const shareRef = useRef(null);
@@ -70,10 +87,20 @@ function NavBarSub({ data }) {
             </S.EmojiButton>
           </S.EmojiContainer>
           <S.ButtonContainer>
-            <Button.Outline size="xs">
-              <img src={addEmoticon} />
-              <S.ButtonText>추가</S.ButtonText>
-            </Button.Outline>
+            <div ref={pickerRef}>
+              <Button.Outline size="xs" onClick={(e) => {
+                e.preventDefault();
+                setShowPicker(!showPicker);
+              }}>
+                <img src={addEmoticon} />
+                <S.ButtonText>추가</S.ButtonText>
+              </Button.Outline>
+              {showPicker && 
+                <S.EmojiPickerWrapper>
+                  <EmojiPicker />
+                </S.EmojiPickerWrapper>
+              }
+            </div>
             <S.Border />
             <div ref={shareRef}>
               <Button.Outline

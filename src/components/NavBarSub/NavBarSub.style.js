@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
 import { onPc, onTablet, onTabletAndPc } from "styles/mediaQuery";
+import { zIndexStyle } from "styles/zIndexStyle";
 
 export const Container = styled.div`
   background-color: ${COLORS.WHITE};
@@ -163,6 +164,13 @@ export const ButtonText = styled.p`
   ${onTabletAndPc} {
     display: block;
   }
+`;
+
+export const EmojiPickerWrapper = styled.div`
+  position: absolute;
+  right: 10rem;
+  top: 4rem;
+  z-index: ${zIndexStyle.floating};
 `;
 
 export const Border = styled.div`
