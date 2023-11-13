@@ -22,6 +22,14 @@ export const Container = styled.div`
   ${onPc} {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  :nth-child(n + 7) {
+    display: none;
+
+    ${onPc} {
+      display: flex;
+    }
+  }
 `;
 
 export const Button = styled.button`
