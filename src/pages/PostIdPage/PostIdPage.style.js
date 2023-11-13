@@ -20,6 +20,7 @@ export const Background = styled.div`
         bottom: 0;
         filter: brightness(0.5);
         z-index: -1;
+        background-repeat: round;
       }
         `
       : `

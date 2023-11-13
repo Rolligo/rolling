@@ -40,7 +40,7 @@ function PaperCard({ data = {}, slideIndex = 0 }) {
       <S.Wrapper $hasBackgroundImage={hasBackgroundImage}>
         <S.TextContainer>
           <S.Title $hasBackgroundImage={hasBackgroundImage}>{name}</S.Title>
-          <From imgUrls={fromImgUrls} count={messageCount} />
+          <From imgUrls={fromImgUrls} count={messageCount} align="left" />
           <S.Description $hasBackgroundImage={hasBackgroundImage}>
             <S.Count>{messageCount}</S.Count>명이 작성했어요!
           </S.Description>

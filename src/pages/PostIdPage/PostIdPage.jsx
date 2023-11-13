@@ -16,9 +16,15 @@ function PostIdPage() {
   const isEditMode = currentPath.endsWith("/edit");
   const navigate = useNavigate();
 
-  const { data } = useRequest({
+  const { data: paperData } = useRequest({
     options: {
       url: `recipients/${id}/`,
+    },
+  });
+
+  const { data: reactionListData } = useRequest({
+    options: {
+      url: `recipients/${id}/reactions/`,
     },
   });
 
@@ -49,13 +55,13 @@ function PostIdPage() {
 
   return (
     <S.Background
-      $backgroundColor={data?.backgroundColor}
-      $backgroundImageURL={data?.backgroundImageURL}
+      $backgroundColor={paperData?.backgroundColor}
+      $backgroundImageURL={paperData?.backgroundImageURL}
     >
       <S.NavBarContainer>
         <NavBar showButton={false} />
       </S.NavBarContainer>
-      <NavBarSub data={data} />
+      <NavBarSub paperData={paperData} reactionListData={reactionListData} />
       <S.MainDiv>
         {isEditMode ? (
           <>

@@ -8,12 +8,16 @@ import From from "components/Badges/From";
 import { useEffect, useRef, useState } from "react";
 import Share from "./Share";
 import EmojiPicker from "emoji-picker-react";
+import EmojiList from "./EmojiList";
+import useRequest from "hooks/useRequest";
 
-function NavBarSub({ data }) {
-  const name = data?.name;
-  const count = data?.messageCount;
-  const reactions = data?.topReactions;
-  const recentMessages = data?.recentMessages;
+function NavBarSub({ paperData, reactionListData }) {
+  const name = paperData?.name;
+  const count = paperData?.messageCount;
+  const topReactions = paperData?.topReactions;
+  const recentMessages = paperData?.recentMessages;
+  const id = paperData?.id;
+  const reactionList = reactionListData?.results;
 
   const fromImgUrls = [
     recentMessages?.[0]?.profileImageURL,
@@ -21,37 +25,72 @@ function NavBarSub({ data }) {
     recentMessages?.[2]?.profileImageURL,
   ];
 
-  const [showPicker, setShowPicker] = useState(false);
-  const pickerRef = useRef(null);
-
-  const closePicker = (e) => {
-    if (pickerRef.current && !pickerRef.current.contains(e.target)) {
-      setShowPicker(false);
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener("click", closePicker);
-    return () => {
-      document.removeEventListener("click", closePicker);
-    };
-  }, []);
-
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showShare, setShowShare] = useState(false);
-  const shareRef = useRef(null);
+  const [showEmojiList, setShowEmojiList] = useState(false);
+  const [selectedEmoji, setSelectedEmoji] = useState("");
+  const mounted = useRef(false);
 
-  const closeShare = (e) => {
+  const pickerRef = useRef(null);
+  const shareRef = useRef(null);
+  const EmojiListRef = useRef(null);
+
+  const newUploadingEmoji = {
+    emoji: selectedEmoji,
+    type: "increase", // increase or decrease string needed
+  };
+
+  const { fetch } = useRequest({
+    skip: true,
+    options: {
+      url: `recipients/${id}/reactions/`,
+      method: "post",
+      header: {
+        "Content-Type": "application/json",
+      },
+      data: newUploadingEmoji,
+    },
+  });
+
+  const loadReactions = async () => {
+    const { error } = await fetch();
+    if (!error) {
+      window.location.reload();
+    } else {
+      alert("서버 오류로 이모지 등록에 실패하였습니다.");
+    }
+  };
+
+  const handleEmojiClick = (emoji) => {
+    setSelectedEmoji(emoji);
+  };
+
+  const closePopOverContainers = (e) => {
     if (shareRef.current && !shareRef.current.contains(e.target)) {
       setShowShare(false);
+    }
+    if (pickerRef.current && !pickerRef.current.contains(e.target)) {
+      setShowEmojiPicker(false);
+    }
+    if (EmojiListRef.current && !EmojiListRef.current.contains(e.target)) {
+      setShowEmojiList(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener("click", closeShare);
+    document.addEventListener("click", closePopOverContainers);
     return () => {
-      document.removeEventListener("click", closeShare);
+      document.removeEventListener("click", closePopOverContainers);
     };
   }, []);
+
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      loadReactions();
+    }
+  }, [selectedEmoji]);
 
   return (
     <S.Container>
@@ -71,8 +110,8 @@ function NavBarSub({ data }) {
           </S.ProfileContainer>
           <S.EmojiContainer>
             <S.EmojiWrapper>
-              {reactions &&
-                reactions.map((reaction) => {
+              {topReactions &&
+                topReactions.map((reaction) => {
                   return (
                     <Emoji
                       key={reaction.id}
@@ -82,24 +121,37 @@ function NavBarSub({ data }) {
                   );
                 })}
             </S.EmojiWrapper>
-            <S.EmojiButton>
-              <img src={ArrowIcon} />
-            </S.EmojiButton>
+            <div ref={EmojiListRef}>
+              <S.EmojiButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowEmojiList((curr) => !curr);
+                }}
+              >
+                <img src={ArrowIcon} />
+              </S.EmojiButton>
+              {showEmojiList && <EmojiList reactions={reactionList} />}
+            </div>
           </S.EmojiContainer>
           <S.ButtonContainer>
             <div ref={pickerRef}>
-              <Button.Outline size="xs" onClick={(e) => {
-                e.preventDefault();
-                setShowPicker(!showPicker);
-              }}>
+              <Button.Outline
+                size="xs"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowEmojiPicker(!showEmojiPicker);
+                }}
+              >
                 <img src={addEmoticon} />
                 <S.ButtonText>추가</S.ButtonText>
               </Button.Outline>
-              {showPicker && 
+              {showEmojiPicker && (
                 <S.EmojiPickerWrapper>
-                  <EmojiPicker />
+                  <EmojiPicker
+                    onEmojiClick={({ emoji }) => handleEmojiClick(emoji)}
+                  />
                 </S.EmojiPickerWrapper>
-              }
+              )}
             </div>
             <S.Border />
             <div ref={shareRef}>
