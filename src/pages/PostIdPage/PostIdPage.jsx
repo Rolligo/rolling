@@ -45,6 +45,10 @@ function PostIdPage() {
     navigate("/list");
   };
 
+  const handleQuitClick = () => {
+    navigate(currentPath.replace("/edit", ""));
+  };
+
   const handleDeleteClick = () => {
     setWishDelete(true);
   };
@@ -70,11 +74,14 @@ function PostIdPage() {
                 삭제하기
               </Button>
             </S.DeleteButton>
-            <S.DeleteButtonOnPc>
-              <Button size="sm" onClick={handleDeleteClick}>
+            <S.ButtonContainer>
+              <S.StyledDeleteButton size="sm" onClick={handleDeleteClick}>
                 삭제하기
-              </Button>
-            </S.DeleteButtonOnPc>
+              </S.StyledDeleteButton>
+              <S.StyledOutlinedButton size="sm" onClick={handleQuitClick}>
+                돌아가기
+              </S.StyledOutlinedButton>
+            </S.ButtonContainer>
           </>
         ) : (
           <S.EditButton>

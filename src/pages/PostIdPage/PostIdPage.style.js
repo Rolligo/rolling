@@ -90,7 +90,7 @@ export const DeleteButton = styled.div`
   }
 `;
 
-export const DeleteButtonOnPc = styled.div`
+export const StyledDeleteButton = styled(Button)`
   display: none;
 
   ${onTablet} {
@@ -98,10 +98,15 @@ export const DeleteButtonOnPc = styled.div`
   }
 
   ${onPc} {
-    max-width: 120rem;
-    width: 100%;
-    margin-bottom: 1.6rem;
-    display: flex;
-    justify-content: end;
+    display: inline-block;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  max-width: 120rem;
+  width: 100%;
+  margin-bottom: 1.6rem;
+  display: flex;
+  justify-content: end;
+  gap: 1.6rem;
 `;
