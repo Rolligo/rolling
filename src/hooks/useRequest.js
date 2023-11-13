@@ -22,7 +22,7 @@ function useRequest({ deps = [], skip = false, options }) {
         setIsLoading(false);
       }
     },
-    [options?.url, options?.method, options?.data]
+    [options?.url, options?.method, options?.data, options?.params]
   );
 
   useEffect(() => {

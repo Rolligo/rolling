@@ -4,38 +4,39 @@ import NavBar from "components/NavBar";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useRequest from "hooks/useRequest";
 import { useEffect, useState } from "react";
-import fetch from "apis/utils/fetch";
 import { Button } from "components/Button";
 import NavBarSub from "components/NavBarSub";
 
 function PostIdPage() {
   const [wishDelete, setWishDelete] = useState(false);
   const { id } = useParams();
-  const { data } = useRequest({
-    options: {
-      url: `recipients/${id}/`,
-    },
-  });
   const location = useLocation();
   const currentPath = location.pathname;
   const editURL = `${currentPath}/edit`;
   const isEditMode = currentPath.endsWith("/edit");
   const navigate = useNavigate();
 
+  const { data } = useRequest({
+    options: {
+      url: `recipients/${id}/`,
+    },
+  });
+
+  const { fetch: fetchDelete } = useRequest({
+    skip: true,
+    options: {
+      url: `/recipients/${id}/`,
+      method: "DELETE",
+    },
+  });
+
   const deletePaper = async () => {
-    try {
-      if (!wishDelete) return;
-      const response = await fetch({
-        url: `/recipients/${id}/`,
-        method: "DELETE",
-      });
-      if (response.status !== 204) {
-        throw new Error("롤링 페이퍼 삭제 실패");
-      }
-      navigate("/list");
-    } catch (error) {
-      console.log(error);
+    if (!wishDelete) return;
+    const { error } = await fetchDelete();
+    if (error) {
+      throw new Error("롤링 페이퍼 삭제 실패");
     }
+    navigate("/list");
   };
 
   const handleDeleteClick = () => {
