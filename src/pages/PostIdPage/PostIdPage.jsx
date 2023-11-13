@@ -16,7 +16,11 @@ function PostIdPage() {
   const isEditMode = currentPath.endsWith("/edit");
   const navigate = useNavigate();
 
-  const { data } = useRequest({
+  const {
+    data,
+    isLoading,
+    error: loadError,
+  } = useRequest({
     options: {
       url: `recipients/${id}/`,
     },
@@ -32,14 +36,12 @@ function PostIdPage() {
 
   const deletePaper = async () => {
     if (!wishDelete) return;
-
-    if (!window.confirm("정말 삭제하시겠습니까?")) {
+    if (!confirm("정말 삭제하시겠습니까?")) {
       setWishDelete(false);
       return;
     }
-
-    const { error } = await fetchDelete();
-    if (error) {
+    const { error: deleteError } = await fetchDelete();
+    if (deleteError) {
       throw new Error("롤링 페이퍼 삭제 실패");
     }
     navigate("/list");
@@ -54,8 +56,19 @@ function PostIdPage() {
   };
 
   useEffect(() => {
+    if (loadError) {
+      alert("존재하지 않는 페이지입니다.");
+      navigate("/list");
+    }
+  }, [loadError, navigate]);
+
+  useEffect(() => {
     deletePaper();
   }, [wishDelete]);
+
+  if (isLoading || loadError) {
+    return;
+  }
 
   return (
     <S.Background
