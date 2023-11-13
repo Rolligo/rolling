@@ -2,44 +2,61 @@ import * as S from "./CardList.style";
 import Card from "components/CardList/Card";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import fetch from "apis/utils/fetch";
 import { Button } from "components/Button";
+import useRequest from "hooks/useRequest";
 
 const LIMIT = 3;
 
 function CardList({ isEditMode, id }) {
   const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [hasNext, setHasNext] = useState(true);
   const [deleteId, setDeleteId] = useState(null);
-  const target = useRef(null);
   const [offset, setOffset] = useState(0);
+  const target = useRef(null);
+
+  const { isLoading, fetch: fetchLoad } = useRequest({
+    skip: true,
+    options: {
+      url: `/recipients/${id}/messages/`,
+      params: {
+        limit: LIMIT,
+        offset: offset,
+      },
+    },
+  });
+
+  const { fetch: fetchDelete } = useRequest({
+    skip: true,
+    options: {
+      url: `/messages/${deleteId}/`,
+      method: "DELETE",
+    },
+  });
 
   const loadData = async () => {
-    try {
-      setIsLoading(true);
-      if (!hasNext) return;
-      const { data: cards, status } = await fetch({
-        url: `/recipients/${id}/messages/`,
-        params: {
-          limit: LIMIT,
-          offset: offset,
-        },
-      });
-      if (status !== 200) {
-        throw new Error("메시지 카드 불러오기 실패");
-      }
-      const currentCards = cards?.results;
-      setCards((prevCards) => [...prevCards, ...currentCards]);
-      setOffset((prevOffset) => prevOffset + LIMIT);
-      if (!cards?.next) setHasNext(false);
-    } catch (error) {
-      setError(error);
-      setHasNext(false);
-    } finally {
-      setIsLoading(false);
+    if (!hasNext) return;
+    const { data: cards, error } = await fetchLoad();
+    if (error) {
+      throw new Error("메시지 카드 불러오기 실패");
     }
+    const currentCards = cards?.results;
+    setCards((prevCards) => [...prevCards, ...currentCards]);
+    setOffset((prevOffset) => prevOffset + LIMIT);
+    if (!cards?.next) setHasNext(false);
+  };
+
+  const deleteCard = async () => {
+    if (!deleteId) return;
+    const { error } = await fetchDelete();
+    if (error) {
+      throw new Error("메시지 카드 삭제 실패");
+    }
+    setCards((prevCards) => prevCards.filter((card) => card.id !== +deleteId));
+  };
+
+  const getDeleteCardId = (e) => {
+    e.stopPropagation();
+    setDeleteId(e.currentTarget.id);
   };
 
   const onIntersect = async ([entry], observer) => {
@@ -59,32 +76,6 @@ function CardList({ isEditMode, id }) {
     }
     return () => observer.disconnect();
   }, [offset, target]);
-
-  const getDeleteCardId = (e) => {
-    e.stopPropagation();
-    setDeleteId(e.currentTarget.id);
-  };
-
-  const deleteCard = async () => {
-    try {
-      if (!deleteId) return;
-      setIsLoading(true);
-      const response = await fetch({
-        url: `/messages/${deleteId}/`,
-        method: "DELETE",
-      });
-      if (response.status !== 204) {
-        throw new Error("메시지 카드 삭제 실패");
-      }
-      setCards((prevCards) =>
-        prevCards.filter((card) => card.id !== +deleteId)
-      );
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
     deleteCard();
