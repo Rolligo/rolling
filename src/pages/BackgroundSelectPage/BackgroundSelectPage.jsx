@@ -15,10 +15,11 @@ const BLUE = COLORS.BLUE_200;
 
 const COLORCHIP = [ORANGE, PURPLE, BLUE, GREEN];
 const IMAGECHIP = [
-  "https://ifh.cc/g/LMjp5Q.jpg",
-  "https://ifh.cc/g/9LLavj.jpg",
-  "https://ifh.cc/g/7QKVfm.jpg",
-  "https://ifh.cc/g/Zw6WCW.jpg",
+  "https://ifh.cc/g/loHbF4.jpg",
+  "https://ifh.cc/g/Go0RsT.jpg",
+  "https://ifh.cc/g/2jD013.jpg",
+  "https://ifh.cc/g/8oN4L4.jpg",
+  //https://ifh.cc/g/qjkQjh.jpg
 ];
 
 function ColorChip({ background, onClick, isSelected }) {
@@ -49,9 +50,7 @@ function BackgroundSelectPage() {
   const [selectedChip, setSelectedChip] = useState("");
   const [value, setValue] = useState("");
   const [isColor, setIsColor] = useState(true);
-  const [isClicked, setIsClicked] = useState(false);
   const [isInputError, setIsInputError] = useState(false);
-  const mounted = useRef(false);
   const navigate = useNavigate();
 
   // 새로운 롤링페이퍼 생성 대상 데이터
@@ -72,7 +71,7 @@ function BackgroundSelectPage() {
     }
   };
 
-  const { fetch, data, error } = useRequest({
+  const { fetch } = useRequest({
     skip: true,
     options: {
       url: "recipients/",
@@ -93,7 +92,6 @@ function BackgroundSelectPage() {
     } else {
       alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
     }
-    setIsClicked((prev) => !prev);
   };
 
   const handleInputOnBlur = () => {
@@ -105,19 +103,6 @@ function BackgroundSelectPage() {
   // useEffects
   useEffect(() => {}, [selectedChip]);
   useEffect(() => {}, [isColor]);
-  // useEffect(() => {
-  //   if (!mounted.current) {
-  //     mounted.current = true;
-  //   } else {
-  //     if (status === 201) {
-  //       alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
-  //       navigate(`/post/${data.id}`);
-  //     } else {
-  //       console.log(status);
-  //       alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
-  //     }
-  //   }
-  // }, [isClicked]);
 
   return (
     <div>

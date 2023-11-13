@@ -17,9 +17,13 @@ export const ImgContainer = styled.div`
   border-radius: 50%;
   background-color: ${COLORS.WHITE};
 
-  ${({ index }) => css`
+  ${({ index, maxindex, align }) => css`
     position: absolute;
-    left: ${index * 1.7}rem;
+    ${align === "right"
+      ? `right: ${
+          maxindex < 3 ? (maxindex - index) * 1.7 : (3 - index) * 1.7
+        }rem;`
+      : `left: ${index * 1.7}rem;`}
   `}
 `;
 
@@ -35,10 +39,11 @@ export const CountContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: ${({ index }) => index * 1.7}rem;
-  width: 3.3rem;
+  right: 0;
+  width: 3rem;
   height: 3rem;
   border-radius: 3rem;
+  border: 0.17rem solid #e3e3e3;
   background-color: ${COLORS.WHITE};
   color: ${COLORS.GRAY_500};
   ${FONT_STYLE.REGULAR_12};

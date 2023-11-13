@@ -96,6 +96,7 @@ export const ProfileContainer = styled.div`
 export const ProfileWrapper = styled.div`
   display: flex;
   gap: 1.1rem;
+  align-items: center;
 `;
 export const ProfileGroup = styled.div`
   display: flex;
@@ -122,6 +123,7 @@ export const EmojiContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  position: relative;
 
   ${onPc} {
     margin-right: 0.8rem;
