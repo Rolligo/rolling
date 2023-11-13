@@ -24,6 +24,7 @@ export const Container = styled.div`
       background-image: URL(${$backgroundImageURL});
       background-size: cover;
       background-repeat: no-repeat;
+      border: 0.1rem solid rgba(0, 0, 0, 0.9);
     `};
 
   ${onTablet} {
