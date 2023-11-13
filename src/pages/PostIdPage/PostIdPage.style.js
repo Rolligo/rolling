@@ -100,7 +100,7 @@ export const DeleteButtonOnPc = styled.div`
   ${onPc} {
     max-width: 120rem;
     width: 100%;
-    margin-bottom: 1.1rem;
+    margin-bottom: 1.6rem;
     display: flex;
     justify-content: end;
   }
