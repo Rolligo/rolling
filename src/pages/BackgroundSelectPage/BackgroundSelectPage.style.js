@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { COLORS } from "styles/palette";
-import { onPc, onTablet, onTabletAndPc } from "styles/mediaQuery";
+import { onPc, onTabletAndPc } from "styles/mediaQuery";
 
 export const NavContainer = styled.div`
   display: none;
@@ -19,12 +19,10 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  ${onPc} {
+  ${onTabletAndPc} {
     width: 72rem;
   }
-  ${onTablet} {
-    width: 72rem;
-  }
+
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -55,11 +53,7 @@ export const ColorChipContainer = styled.div`
   align-items: flex-start;
   gap: 1.6rem;
 
-  ${onPc} {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  ${onTablet} {
+  ${onTabletAndPc} {
     grid-template-columns: repeat(4, 1fr);
   }
 `;
