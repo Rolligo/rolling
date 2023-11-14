@@ -121,7 +121,7 @@ const Spin = keyframes`
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(720deg);
+    transform: rotate(-720deg);
   }
 `;
 
