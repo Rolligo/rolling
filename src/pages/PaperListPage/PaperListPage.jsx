@@ -29,7 +29,7 @@ function PaperListPage() {
   return (
     <>
       <Helmet>
-        <title>롤링페이퍼 목록 - Rolling</title>
+        <title>롤링 페이퍼 목록 - Rolling</title>
       </Helmet>
       <NavBar />
       <S.Container>
