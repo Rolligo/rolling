@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
 import { Button } from "components/Button";
+import { Helmet } from "react-helmet";
 
 const ORANGE = COLORS.ORANGE_200;
 const PURPLE = COLORS.PURPLE_200;
@@ -106,6 +107,9 @@ function CreatePaperPage() {
 
   return (
     <div>
+      <Helmet>
+        <title>롤링페이퍼 생성 - Rolling</title>
+      </Helmet>
       <S.Wrapper>
         <S.NavContainer>
           <NavBar showButton={false} />

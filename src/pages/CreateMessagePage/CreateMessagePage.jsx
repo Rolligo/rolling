@@ -8,6 +8,7 @@ import NavBar from "components/NavBar";
 import { Button } from "components/Button";
 import useRequest from "hooks/useRequest";
 import { useNavigate, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "가족"];
 
@@ -135,6 +136,9 @@ const CreateMessagePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>메세지 생성 - Rolling</title>
+      </Helmet>
       <NavBar showButton={false} />
       <S.CreateMessagePageDiv>
         <S.Section>

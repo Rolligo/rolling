@@ -5,6 +5,7 @@ import useRequest from "hooks/useRequest";
 import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
 import { Button } from "components/Button";
+import { Helmet } from "react-helmet";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -26,6 +27,9 @@ function PaperListPage() {
 
   return (
     <>
+      <Helmet>
+        <title>롤링페이퍼 목록 - Rolling</title>
+      </Helmet>
       <NavBar />
       <S.Container>
         <PaperSection title="인기 롤링 페이퍼 🔥" papers={popularPaper} />
