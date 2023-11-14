@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "styles/GlobalStyle";
 import MainPage from "pages/MainPage";
-import PostIdPage from "pages/PostIdPage";
-import PostMessagePage from "pages/PostMessagePage";
 import PaperListPage from "pages/PaperListPage";
-import BackgroundSelectPage from "pages/BackgroundSelectPage";
+import CreatePaperPage from "pages/CreatePaperPage";
+import MessageListPage from "pages/MessageListPage";
+import CreateMessagePage from "pages/CreateMessagePage";
 
 function App() {
   return (
@@ -14,11 +14,11 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="list" element={<PaperListPage />} />
         <Route path="post">
-          <Route index element={<BackgroundSelectPage />} />
+          <Route index element={<CreatePaperPage />} />
           <Route path=":id">
-            <Route index element={<PostIdPage />} />
-            <Route path="edit" element={<PostIdPage />} />
-            <Route path="message" element={<PostMessagePage />} />
+            <Route index element={<MessageListPage />} />
+            <Route path="edit" element={<MessageListPage />} />
+            <Route path="message" element={<CreateMessagePage />} />
           </Route>
         </Route>
       </Routes>

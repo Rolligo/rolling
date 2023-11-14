@@ -3,7 +3,7 @@ import { onPc, onTablet } from "styles/mediaQuery";
 import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
 
-export const PostMessagePageDiv = styled.main`
+export const CreateMessagePageDiv = styled.main`
   padding: 0 2.4rem;
   display: flex;
   flex-direction: column;

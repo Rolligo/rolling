@@ -1,5 +1,5 @@
 import CardList from "components/CardList";
-import * as S from "./PostIdPage.style";
+import * as S from "./MessageListPage.style";
 import NavBar from "components/NavBar";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useRequest from "hooks/useRequest";
@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Button } from "components/Button";
 import NavBarSub from "components/NavBarSub";
 
-function PostIdPage() {
+function MessageListPage() {
   const [wishDelete, setWishDelete] = useState(false);
   const { id } = useParams();
   const location = useLocation();
@@ -117,4 +117,4 @@ function PostIdPage() {
   );
 }
 
-export default PostIdPage;
+export default MessageListPage;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import * as S from "./PostMessagePage.style";
+import * as S from "./CreateMessagePage.style";
 import Input from "components/Input";
 import TextEditor from "components/TextEditor";
 import DefaultProfile from "assets/images/DefaultProfile.png";
@@ -32,7 +32,7 @@ const imageUrls = [
 ];
 const defaultImageUrl = "https://ifh.cc/g/nt96P0.png";
 
-const PostMessagePage = () => {
+const CreateMessagePage = () => {
   const [isError, setIsError] = useState(false);
   const [inputNameValue, setInputNameValue] = useState("");
   const [isSingleImgClicked, setIsSingleImgClicked] = useState(false);
@@ -117,12 +117,12 @@ const PostMessagePage = () => {
       method: "post",
       headers: { "Content-Type": "application/json" },
       data: message,
-    }
+    },
   });
 
   async function handleCreatePostClick(e) {
     e.preventDefault();
-    const {error: fetchedError} = await fetch();
+    const { error: fetchedError } = await fetch();
     if (fetchedError === undefined) {
       alert(
         "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
@@ -136,7 +136,7 @@ const PostMessagePage = () => {
   return (
     <>
       <NavBar showButton={false} />
-      <S.PostMessagePageDiv>
+      <S.CreateMessagePageDiv>
         <S.Section>
           <S.H1>From.</S.H1>
           <Input
@@ -160,7 +160,7 @@ const PostMessagePage = () => {
               <S.H2>프로필 이미지를 선택해주세요!</S.H2>
               <S.ImgContainer>
                 <S.SingleImageButton>
-                  <S.SingleImage 
+                  <S.SingleImage
                     src={defaultImageUrl}
                     onClick={(e) => handleDefaultImgClick(e)}
                   />
@@ -206,9 +206,9 @@ const PostMessagePage = () => {
             생성하기
           </Button>
         </S.Section>
-      </S.PostMessagePageDiv>
+      </S.CreateMessagePageDiv>
     </>
   );
 };
 
-export default PostMessagePage;
+export default CreateMessagePage;

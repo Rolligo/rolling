@@ -1,5 +1,5 @@
 import NavBar from "components/NavBar";
-import * as S from "./BackgroundSelectPage.style";
+import * as S from "./CreatePaperPage.style";
 import Input from "components/Input";
 import checkedIcon from "assets/images/icons/checked-icon.png";
 import { COLORS } from "styles/palette";
@@ -38,7 +38,7 @@ function ImageChip({ background, onClick, isSelected }) {
   );
 }
 
-function BackgroundSelectPage() {
+function CreatePaperPage() {
   const COLOR_NAME = {
     "#ffe2ad": "beige",
     "#ecd9ff": "purple",
@@ -161,4 +161,4 @@ function BackgroundSelectPage() {
   );
 }
 
-export default BackgroundSelectPage;
+export default CreatePaperPage;
