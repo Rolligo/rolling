@@ -17,15 +17,15 @@
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/df81f317-13a6-4f44-a6af-1aae4e90db8b)
 
-#### 롤링페이퍼 목록 페이지
+#### 롤링 페이퍼 목록 페이지
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/666ff9de-a01c-4dfc-9581-0ad190b768fd)
 
-#### 롤링페이퍼 생성 페이지
+#### 롤링 페이퍼 생성 페이지
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/53dddb42-2637-4076-82a7-fdad89e2b106)
 
-#### 롤링페이퍼 페이지
+#### 롤링 페이퍼 페이지
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/534de620-12c3-446c-9d82-64bdc6cae553)
 
