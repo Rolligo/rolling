@@ -35,10 +35,7 @@ function PaperListPage() {
     <>
       <NavBar />
       <S.Container>
-        <PaperSection
-          title="인기 롤링 페이퍼 🔥"
-          papers={reversedPopularPaper}
-        />
+        <PaperSection title="인기 롤링 페이퍼 🔥" papers={popularPaper} />
         <PaperSection title="최근에 만든 롤링 페이퍼⭐️" papers={recentPaper} />
       </S.Container>
       <S.ButtonContainer>
