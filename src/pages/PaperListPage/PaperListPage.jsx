@@ -6,6 +6,7 @@ import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
 import { Button } from "components/Button";
 import { Helmet } from "react-helmet";
+import Loading from "assets/images/icons/loading.png";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -60,12 +61,15 @@ function PaperSection({ title, papers }) {
     <S.Section>
       <S.Title>{title}</S.Title>
       <S.CardContainer>
-        {papers &&
+        {papers ? (
           papers?.results?.map((paper) => (
             <Link key={paper?.id} to={`/post/${paper?.id}`}>
               <PaperCard data={paper} slideIndex={slideIndex} />
             </Link>
-          ))}
+          ))
+        ) : (
+          <Fallback />
+        )}
         {slideIndex > 0 && (
           <S.ArrowButtonContainer $left>
             <Button.Arrow type="button" left onClick={slideLeft} />
@@ -78,6 +82,14 @@ function PaperSection({ title, papers }) {
         )}
       </S.CardContainer>
     </S.Section>
+  );
+}
+
+function Fallback() {
+  return (
+    <S.FallbackContainer>
+      <S.Loading src={Loading} />
+    </S.FallbackContainer>
   );
 }
 
