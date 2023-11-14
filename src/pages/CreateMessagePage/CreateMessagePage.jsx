@@ -126,7 +126,7 @@ const CreateMessagePage = () => {
     const { error: fetchedError } = await fetch();
     if (fetchedError === undefined) {
       alert(
-        "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
+        "롤링 페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
       );
       navigate(`/post/${id}`);
     } else {
