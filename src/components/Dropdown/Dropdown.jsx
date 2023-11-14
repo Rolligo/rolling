@@ -36,8 +36,8 @@ function Dropdown({ options, getSelectedValue }) {
   return (
     <S.DropdownContainer>
       <S.ButtonContainer
-        active={isOpen}
-        error={isError}
+        $active={isOpen}
+        $error={isError}
         onClick={handleClickButton}
       >
         <p>{selectedValue}</p>
