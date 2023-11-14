@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { onPc, onTablet } from "styles/mediaQuery";
 import { FONT_STYLE } from "styles/fontStyle";
 import { COLORS } from "styles/palette";
@@ -114,4 +114,21 @@ export const SingleImageButton = styled.button`
     width: 5.6rem;
     height: 5.6rem;
   }
+`;
+
+const Spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+`;
+
+export const LoadingImg = styled.img`
+  width: 3.2rem;
+  height: 3.2rem;
+  animation: ${Spin} 2.5s linear infinite;
+  filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(309deg)
+    brightness(105%) contrast(102%);
 `;

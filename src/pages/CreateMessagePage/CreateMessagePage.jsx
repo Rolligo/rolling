@@ -9,6 +9,7 @@ import { Button } from "components/Button";
 import useRequest from "hooks/useRequest";
 import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import loadingImg from "assets/images/loading.png";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "가족"];
 
@@ -130,7 +131,7 @@ const CreateMessagePage = () => {
       setTimeout(() => {
         setLoading(false);
         navigate(`/post/${id}`);
-      }, 3000);
+      }, 800);
     } else {
       alert("서버 오류로 메시지 작성에 실패했습니다..");
     }
@@ -209,7 +210,7 @@ const CreateMessagePage = () => {
             onClick={(e) => handleCreatePostClick(e)}
             disabled={isDisabled}
           >
-            {loading ? "메시지 생성중.." : "생성하기"}
+            {loading ? <S.LoadingImg src={loadingImg} /> : "생성하기"}
           </Button>
         </S.Section>
       </S.CreateMessagePageDiv>
