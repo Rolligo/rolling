@@ -24,11 +24,11 @@ export const ButtonContainer = styled.button`
   align-items: center;
   border-radius: 0.8rem;
   border-style: solid;
-  border-width: ${({ active }) => (active ? 0.2 : 0.1)}rem;
-  border-color: ${({ error, active }) =>
-    error ? COLORS.ERROR : active ? COLORS.GRAY_500 : COLORS.GRAY_300};
-  color: ${({ error, active }) =>
-    error || active ? COLORS.GRAY_900 : COLORS.GRAY_500};
+  border-width: ${({ $active }) => ($active ? 0.2 : 0.1)}rem;
+  border-color: ${({ $error, $active }) =>
+    $error ? COLORS.ERROR : $active ? COLORS.GRAY_500 : COLORS.GRAY_300};
+  color: ${({ $error, $active }) =>
+    $error || $active ? COLORS.GRAY_900 : COLORS.GRAY_500};
   ${FONT_STYLE.REGULAR_16};
   background: ${({ disabled }) => disabled && COLORS.GRAY_100};
 
