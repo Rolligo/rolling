@@ -24,13 +24,6 @@ function PaperListPage() {
     },
   });
 
-  const popularPaperResults = popularPaper?.results;
-
-  const reversedPopularPaper = {
-    ...popularPaper,
-    results: popularPaperResults && [...popularPaperResults]?.reverse(),
-  };
-
   return (
     <>
       <NavBar />
