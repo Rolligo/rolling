@@ -23,7 +23,7 @@ export const ModalContainer = styled.div`
   background-color: ${COLORS.WHITE};
   border-radius: 1.6rem;
   box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
-  padding: 4rem;
+  padding: 3rem 4rem 4rem 4rem;
 `;
 
 export const ModalHeader = styled.div`
