@@ -7,6 +7,7 @@ import * as S from "./MainPage.style";
 import NavBar from "components/NavBar";
 import { Button } from "components/Button";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function MainPage() {
   const navigate = useNavigate();
@@ -18,6 +19,9 @@ function MainPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Rolling</title>
+      </Helmet>
       <NavBar />
       <S.MainPageDiv>
         <S.Section>

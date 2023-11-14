@@ -1,5 +1,5 @@
 import NavBar from "components/NavBar";
-import * as S from "./BackgroundSelectPage.style";
+import * as S from "./CreatePaperPage.style";
 import Input from "components/Input";
 import checkedIcon from "assets/images/icons/checked-icon.png";
 import { COLORS } from "styles/palette";
@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
 import { Button } from "components/Button";
+import { Helmet } from "react-helmet";
 
 const ORANGE = COLORS.ORANGE_200;
 const PURPLE = COLORS.PURPLE_200;
@@ -38,7 +39,7 @@ function ImageChip({ background, onClick, isSelected }) {
   );
 }
 
-function BackgroundSelectPage() {
+function CreatePaperPage() {
   const COLOR_NAME = {
     "#ffe2ad": "beige",
     "#ecd9ff": "purple",
@@ -106,6 +107,9 @@ function BackgroundSelectPage() {
 
   return (
     <div>
+      <Helmet>
+        <title>롤링페이퍼 생성 - Rolling</title>
+      </Helmet>
       <S.Wrapper>
         <S.NavContainer>
           <NavBar showButton={false} />
@@ -161,4 +165,4 @@ function BackgroundSelectPage() {
   );
 }
 
-export default BackgroundSelectPage;
+export default CreatePaperPage;

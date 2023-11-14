@@ -1,13 +1,14 @@
 import CardList from "components/CardList";
-import * as S from "./PostIdPage.style";
+import * as S from "./MessageListPage.style";
 import NavBar from "components/NavBar";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useRequest from "hooks/useRequest";
 import { useEffect, useState } from "react";
 import { Button } from "components/Button";
 import NavBarSub from "components/NavBarSub";
+import { Helmet } from "react-helmet";
 
-function PostIdPage() {
+function MessageListPage() {
   const [wishDelete, setWishDelete] = useState(false);
   const { id } = useParams();
   const location = useLocation();
@@ -77,44 +78,51 @@ function PostIdPage() {
   }
 
   return (
-    <S.Background
-      $backgroundColor={paperData?.backgroundColor}
-      $backgroundImageURL={paperData?.backgroundImageURL}
-    >
-      <S.NavBarContainer>
-        <NavBar showButton={false} />
-      </S.NavBarContainer>
-      <NavBarSub paperData={paperData} reactionListData={reactionListData} />
-      <S.MainDiv>
-        {isEditMode ? (
-          <>
-            <S.DeleteButton>
-              <Button size="full" onClick={handleDeleteClick}>
-                삭제하기
-              </Button>
-            </S.DeleteButton>
-            <S.ButtonContainer>
-              <S.StyledDeleteButton size="sm" onClick={handleDeleteClick}>
-                삭제하기
-              </S.StyledDeleteButton>
-              <S.StyledOutlinedButton size="sm" onClick={handleQuitClick}>
-                돌아가기
-              </S.StyledOutlinedButton>
-            </S.ButtonContainer>
-          </>
-        ) : (
-          <S.EditButton>
-            <Link to={editURL}>
-              <S.StyledOutlinedButton size="sm">
-                편집하기
-              </S.StyledOutlinedButton>
-            </Link>
-          </S.EditButton>
-        )}
-        <CardList isEditMode={isEditMode} id={id} />
-      </S.MainDiv>
-    </S.Background>
+    <>
+      <Helmet>
+        <title>
+          {isEditMode ? "롤링페이퍼 편집 - Rolling" : "롤링페이퍼 - Rolling"}
+        </title>
+      </Helmet>
+      <S.Background
+        $backgroundColor={paperData?.backgroundColor}
+        $backgroundImageURL={paperData?.backgroundImageURL}
+      >
+        <S.NavBarContainer>
+          <NavBar showButton={false} />
+        </S.NavBarContainer>
+        <NavBarSub paperData={paperData} reactionListData={reactionListData} />
+        <S.MainDiv>
+          {isEditMode ? (
+            <>
+              <S.DeleteButton>
+                <Button size="full" onClick={handleDeleteClick}>
+                  삭제하기
+                </Button>
+              </S.DeleteButton>
+              <S.ButtonContainer>
+                <S.StyledDeleteButton size="sm" onClick={handleDeleteClick}>
+                  삭제하기
+                </S.StyledDeleteButton>
+                <S.StyledOutlinedButton size="sm" onClick={handleQuitClick}>
+                  돌아가기
+                </S.StyledOutlinedButton>
+              </S.ButtonContainer>
+            </>
+          ) : (
+            <S.EditButton>
+              <Link to={editURL}>
+                <S.StyledOutlinedButton size="sm">
+                  편집하기
+                </S.StyledOutlinedButton>
+              </Link>
+            </S.EditButton>
+          )}
+          <CardList isEditMode={isEditMode} id={id} />
+        </S.MainDiv>
+      </S.Background>
+    </>
   );
 }
 
-export default PostIdPage;
+export default MessageListPage;
