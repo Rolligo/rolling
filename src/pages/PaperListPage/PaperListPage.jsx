@@ -6,7 +6,7 @@ import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
 import { Button } from "components/Button";
 import { Helmet } from "react-helmet";
-import Loading from "assets/images/icons/loading.png";
+import PaperListSkeleton from "components/Skeleton/PaperListSkeleton";
 
 function PaperListPage() {
   const { data: recentPaper } = useRequest({
@@ -62,34 +62,28 @@ function PaperSection({ title, papers }) {
       <S.Title>{title}</S.Title>
       <S.CardContainer>
         {papers ? (
-          papers?.results?.map((paper) => (
-            <Link key={paper?.id} to={`/post/${paper?.id}`}>
-              <PaperCard data={paper} slideIndex={slideIndex} />
-            </Link>
-          ))
+          <>
+            {papers?.results?.map((paper) => (
+              <Link key={paper?.id} to={`/post/${paper?.id}`}>
+                <PaperCard data={paper} slideIndex={slideIndex} />
+              </Link>
+            ))}
+            {slideIndex > 0 && (
+              <S.ArrowButtonContainer $left>
+                <Button.Arrow type="button" left onClick={slideLeft} />
+              </S.ArrowButtonContainer>
+            )}
+            {slideIndex < papers?.results?.length - 4 && (
+              <S.ArrowButtonContainer $right>
+                <Button.Arrow type="button" right onClick={slideRight} />
+              </S.ArrowButtonContainer>
+            )}
+          </>
         ) : (
-          <Fallback />
-        )}
-        {slideIndex > 0 && (
-          <S.ArrowButtonContainer $left>
-            <Button.Arrow type="button" left onClick={slideLeft} />
-          </S.ArrowButtonContainer>
-        )}
-        {slideIndex < papers?.results?.length - 4 && (
-          <S.ArrowButtonContainer $right>
-            <Button.Arrow type="button" right onClick={slideRight} />
-          </S.ArrowButtonContainer>
+          <PaperListSkeleton />
         )}
       </S.CardContainer>
     </S.Section>
-  );
-}
-
-function Fallback() {
-  return (
-    <S.FallbackContainer>
-      <S.Loading src={Loading} />
-    </S.FallbackContainer>
   );
 }
 
