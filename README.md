@@ -13,23 +13,23 @@
 
 ### 🖥️ 미리보기
 
-#### 메인 페이지
+#### [메인 페이지](https://github.com/codeit-part2-team4/rolling/wiki/MainPage)
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/df81f317-13a6-4f44-a6af-1aae4e90db8b)
 
-#### 롤링 페이퍼 목록 페이지
+#### [롤링 페이퍼 목록 페이지](https://github.com/codeit-part2-team4/rolling/wiki/PaperListPage)
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/666ff9de-a01c-4dfc-9581-0ad190b768fd)
 
-#### 롤링 페이퍼 생성 페이지
+#### [롤링 페이퍼 생성 페이지](https://github.com/codeit-part2-team4/rolling/wiki/CreatePaperPage)
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/53dddb42-2637-4076-82a7-fdad89e2b106)
 
-#### 롤링 페이퍼 페이지
+#### [롤링 페이퍼 페이지](https://github.com/codeit-part2-team4/rolling/wiki/MessageListPage)
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/534de620-12c3-446c-9d82-64bdc6cae553)
 
-#### 메세지 생성 페이지
+#### [메세지 생성 페이지](https://github.com/codeit-part2-team4/rolling/wiki/CreateMessagePage)
 
 ![image](https://github.com/codeit-part2-team4/rolling/assets/117700203/5173eede-79a9-48b3-b6c9-5ab53fc201e7)
 
