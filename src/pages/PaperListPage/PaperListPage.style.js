@@ -88,18 +88,18 @@ export const StyledButton = styled(Button)`
 export const ArrowButtonContainer = styled.div`
   display: none;
   position: absolute;
-  top: 48%;
+  top: 50%;
 
   ${({ $left }) =>
     $left &&
     css`
-      left: -0.7rem;
+      left: -0.1rem;
     `}
 
   ${({ $right }) =>
     $right &&
     css`
-      right: -3.7rem;
+      right: -3.1rem;
     `}
 
   ${onPc} {
