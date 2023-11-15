@@ -17,19 +17,20 @@ export const BrTag = styled.br`
 `;
 
 export const DescriptionDiv = styled.div`
-  padding: 0 2.4rem 5rem 2.4rem;
+  padding: 0 2.4rem 4rem 4rem;
 `;
 
 export const EmojiImg = styled.img`
-  width: 85vw;
-  height: auto;
+  width: 95vw;
+  height: fit-content;
 
   ${onTablet} {
     width: 63rem;
   }
 
   ${onPc} {
-    width: 55rem;
+    width: fit-content;
+    height: auto;
   }
 `;
 export const ImgContainer = styled.div`
@@ -37,8 +38,22 @@ export const ImgContainer = styled.div`
   height: 22rem;
   overflow: hidden;
   ${onTablet} {
-    height: 18rem;
+    height: 16rem;
+    display: flex;
+    justify-content: center;
   }
+
+  ${onPc} {
+    width: 55.8rem;
+    height: 20rem;
+  }
+`;
+
+export const ImgContainer2 = styled.div`
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 
   ${onPc} {
     width: 55.8rem;
@@ -53,10 +68,10 @@ export const ImgBox = styled.div`
 
   ${onTablet} {
     position: static;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+    display: flex;
     overflow: visible;
     left: 0;
+    justify-content: center;
   }
 
   ${onPc} {
@@ -74,7 +89,7 @@ export const SingleImg = styled.img`
   height: auto;
   max-height: 22rem;
   ${onTablet} {
-    width: 23.7rem;
+    width: 20.5rem;
   }
 
   ${onPc} {
@@ -142,13 +157,13 @@ export const Section = styled.section`
   width: 100%;
   border-radius: 2rem;
   background: ${COLORS.SURFACE};
-  padding: 2.4rem 0 6.2278rem 0;
+  padding: 2.4rem 0 3rem 0;
   margin-top: 2.4rem;
   display: flex;
   flex-direction: column;
 
   ${onTablet} {
-    width: 70.6rem;
+    width: 72rem;
   }
 
   ${onPc} {
@@ -167,9 +182,12 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 6rem 0 2.4rem 0;
+  position: fixed;
+  bottom: 0;
+  padding: 6rem 2.4rem 2.4rem;
   ${onPc} {
     width: 28rem;
+    position: relative;
   }
 `;
 
