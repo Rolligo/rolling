@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 function useLazyImageObserver({ src }) {
-  const [imgSrc, setImgSrc] = useState < string > "";
-  const imgRef = (useRef < HTMLImageElement) | (null > null);
+  const [imgSrc, setImgSrc] = useState("");
+  const imgRef = useRef(null);
 
   useEffect(() => {
     let observer;
