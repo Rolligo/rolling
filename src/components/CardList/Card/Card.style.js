@@ -63,7 +63,9 @@ export const Message = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   color: ${COLORS.GRAY_600};
-  font-family: ${({ font }) => font};
+  * {
+    font-family: ${({ $font }) => $font};
+  }
   ${FONT_STYLE.REGULAR_15};
 
   ${onTabletAndPc} {

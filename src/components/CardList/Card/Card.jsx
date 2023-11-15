@@ -43,7 +43,7 @@ function Card({ item, isEditMode, getDeleteCardId }) {
           </S.IconContainer>
         )}
         <S.Content>
-          <S.Message font={item.font} dangerouslySetInnerHTML={content} />
+          <S.Message $font={item.font} dangerouslySetInnerHTML={content} />
           <S.Date>{date}</S.Date>
         </S.Content>
       </div>

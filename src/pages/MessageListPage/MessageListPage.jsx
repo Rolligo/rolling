@@ -81,7 +81,7 @@ function MessageListPage() {
     <>
       <Helmet>
         <title>
-          {isEditMode ? "롤링페이퍼 편집 - Rolling" : "롤링페이퍼 - Rolling"}
+          {isEditMode ? "롤링 페이퍼 편집 - Rolling" : "롤링 페이퍼 - Rolling"}
         </title>
       </Helmet>
       <S.Background

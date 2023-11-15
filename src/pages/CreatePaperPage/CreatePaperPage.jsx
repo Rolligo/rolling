@@ -54,7 +54,7 @@ function CreatePaperPage() {
   const [isInputError, setIsInputError] = useState(false);
   const navigate = useNavigate();
 
-  // 새로운 롤링페이퍼 생성 대상 데이터
+  // 새로운 롤링 페이퍼 생성 대상 데이터
   const newRollingPerson = {
     name: value,
     backgroundColor: isColor ? COLOR_NAME[selectedChip] : "beige",
@@ -88,10 +88,10 @@ function CreatePaperPage() {
     const { error, data } = await fetch();
     if (!error) {
       console.log(data);
-      alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
+      alert("롤링 페이퍼가 성공적으로 생성되었습니다! ");
       navigate(`/post/${data.id}`);
     } else {
-      alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
+      alert("서버 오류로 롤링 페이퍼 생성에 실패했습니다.");
     }
   };
 
@@ -108,7 +108,7 @@ function CreatePaperPage() {
   return (
     <div>
       <Helmet>
-        <title>롤링페이퍼 생성 - Rolling</title>
+        <title>롤링 페이퍼 생성 - Rolling</title>
       </Helmet>
       <S.Wrapper>
         <S.NavContainer>
