@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { onTablet, onPc } from "styles/mediaQuery";
 import { zIndexStyle } from "styles/zIndexStyle";
 import { Button } from "components/Button";
@@ -88,46 +88,21 @@ export const StyledButton = styled(Button)`
 export const ArrowButtonContainer = styled.div`
   display: none;
   position: absolute;
-  top: 48%;
+  top: 50%;
 
   ${({ $left }) =>
     $left &&
     css`
-      left: -0.7rem;
+      left: -0.1rem;
     `}
 
   ${({ $right }) =>
     $right &&
     css`
-      right: -3.7rem;
+      right: -3.1rem;
     `}
 
   ${onPc} {
     display: block;
   }
-`;
-
-export const FallbackContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-`;
-
-const Spin = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(-360deg);
-  }
-`;
-
-export const Loading = styled.img`
-  opacity: 0.6;
-  width: 4rem;
-  height: 4rem;
-  animation: ${Spin} 2.5s linear infinite;
 `;

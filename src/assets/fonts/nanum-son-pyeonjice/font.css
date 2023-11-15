@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "나눔손글씨 손편지체";
+  src: url("subset-NanumSonPyeonJiCe.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}

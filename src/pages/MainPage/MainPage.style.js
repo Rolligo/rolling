@@ -73,6 +73,7 @@ export const SingleImg = styled.img`
   width: 40vw;
   height: auto;
   max-height: 22rem;
+
   ${onTablet} {
     width: 23.7rem;
   }
