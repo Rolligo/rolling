@@ -1,4 +1,5 @@
 {
+  "homepage": "https://codeit-part2-team4.github.io/rolling/",
   "name": "rolling",
   "version": "0.1.0",
   "private": true,
@@ -25,8 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "homepage": "https://codeit-part2-team4.github.io/rolling/"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

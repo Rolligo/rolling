@@ -128,12 +128,11 @@ const CreateMessagePage = () => {
     setLoading(true);
     const { error: fetchedError } = await fetch();
     if (fetchedError === undefined) {
-      setTimeout(() => {
-        setLoading(false);
-        navigate(`/post/${id}`);
-      }, 800);
+      setLoading(false);
+      navigate(`/post/${id}`);
     } else {
-      alert("서버 오류로 메시지 작성에 실패했습니다..");
+      alert("서버 오류로 메시지 작성에 실패했습니다.");
+      navigate("/list");
     }
   }
 
