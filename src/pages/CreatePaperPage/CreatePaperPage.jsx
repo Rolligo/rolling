@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
 import { Button } from "components/Button";
+import loadingImg from "assets/images/loading.png";
 import { Helmet } from "react-helmet";
 
 const ORANGE = COLORS.ORANGE_200;
@@ -52,6 +53,7 @@ function CreatePaperPage() {
   const [value, setValue] = useState("");
   const [isColor, setIsColor] = useState(true);
   const [isInputError, setIsInputError] = useState(false);
+  const [loading, setLoading] = useState();
   const navigate = useNavigate();
 
   // 새로운 롤링 페이퍼 생성 대상 데이터
@@ -84,15 +86,15 @@ function CreatePaperPage() {
     },
   });
 
-  const handleSubmitForm = async () => {
+  const handleCreatePaperClick = async () => {
+    setLoading(true);
     const { error, data } = await fetch();
     if (!error) {
-      console.log(data);
-      alert("롤링 페이퍼가 성공적으로 생성되었습니다! ");
+      setLoading(false);
       navigate(`/post/${data.id}`);
     } else {
       alert("서버 오류로 롤링 페이퍼 생성에 실패했습니다.");
-      navigate(`/list`); // 롤링페이퍼 목록으로 이동
+      navigate("/list");
     }
   };
 
@@ -156,8 +158,12 @@ function CreatePaperPage() {
               ))}
           </S.ColorChipContainer>
           <S.ButtonContainer>
-            <Button size="full" disabled={!value} onClick={handleSubmitForm}>
-              생성하기
+            <Button
+              size="full"
+              disabled={!value}
+              onClick={handleCreatePaperClick}
+            >
+              {loading ? <S.LoadingImg src={loadingImg} /> : "생성하기"}
             </Button>
           </S.ButtonContainer>
         </S.Container>
