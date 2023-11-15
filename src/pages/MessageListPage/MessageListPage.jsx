@@ -27,12 +27,6 @@ function MessageListPage() {
     },
   });
 
-  const { data: reactionListData } = useRequest({
-    options: {
-      url: `recipients/${id}/reactions/`,
-    },
-  });
-
   const { fetch: fetchDelete } = useRequest({
     skip: true,
     options: {
@@ -91,7 +85,7 @@ function MessageListPage() {
         <S.NavBarContainer>
           <NavBar showButton={false} />
         </S.NavBarContainer>
-        <NavBarSub paperData={paperData} reactionListData={reactionListData} />
+        <NavBarSub data={paperData} />
         <S.MainDiv>
           {isEditMode ? (
             <>
