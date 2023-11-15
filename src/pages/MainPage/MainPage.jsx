@@ -50,9 +50,9 @@ function MainPage() {
             </S.MainH1>
             <S.MainH2>롤링 페이퍼에 이모지를 추가할 수 있어요.</S.MainH2>
           </S.DescriptionDiv>
-          <S.ImgContainer2>
+          <S.ImgContainer>
             <S.EmojiImg src={Emoji} alt="이모지이미지" />
-          </S.ImgContainer2>
+          </S.ImgContainer>
         </S.Section>
         <S.ButtonContainer>
           <Button size="full" onClick={(e) => handleMovetoListClick(e)}>
