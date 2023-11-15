@@ -92,6 +92,7 @@ function CreatePaperPage() {
       navigate(`/post/${data.id}`);
     } else {
       alert("서버 오류로 롤링 페이퍼 생성에 실패했습니다.");
+      navigate(`/list`); // 롤링페이퍼 목록으로 이동
     }
   };
 
