@@ -6,17 +6,17 @@ import PaperCard from "components/PaperCard";
 import NavBar from "components/NavBar";
 import { Button } from "components/Button";
 import { Helmet } from "react-helmet";
-import Loading from "assets/images/icons/loading.png";
+import PaperListSkeleton from "components/Skeleton/PaperListSkeleton";
 
 function PaperListPage() {
-  const { data: recentPaper } = useRequest({
+  const { data: recentPaper, isLoading: isLoadingRecent } = useRequest({
     options: {
       url: "recipients/",
       method: "get",
     },
   });
 
-  const { data: popularPaper } = useRequest({
+  const { data: popularPaper, isLoading: isLoadingPopular } = useRequest({
     options: {
       url: "recipients/",
       method: "get",
@@ -33,8 +33,16 @@ function PaperListPage() {
       </Helmet>
       <NavBar />
       <S.Container>
-        <PaperSection title="인기 롤링 페이퍼 🔥" papers={popularPaper} />
-        <PaperSection title="최근에 만든 롤링 페이퍼⭐️" papers={recentPaper} />
+        <PaperSection
+          title="인기 롤링 페이퍼 🔥"
+          papers={popularPaper}
+          isLoading={isLoadingPopular}
+        />
+        <PaperSection
+          title="최근에 만든 롤링 페이퍼⭐️"
+          papers={recentPaper}
+          isLoading={isLoadingRecent}
+        />
       </S.Container>
       <S.ButtonContainer>
         <Link to="/post">
@@ -45,7 +53,20 @@ function PaperListPage() {
   );
 }
 
-function PaperSection({ title, papers }) {
+export default PaperListPage;
+
+function PaperSection({ title, papers, isLoading }) {
+  return (
+    <S.Section>
+      <S.Title>{title}</S.Title>
+      <S.CardContainer>
+        <CardList papers={papers} isLoading={isLoading} />
+      </S.CardContainer>
+    </S.Section>
+  );
+}
+
+function CardList({ papers, isLoading }) {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const slideLeft = () => {
@@ -57,40 +78,25 @@ function PaperSection({ title, papers }) {
     setSlideIndex((prev) => prev + 1);
   };
 
+  if (isLoading) return <PaperListSkeleton />;
+
   return (
-    <S.Section>
-      <S.Title>{title}</S.Title>
-      <S.CardContainer>
-        {papers ? (
-          papers?.results?.map((paper) => (
-            <Link key={paper?.id} to={`/post/${paper?.id}`}>
-              <PaperCard data={paper} slideIndex={slideIndex} />
-            </Link>
-          ))
-        ) : (
-          <Fallback />
-        )}
-        {slideIndex > 0 && (
-          <S.ArrowButtonContainer $left>
-            <Button.Arrow type="button" left onClick={slideLeft} />
-          </S.ArrowButtonContainer>
-        )}
-        {slideIndex < papers?.results?.length - 4 && (
-          <S.ArrowButtonContainer $right>
-            <Button.Arrow type="button" right onClick={slideRight} />
-          </S.ArrowButtonContainer>
-        )}
-      </S.CardContainer>
-    </S.Section>
+    <>
+      {papers?.results?.map((paper) => (
+        <Link key={paper?.id} to={`/post/${paper?.id}`}>
+          <PaperCard data={paper} slideIndex={slideIndex} />
+        </Link>
+      ))}
+      {slideIndex > 0 && (
+        <S.ArrowButtonContainer $left>
+          <Button.Arrow type="button" left onClick={slideLeft} />
+        </S.ArrowButtonContainer>
+      )}
+      {slideIndex < papers?.results?.length - 4 && (
+        <S.ArrowButtonContainer $right>
+          <Button.Arrow type="button" right onClick={slideRight} />
+        </S.ArrowButtonContainer>
+      )}
+    </>
   );
 }
-
-function Fallback() {
-  return (
-    <S.FallbackContainer>
-      <S.Loading src={Loading} />
-    </S.FallbackContainer>
-  );
-}
-
-export default PaperListPage;
