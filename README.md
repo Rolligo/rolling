@@ -37,7 +37,7 @@
 
 ### 📍 배포 링크
 
-추가 예정
+https://codeit-part2-team4.github.io/rolling/
 
 ### 📆 개발 기간
 

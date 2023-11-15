@@ -29,7 +29,7 @@ function Modal({ close, item, relationship, content, date }) {
         </S.ModalHeader>
         <S.ModalContent>
           <S.ModalTextField
-            font={item.font}
+            $font={item.font}
             dangerouslySetInnerHTML={content}
           ></S.ModalTextField>
           <S.ButtonContainer>

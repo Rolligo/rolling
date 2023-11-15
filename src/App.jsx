@@ -8,7 +8,7 @@ import CreateMessagePage from "pages/CreateMessagePage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<MainPage />} />

@@ -79,7 +79,9 @@ export const ModalTextField = styled.div`
   width: 100%;
   height: 24rem;
   color: #5a5a5a;
-  font-family: ${({ font }) => font};
+  * {
+    font-family: ${({ $font }) => $font};
+  }
   ${FONT_STYLE.REGULAR_18};
 
   overflow: auto;
