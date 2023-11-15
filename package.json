@@ -9,6 +9,7 @@
     "axios": "^1.6.0",
     "dompurify": "^3.0.6",
     "emoji-picker-react": "^4.5.15",
+    "gh-pages": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -22,7 +23,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "homepage": "https://codeit-part2-team4.github.io/rolling/"
   },
   "eslintConfig": {
     "extends": [
