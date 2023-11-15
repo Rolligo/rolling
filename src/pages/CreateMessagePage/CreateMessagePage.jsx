@@ -9,6 +9,7 @@ import { Button } from "components/Button";
 import useRequest from "hooks/useRequest";
 import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import loadingImg from "assets/images/loading.png";
 
 const RELATIONSHIP = ["지인", "친구", "동료", "가족"];
 
@@ -48,6 +49,7 @@ const CreateMessagePage = () => {
   const [isEditorEmpty, setIsEditorEmpty] = useState(true);
   const navigate = useNavigate();
   const { id } = useParams();
+  const [loading, setLoading] = useState();
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -123,12 +125,13 @@ const CreateMessagePage = () => {
 
   async function handleCreatePostClick(e) {
     e.preventDefault();
+    setLoading(true);
     const { error: fetchedError } = await fetch();
     if (fetchedError === undefined) {
-      alert(
-        "롤링 페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
-      );
-      navigate(`/post/${id}`);
+      setTimeout(() => {
+        setLoading(false);
+        navigate(`/post/${id}`);
+      }, 800);
     } else {
       alert("서버 오류로 메시지 작성에 실패했습니다..");
     }
@@ -207,7 +210,7 @@ const CreateMessagePage = () => {
             onClick={(e) => handleCreatePostClick(e)}
             disabled={isDisabled}
           >
-            생성하기
+            {loading ? <S.LoadingImg src={loadingImg} /> : "생성하기"}
           </Button>
         </S.Section>
       </S.CreateMessagePageDiv>
