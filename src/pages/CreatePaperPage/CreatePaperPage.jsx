@@ -18,10 +18,9 @@ const BLUE = COLORS.BLUE_200;
 const COLORCHIP = [ORANGE, PURPLE, BLUE, GREEN];
 const IMAGECHIP = [
   "https://ifh.cc/g/loHbF4.jpg",
-  "https://ifh.cc/g/Go0RsT.jpg",
+  "https://ifh.cc/g/qjkQjh.jpg",
   "https://ifh.cc/g/2jD013.jpg",
   "https://ifh.cc/g/8oN4L4.jpg",
-  //https://ifh.cc/g/qjkQjh.jpg
 ];
 
 function ColorChip({ background, onClick, isSelected }) {
