@@ -10,7 +10,8 @@ import useRequest from "hooks/useRequest";
 import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import loadingImg from "assets/images/loading.png";
-
+import WebpImg from "components/WebpImg";
+import DefaultProfileWebp from "assets/images/DefaultProfile.webp";
 const RELATIONSHIP = ["지인", "친구", "동료", "가족"];
 
 const FONT_SELECT = [
@@ -165,11 +166,15 @@ const CreateMessagePage = () => {
             <S.Div>
               <S.H2>프로필 이미지를 선택해주세요!</S.H2>
               <S.ImgContainer>
-                <S.SingleImageButton>
-                  <S.SingleImage
-                    src={defaultImageUrl}
-                    onClick={(e) => handleDefaultImgClick(e)}
-                  />
+                <S.SingleImageButton onClick={(e) => handleDefaultImgClick(e)}>
+                  <S.SingleDiv>
+                    <WebpImg
+                      src={defaultImageUrl}
+                      webpSrc={DefaultProfileWebp}
+                      alt={"기본 이미지"}
+                      lazyMode={true}
+                    />
+                  </S.SingleDiv>
                 </S.SingleImageButton>
                 {imageUrls.map((url) => {
                   return (
@@ -177,7 +182,7 @@ const CreateMessagePage = () => {
                       key={url}
                       onClick={(e) => handleSingleImgClick(e, url)}
                     >
-                      <S.SingleImage src={url} />
+                      <S.SingleImg src={url} />
                     </S.SingleImageButton>
                   );
                 })}

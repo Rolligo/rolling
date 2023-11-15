@@ -86,7 +86,22 @@ export const DefaultImage = styled.img`
   border-radius: 10rem;
 `;
 
-export const SingleImage = styled.img`
+export const SingleDiv = styled.div`
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10rem;
+  ${onTablet} {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
+  ${onPc} {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+`;
+
+export const SingleImg = styled.img`
   width: 4rem;
   height: 4rem;
   border-radius: 10rem;
