@@ -1,1 +1,3 @@
-export { default } from "./WebpLoader";
+import WebpLoader from "./WebpLoader";
+
+export default WebpLoader;

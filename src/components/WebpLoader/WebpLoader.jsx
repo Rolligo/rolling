@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./WebpLoader.style";
+import useLazyImageObserver from "./useLazyImageObserver";
 
 const WebpLoader = ({ src, webpSrc, alt = "png image" }) => {
   return (
@@ -9,8 +10,6 @@ const WebpLoader = ({ src, webpSrc, alt = "png image" }) => {
     </picture>
   );
 };
-
-import React from "react";
 
 const LazyModeWebpLoader = ({ src, webpSrc, alt = "png image" }) => {
   const { imgRef, imgSrc } = useLazyImageObserver({ src: webpSrc ?? src });
