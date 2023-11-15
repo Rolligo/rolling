@@ -66,7 +66,7 @@ export const ToContainer = styled.div`
 export const HeaderService = styled.div`
   padding: 0.8rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
 
   ${onTablet} {
     padding: 0;
@@ -170,9 +170,13 @@ export const ButtonText = styled.p`
 
 export const EmojiPickerWrapper = styled.div`
   position: absolute;
-  right: 10rem;
+  right: 3rem;
   top: 4rem;
   z-index: ${zIndexStyle.floating};
+
+  ${onTabletAndPc} {
+    right: 10rem;
+  }
 `;
 
 export const Border = styled.div`
