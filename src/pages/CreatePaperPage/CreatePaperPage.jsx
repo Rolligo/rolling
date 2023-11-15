@@ -109,6 +109,33 @@ function CreatePaperPage() {
     <div>
       <Helmet>
         <title>롤링 페이퍼 생성 - Rolling</title>
+        <meta
+          name="description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
+        <meta
+          property="og:image"
+          content="https://codeit-part2-team4.github.io/assets/images/logo.png"
+        />
+        <meta property="og:title" content="롤링 페이퍼 생성 - Rolling" />
+        <meta
+          property="og:description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
+        <meta
+          property="og:url"
+          content="https://codeit-part2-team4.github.io/rolling/"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://codeit-part2-team4.github.io/assets/images/logo.png"
+        />
+        <meta name="twitter:title" content="롤링 페이퍼 생성 - Rolling" />
+        <meta
+          name="twitter:description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
       </Helmet>
       <S.Wrapper>
         <S.NavContainer>
