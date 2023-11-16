@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rolling/static/css/main.090bbb30.css",
-    "main.js": "/rolling/static/js/main.1a4c24a5.js",
+    "main.js": "/rolling/static/js/main.db524dd3.js",
     "static/media/subset-NanumSonPyeonJiCe.woff2": "/rolling/static/media/subset-NanumSonPyeonJiCe.b8e68520b3c9c15cf262.woff2",
     "static/media/NotoSansKR-Bold-subset.woff2": "/rolling/static/media/NotoSansKR-Bold-subset.9f863af0bcc7ad296b6c.woff2",
     "static/media/NotoSansKR-Regular-subset.woff2": "/rolling/static/media/NotoSansKR-Regular-subset.d7005bb98b55aea5b954.woff2",
@@ -43,10 +43,10 @@
     "static/media/arrowright-icon.svg": "/rolling/static/media/arrowright-icon.8f8020eb194e86ecfd67800826e5948e.svg",
     "static/media/arrowleft-icon.svg": "/rolling/static/media/arrowleft-icon.c862df872c5475cde535e8c74fa6002a.svg",
     "main.090bbb30.css.map": "/rolling/static/css/main.090bbb30.css.map",
-    "main.1a4c24a5.js.map": "/rolling/static/js/main.1a4c24a5.js.map"
+    "main.db524dd3.js.map": "/rolling/static/js/main.db524dd3.js.map"
   },
   "entrypoints": [
     "static/css/main.090bbb30.css",
-    "static/js/main.1a4c24a5.js"
+    "static/js/main.db524dd3.js"
   ]
 }
