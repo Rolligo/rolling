@@ -11,13 +11,28 @@ import EmojiPicker from "emoji-picker-react";
 import EmojiList from "./EmojiList";
 import useRequest from "hooks/useRequest";
 
-function NavBarSub({ paperData, reactionListData }) {
+function NavBarSub({ data }) {
+  const id = data?.id;
+
+  // 롤링페이퍼 정보 데이터 가져오기
+  const { data: paperData, fetch: fetchTopReaction } = useRequest({
+    options: {
+      url: `recipients/${id}/`,
+    },
+  });
+
   const name = paperData?.name;
   const count = paperData?.messageCount;
   const topReactions = paperData?.topReactions;
   const recentMessages = paperData?.recentMessages;
-  const id = paperData?.id;
-  const reactionList = reactionListData?.results;
+
+  // 리액션 리스트 가져오기
+  const { data: reactionListData, fetch: fetchReactions } = useRequest({
+    options: {
+      url: `recipients/${id}/reactions/`,
+    },
+  });
+  let reactionList = reactionListData?.results;
 
   const fromImgUrls = [
     recentMessages?.[0]?.profileImageURL,
@@ -29,17 +44,20 @@ function NavBarSub({ paperData, reactionListData }) {
   const [showShare, setShowShare] = useState(false);
   const [showEmojiList, setShowEmojiList] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("");
+  const [refreshEmoji, setRefreshEmoji] = useState(1);
   const mounted = useRef(false);
 
   const pickerRef = useRef(null);
   const shareRef = useRef(null);
   const EmojiListRef = useRef(null);
 
+  // 새로 선택되어 서버에 업로드 할 리액션 객체
   const newUploadingEmoji = {
     emoji: selectedEmoji,
     type: "increase", // increase or decrease string needed
   };
 
+  // 선택한 리액션 서버에 업로드하기(적용하기)
   const { fetch } = useRequest({
     skip: true,
     options: {
@@ -52,17 +70,21 @@ function NavBarSub({ paperData, reactionListData }) {
     },
   });
 
-  const loadReactions = async () => {
+  const uploadEmoji = async () => {
     const { error } = await fetch();
-    if (!error) {
-      window.location.reload();
-    } else {
+    if (error) {
       alert("서버 오류로 이모지 등록에 실패하였습니다.");
     }
   };
 
-  const handleEmojiClick = (emoji) => {
+  const handleEmojiClick = async (emoji) => {
     setSelectedEmoji(emoji);
+    // 리랜더링 강제 발생시키기
+    setRefreshEmoji(refreshEmoji * -1);
+
+    // 서버에서 업데이트된 데이터 fetch 해오기
+    const { error: fetchTopReactionError } = await fetchTopReaction();
+    const { error: fetchReactionsError } = await fetchReactions();
   };
 
   const closePopOverContainers = (e) => {
@@ -88,9 +110,9 @@ function NavBarSub({ paperData, reactionListData }) {
     if (!mounted.current) {
       mounted.current = true;
     } else {
-      loadReactions();
+      uploadEmoji();
     }
-  }, [selectedEmoji]);
+  }, [refreshEmoji]);
 
   return (
     <S.Container>
