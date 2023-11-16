@@ -3,6 +3,7 @@ import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
 import { onPc, onTablet, onTabletAndPc } from "styles/mediaQuery";
 import { zIndexStyle } from "styles/zIndexStyle";
+import EmojiPicker from "emoji-picker-react";
 
 export const Container = styled.div`
   background-color: ${COLORS.WHITE};
@@ -173,9 +174,13 @@ export const EmojiPickerWrapper = styled.div`
   right: 3rem;
   top: 4rem;
   z-index: ${zIndexStyle.floating};
+  width: 60vw;
+  height: 38rem;
 
   ${onTabletAndPc} {
     right: 10rem;
+    width: 35rem;
+    height: 45rem;
   }
 `;
 

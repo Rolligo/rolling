@@ -171,6 +171,8 @@ function NavBarSub({ data }) {
                 <S.EmojiPickerWrapper>
                   <EmojiPicker
                     onEmojiClick={({ emoji }) => handleEmojiClick(emoji)}
+                    width="100%"
+                    height="100%"
                   />
                 </S.EmojiPickerWrapper>
               )}
