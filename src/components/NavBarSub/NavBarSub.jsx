@@ -14,32 +14,6 @@ import useRequest from "hooks/useRequest";
 function NavBarSub({ data }) {
   const id = data?.id;
 
-  // 롤링페이퍼 정보 데이터 가져오기
-  const { data: paperData, fetch: fetchTopReaction } = useRequest({
-    options: {
-      url: `recipients/${id}/`,
-    },
-  });
-
-  const name = paperData?.name;
-  const count = paperData?.messageCount;
-  const topReactions = paperData?.topReactions;
-  const recentMessages = paperData?.recentMessages;
-
-  // 리액션 리스트 가져오기
-  const { data: reactionListData, fetch: fetchReactions } = useRequest({
-    options: {
-      url: `recipients/${id}/reactions/`,
-    },
-  });
-  let reactionList = reactionListData?.results;
-
-  const fromImgUrls = [
-    recentMessages?.[0]?.profileImageURL,
-    recentMessages?.[1]?.profileImageURL,
-    recentMessages?.[2]?.profileImageURL,
-  ];
-
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const [showEmojiList, setShowEmojiList] = useState(false);
@@ -74,17 +48,43 @@ function NavBarSub({ data }) {
     const { error } = await fetch();
     if (error) {
       alert("서버 오류로 이모지 등록에 실패하였습니다.");
+    } else {
+      // 이모지 등록이 오류 없이 성공됨이 확인 된 이후, 서버에서 업데이트된 이모지 데이터 다시 fetch 해오기
+      await fetchTopReaction();
+      await fetchReactions();
     }
   };
 
+  // 롤링페이퍼 정보 데이터 가져오기
+  const { data: paperData, fetch: fetchTopReaction } = useRequest({
+    options: {
+      url: `recipients/${id}/`,
+    },
+  });
+
+  const name = paperData?.name;
+  const count = paperData?.messageCount;
+  const topReactionData = paperData?.topReactions;
+  const recentMessages = paperData?.recentMessages;
+
+  // 리액션 리스트 가져오기
+  const { data: reactionListData, fetch: fetchReactions } = useRequest({
+    options: {
+      url: `recipients/${id}/reactions/`,
+    },
+  });
+  const reactionsData = reactionListData?.results;
+
+  const fromImgUrls = [
+    recentMessages?.[0]?.profileImageURL,
+    recentMessages?.[1]?.profileImageURL,
+    recentMessages?.[2]?.profileImageURL,
+  ];
+
   const handleEmojiClick = async (emoji) => {
     setSelectedEmoji(emoji);
-    // 리랜더링 강제 발생시키기
+    // 리랜더링 강제 발생시켜서 useEffect 실행, 새로운 이미지 업로드 & 적용 할 수 있도록 구현
     setRefreshEmoji(refreshEmoji * -1);
-
-    // 서버에서 업데이트된 데이터 fetch 해오기
-    const { error: fetchTopReactionError } = await fetchTopReaction();
-    const { error: fetchReactionsError } = await fetchReactions();
   };
 
   const closePopOverContainers = (e) => {
@@ -132,8 +132,8 @@ function NavBarSub({ data }) {
           </S.ProfileContainer>
           <S.EmojiContainer>
             <S.EmojiWrapper>
-              {topReactions &&
-                topReactions.map((reaction) => {
+              {topReactionData &&
+                topReactionData.map((reaction) => {
                   return (
                     <Emoji
                       key={reaction.id}
@@ -152,7 +152,7 @@ function NavBarSub({ data }) {
               >
                 <img src={ArrowIcon} />
               </S.EmojiButton>
-              {showEmojiList && <EmojiList reactions={reactionList} />}
+              {showEmojiList && <EmojiList reactions={reactionsData} />}
             </div>
           </S.EmojiContainer>
           <S.ButtonContainer>
