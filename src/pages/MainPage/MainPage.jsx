@@ -8,6 +8,11 @@ import NavBar from "components/NavBar";
 import { Button } from "components/Button";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import WebpImg from "components/WebpImg";
+import WebpEmoji from "assets/images/EmojiWebp.webp";
+import WebpCard1Img from "assets/images/card-img1-webp.webp";
+import WebpCard2Img from "assets/images/card-img2-webp.webp";
+import WebpCard3Img from "assets/images/card-img3-webp.webp";
 
 function MainPage() {
   const navigate = useNavigate();
@@ -62,9 +67,30 @@ function MainPage() {
           </S.DescriptionDiv>
           <S.ImgContainer>
             <S.ImgBox>
-              <S.SingleImg src={Card1} alt="카드1이미지" />
-              <S.SingleImg src={Card2} alt="카드2이미지" />
-              <S.SingleImg src={Card3} alt="카드3이미지" />
+              <S.SingleDiv>
+                <WebpImg
+                  src={Card1}
+                  webpSrc={WebpCard1Img}
+                  alt={"카드1이미지"}
+                  lazyMode={true}
+                />
+              </S.SingleDiv>
+              <S.SingleDiv>
+                <WebpImg
+                  src={Card2}
+                  webpSrc={WebpCard2Img}
+                  alt={"카드2이미지"}
+                  lazyMode={true}
+                />
+              </S.SingleDiv>
+              <S.SingleDiv>
+                <WebpImg
+                  src={Card3}
+                  webpSrc={WebpCard3Img}
+                  alt={"카드3이미지"}
+                  lazyMode={true}
+                />
+              </S.SingleDiv>
             </S.ImgBox>
           </S.ImgContainer>
         </S.Section>
@@ -78,7 +104,14 @@ function MainPage() {
             <S.MainH2>롤링 페이퍼에 이모지를 추가할 수 있어요.</S.MainH2>
           </S.DescriptionDiv>
           <S.ImgContainer>
-            <S.EmojiImg src={Emoji} alt="이모지이미지" />
+            <S.EmojiDiv>
+              <WebpImg
+                src={Emoji}
+                webpSrc={WebpEmoji}
+                alt={"이모지 이미지"}
+                lazyMode={true}
+              />
+            </S.EmojiDiv>
           </S.ImgContainer>
         </S.Section>
         <S.ButtonContainer>
