@@ -22,7 +22,8 @@ export const Button = styled.button`
   width: 14rem;
   height: 5rem;
   padding: 1.2rem 1.6rem;
-  ${FONT_STYLE.REGULAR_16}
+  color: ${COLORS.BLACK};
+  ${FONT_STYLE.REGULAR_16};
 
   &:hover {
     background-color: ${COLORS.GRAY_100};
