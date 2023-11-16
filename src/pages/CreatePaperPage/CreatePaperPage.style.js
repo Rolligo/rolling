@@ -108,13 +108,6 @@ export const CheckedIcon = styled.img`
 
 export const ButtonContainer = styled.div`
   padding: 2.4rem 0;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-
-  ${onPc} {
-    position: relative;
-  }
 `;
 
 const Spin = keyframes`
