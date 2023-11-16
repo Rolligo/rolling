@@ -81,7 +81,7 @@ function MainPage() {
               <WebpImg
                 src={Emoji}
                 webpSrc={WebpEmoji}
-                alt={"이모지 webp 이미지"}
+                alt={"이모지 이미지"}
                 lazyMode={true}
               />
             </S.EmojiDiv>
