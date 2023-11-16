@@ -1,4 +1,4 @@
-# 프로젝트: 롤링
+# 프로젝트: 롤링 📮
 
 <div align="center">
   <img src="https://github.com/codeit-part2-team4/rolling/assets/117700203/e3a43fad-ea9e-4d5e-a555-e300e6ebe27a" />
