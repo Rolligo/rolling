@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/rolling/static/css/main.434c69b5.css",
-    "main.js": "/rolling/static/js/main.e5bd34a0.js",
+    "main.css": "/rolling/static/css/main.090bbb30.css",
+    "main.js": "/rolling/static/js/main.1a4c24a5.js",
+    "static/media/subset-NanumSonPyeonJiCe.woff2": "/rolling/static/media/subset-NanumSonPyeonJiCe.b8e68520b3c9c15cf262.woff2",
     "static/media/NotoSansKR-Bold-subset.woff2": "/rolling/static/media/NotoSansKR-Bold-subset.9f863af0bcc7ad296b6c.woff2",
     "static/media/NotoSansKR-Regular-subset.woff2": "/rolling/static/media/NotoSansKR-Regular-subset.d7005bb98b55aea5b954.woff2",
+    "static/media/subset-NanumMyeongjoOTFExtraBold00.woff2": "/rolling/static/media/subset-NanumMyeongjoOTFExtraBold00.7b52ea42eb6a7df0759c.woff2",
     "static/media/Pretendard-Black.subset.woff2": "/rolling/static/media/Pretendard-Black.subset.8b31f345209b485188d5.woff2",
     "static/media/Pretendard-ExtraBold.subset.woff2": "/rolling/static/media/Pretendard-ExtraBold.subset.fc38076cc5e35c4752e8.woff2",
     "static/media/Pretendard-Bold.subset.woff2": "/rolling/static/media/Pretendard-Bold.subset.9bf28d88b4d9a2db2358.woff2",
@@ -14,13 +16,20 @@
     "static/media/Pretendard-ExtraLight.subset.woff2": "/rolling/static/media/Pretendard-ExtraLight.subset.1b7bae4e4a00df5ce290.woff2",
     "static/media/Pretendard-Thin.subset.woff2": "/rolling/static/media/Pretendard-Thin.subset.034defed5b8917a54fc5.woff2",
     "static/media/Emoji.png": "/rolling/static/media/Emoji.03180fee1409c97dd4c8.png",
+    "static/media/subset-NanumMyeongjoOTFBold00.woff2": "/rolling/static/media/subset-NanumMyeongjoOTFBold00.7e39c105ab594bace632.woff2",
+    "static/media/subset-NanumMyeongjoOTF00.woff2": "/rolling/static/media/subset-NanumMyeongjoOTF00.8b0b116e8a2d6d803729.woff2",
     "static/media/card-img2.png": "/rolling/static/media/card-img2.d26d91c841f5e57b9bee.png",
     "static/media/card-img1.png": "/rolling/static/media/card-img1.8213776832d843922e6a.png",
     "static/media/card-img3.png": "/rolling/static/media/card-img3.25413a0c4a9419426105.png",
+    "static/media/EmojiWebp.webp": "/rolling/static/media/EmojiWebp.1b10c24c16d11fb927ff.webp",
+    "static/media/card-img2-webp.webp": "/rolling/static/media/card-img2-webp.e247776192d21e0b1d54.webp",
+    "static/media/card-img1-webp.webp": "/rolling/static/media/card-img1-webp.7ed8d60b655d52cad802.webp",
+    "static/media/card-img3-webp.webp": "/rolling/static/media/card-img3-webp.d00284a8653bf6ef10a2.webp",
     "static/media/loading.png": "/rolling/static/media/loading.7c4bf9a8fa64710d7b64.png",
     "static/media/add-emoticon.svg": "/rolling/static/media/add-emoticon.6d3fc640c80d5cb7a5690ceda0dd68ae.svg",
     "static/media/delete-icon.svg": "/rolling/static/media/delete-icon.7e3e5f4220c0d1c30541b7110d86fda8.svg",
     "static/media/shareIcon.svg": "/rolling/static/media/shareIcon.85343f6ee021d6fb4fd5758566dd5897.svg",
+    "static/media/DefaultProfile.webp": "/rolling/static/media/DefaultProfile.31d82c9642dda499ee43.webp",
     "static/media/completed.svg": "/rolling/static/media/completed.980ed8aca920f1a4a83fad29e36f1a88.svg",
     "index.html": "/rolling/index.html",
     "static/media/close.svg": "/rolling/static/media/close.7ea9347070ee73bf3c711ae187159f3f.svg",
@@ -33,11 +42,11 @@
     "static/media/arrow_down.svg": "/rolling/static/media/arrow_down.d9b4522dd621fbbdce5d20eae737645f.svg",
     "static/media/arrowright-icon.svg": "/rolling/static/media/arrowright-icon.8f8020eb194e86ecfd67800826e5948e.svg",
     "static/media/arrowleft-icon.svg": "/rolling/static/media/arrowleft-icon.c862df872c5475cde535e8c74fa6002a.svg",
-    "main.434c69b5.css.map": "/rolling/static/css/main.434c69b5.css.map",
-    "main.e5bd34a0.js.map": "/rolling/static/js/main.e5bd34a0.js.map"
+    "main.090bbb30.css.map": "/rolling/static/css/main.090bbb30.css.map",
+    "main.1a4c24a5.js.map": "/rolling/static/js/main.1a4c24a5.js.map"
   },
   "entrypoints": [
-    "static/css/main.434c69b5.css",
-    "static/js/main.e5bd34a0.js"
+    "static/css/main.090bbb30.css",
+    "static/js/main.1a4c24a5.js"
   ]
 }
