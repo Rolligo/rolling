@@ -16,9 +16,7 @@ function Card({ item, isEditMode, getDeleteCardId }) {
   };
 
   const handleClickCard = () => {
-    if (window.innerWidth > 768) {
-      setModalIsOpen(true);
-    }
+    setModalIsOpen(true);
   };
 
   const handleClickBackdropOrButton = () => {
