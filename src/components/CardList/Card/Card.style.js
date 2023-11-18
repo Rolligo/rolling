@@ -33,16 +33,27 @@ export const Sender = styled.p`
   align-items: flex-start;
   gap: 0.6rem;
   ${FONT_STYLE.REGULAR_18};
+  max-width: 20rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   span {
     ${FONT_STYLE.BOLD_16};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   ${onTabletAndPc} {
     ${FONT_STYLE.REGULAR_20};
+    max-width: 24rem;
 
     span {
       ${FONT_STYLE.BOLD_20};
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 `;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { COLORS } from "styles/palette";
 import { FONT_STYLE } from "styles/fontStyle";
 import { Button } from "components/Button";
+import { onTabletAndPc } from "styles/mediaQuery";
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -14,7 +15,6 @@ export const ModalBackdrop = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  width: 60rem;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -23,7 +23,13 @@ export const ModalContainer = styled.div`
   background-color: ${COLORS.WHITE};
   border-radius: 1.6rem;
   box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
-  padding: 4rem;
+  min-width: 27rem;
+  padding: 2rem;
+
+  ${onTabletAndPc} {
+    width: 60rem;
+    padding: 4rem;
+  }
 `;
 
 export const ModalHeader = styled.div`
@@ -57,16 +63,35 @@ export const ProfileInfo = styled.div`
   gap: 0.6rem;
 `;
 
+export const Sender = styled.div`
+  max-width: 13rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  ${FONT_STYLE.REGULAR_18};
+
+  ${onTabletAndPc} {
+    max-width: 36rem;
+    ${FONT_STYLE.REGULAR_20};
+  }
+`;
+
 export const Name = styled.span`
-  color: ${COLORS.BLACK};
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 120%;
+  ${FONT_STYLE.BOLD_16};
+
+  ${onTabletAndPc} {
+    ${FONT_STYLE.BOLD_20};
+  }
 `;
 
 export const ProfileDate = styled.div`
+  display: none;
   color: ${COLORS.GRAY_400};
   ${FONT_STYLE.REGULAR_14};
+
+  ${onTabletAndPc} {
+    display: block;
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -82,7 +107,10 @@ export const ModalTextField = styled.div`
   * {
     font-family: ${({ $font }) => $font};
   }
-  ${FONT_STYLE.REGULAR_18};
+  ${FONT_STYLE.REGULAR_15};
+  ${onTabletAndPc} {
+    ${FONT_STYLE.REGULAR_18};
+  }
 
   overflow: auto;
   &::-webkit-scrollbar {
@@ -103,4 +131,5 @@ export const ButtonContainer = styled.div`
 
 export const StyledButton = styled(Button)`
   width: 1.2rem;
+  margin-top: 1.6rem;
 `;

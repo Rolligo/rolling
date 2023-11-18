@@ -19,9 +19,9 @@ function Modal({ close, item, relationship, content, date }) {
           <S.ProfileWrapper>
             <S.ProfileImg src={item.profileImageURL}></S.ProfileImg>
             <S.ProfileInfo>
-              <div>
+              <S.Sender>
                 From. <S.Name>{item.sender}</S.Name>
-              </div>
+              </S.Sender>
               <Relationship relationship={relationship} />
             </S.ProfileInfo>
           </S.ProfileWrapper>

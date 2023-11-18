@@ -1,7 +1,8 @@
 import * as S from "./From.style";
 
 function From({ imgUrls, count }) {
-  const showMoreCount = Number(count) - imgUrls?.length;
+  const showMoreCount =
+    Number(count) - imgUrls?.length > 99 ? 99 : Number(count) - imgUrls?.length;
   return (
     <S.Container $count={count}>
       {imgUrls?.map((url, index) => {
