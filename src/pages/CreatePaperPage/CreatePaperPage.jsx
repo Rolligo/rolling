@@ -1,5 +1,5 @@
 import NavBar from "components/NavBar";
-import * as S from "./BackgroundSelectPage.style";
+import * as S from "./CreatePaperPage.style";
 import Input from "components/Input";
 import checkedIcon from "assets/images/icons/checked-icon.png";
 import { COLORS } from "styles/palette";
@@ -7,6 +7,8 @@ import { useEffect, useState, useRef } from "react";
 import useRequest from "hooks/useRequest";
 import { useNavigate } from "react-router-dom";
 import { Button } from "components/Button";
+import loadingImg from "assets/images/loading.png";
+import { Helmet } from "react-helmet";
 
 const ORANGE = COLORS.ORANGE_200;
 const PURPLE = COLORS.PURPLE_200;
@@ -16,10 +18,9 @@ const BLUE = COLORS.BLUE_200;
 const COLORCHIP = [ORANGE, PURPLE, BLUE, GREEN];
 const IMAGECHIP = [
   "https://ifh.cc/g/loHbF4.jpg",
-  "https://ifh.cc/g/Go0RsT.jpg",
+  "https://ifh.cc/g/qjkQjh.jpg",
   "https://ifh.cc/g/2jD013.jpg",
   "https://ifh.cc/g/8oN4L4.jpg",
-  //https://ifh.cc/g/qjkQjh.jpg
 ];
 
 function ColorChip({ background, onClick, isSelected }) {
@@ -38,7 +39,7 @@ function ImageChip({ background, onClick, isSelected }) {
   );
 }
 
-function BackgroundSelectPage() {
+function CreatePaperPage() {
   const COLOR_NAME = {
     "#ffe2ad": "beige",
     "#ecd9ff": "purple",
@@ -51,9 +52,10 @@ function BackgroundSelectPage() {
   const [value, setValue] = useState("");
   const [isColor, setIsColor] = useState(true);
   const [isInputError, setIsInputError] = useState(false);
+  const [loading, setLoading] = useState();
   const navigate = useNavigate();
 
-  // 새로운 롤링페이퍼 생성 대상 데이터
+  // 새로운 롤링 페이퍼 생성 대상 데이터
   const newRollingPerson = {
     name: value,
     backgroundColor: isColor ? COLOR_NAME[selectedChip] : "beige",
@@ -83,14 +85,15 @@ function BackgroundSelectPage() {
     },
   });
 
-  const handleSubmitForm = async () => {
+  const handleCreatePaperClick = async () => {
+    setLoading(true);
     const { error, data } = await fetch();
     if (!error) {
-      console.log(data);
-      alert("롤링페이퍼가 성공적으로 생성되었습니다! ");
+      setLoading(false);
       navigate(`/post/${data.id}`);
     } else {
-      alert("서버 오류로 롤링페이퍼 생성에 실패했습니다.");
+      alert("서버 오류로 롤링 페이퍼 생성에 실패했습니다.");
+      navigate("/list");
     }
   };
 
@@ -106,6 +109,36 @@ function BackgroundSelectPage() {
 
   return (
     <div>
+      <Helmet>
+        <title>롤링 페이퍼 생성 - Rolling</title>
+        <meta
+          name="description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
+        <meta
+          property="og:image"
+          content="https://codeit-part2-team4.github.io/assets/images/logo.png"
+        />
+        <meta property="og:title" content="롤링 페이퍼 생성 - Rolling" />
+        <meta
+          property="og:description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
+        <meta
+          property="og:url"
+          content="https://codeit-part2-team4.github.io/rolling/"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://codeit-part2-team4.github.io/assets/images/logo.png"
+        />
+        <meta name="twitter:title" content="롤링 페이퍼 생성 - Rolling" />
+        <meta
+          name="twitter:description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
+      </Helmet>
       <S.Wrapper>
         <S.NavContainer>
           <NavBar showButton={false} />
@@ -151,8 +184,12 @@ function BackgroundSelectPage() {
               ))}
           </S.ColorChipContainer>
           <S.ButtonContainer>
-            <Button size="full" disabled={!value} onClick={handleSubmitForm}>
-              생성하기
+            <Button
+              size="full"
+              disabled={!value}
+              onClick={handleCreatePaperClick}
+            >
+              {loading ? <S.LoadingImg src={loadingImg} /> : "생성하기"}
             </Button>
           </S.ButtonContainer>
         </S.Container>
@@ -161,4 +198,4 @@ function BackgroundSelectPage() {
   );
 }
 
-export default BackgroundSelectPage;
+export default CreatePaperPage;

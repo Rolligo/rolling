@@ -11,6 +11,7 @@ export const reset = css`
   html,
   body {
     font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
   }
 
   body {

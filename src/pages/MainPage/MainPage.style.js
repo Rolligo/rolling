@@ -20,7 +20,7 @@ export const DescriptionDiv = styled.div`
   padding: 0 2.4rem 5rem 2.4rem;
 `;
 
-export const EmojiImg = styled.img`
+export const EmojiDiv = styled.div`
   width: 85vw;
   height: auto;
 
@@ -69,10 +69,11 @@ export const ImgBox = styled.div`
   }
 `;
 
-export const SingleImg = styled.img`
+export const SingleDiv = styled.div`
   width: 40vw;
   height: auto;
   max-height: 22rem;
+
   ${onTablet} {
     width: 23.7rem;
   }

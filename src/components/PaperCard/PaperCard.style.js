@@ -63,7 +63,8 @@ export const TextContainer = styled.div`
   gap: 1.2rem;
 `;
 
-export const Title = styled.p`
+export const Title = styled.h1`
+  height: 3.6rem;
   ${COLORS.GRAY_900};
   ${FONT_STYLE.BOLD_18};
 

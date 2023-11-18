@@ -31,6 +31,15 @@ function PaperCard({ data = {}, slideIndex = 0 }) {
 
   const hasBackgroundImage = Boolean(backgroundImageURL);
 
+  const reduceText = (text, length) => {
+    if (!text) return;
+    if (text.length > length) {
+      return `${text.slice(0, length)}...`;
+    } else {
+      return text;
+    }
+  };
+
   return (
     <S.Container
       $slideIndex={slideIndex}
@@ -39,8 +48,10 @@ function PaperCard({ data = {}, slideIndex = 0 }) {
     >
       <S.Wrapper $hasBackgroundImage={hasBackgroundImage}>
         <S.TextContainer>
-          <S.Title $hasBackgroundImage={hasBackgroundImage}>{name}</S.Title>
-          <From imgUrls={fromImgUrls} count={messageCount} align="left" />
+          <S.Title $hasBackgroundImage={hasBackgroundImage}>
+            {reduceText(name, 9)}
+          </S.Title>
+          <From imgUrls={fromImgUrls} count={messageCount} />
           <S.Description $hasBackgroundImage={hasBackgroundImage}>
             <S.Count>{messageCount}</S.Count>명이 작성했어요!
           </S.Description>

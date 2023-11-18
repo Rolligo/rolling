@@ -1,0 +1,19 @@
+/* source: https://github.com/TetraTheta/NotoSansKR-subset */
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 400;
+  font-display: fallback;
+  src:
+    local("Noto Sans CJK KR"),
+    url("./NotoSansKR-Regular-subset.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 700;
+  font-display: fallback;
+  src:
+    local("Noto Sans CJK KR Bold"),
+    url("./NotoSansKR-Bold-subset.woff2") format("woff2");
+}

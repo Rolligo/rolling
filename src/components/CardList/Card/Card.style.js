@@ -33,16 +33,27 @@ export const Sender = styled.p`
   align-items: flex-start;
   gap: 0.6rem;
   ${FONT_STYLE.REGULAR_18};
+  max-width: 20rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   span {
     ${FONT_STYLE.BOLD_16};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   ${onTabletAndPc} {
     ${FONT_STYLE.REGULAR_20};
+    max-width: 24rem;
 
     span {
       ${FONT_STYLE.BOLD_20};
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 `;
@@ -63,7 +74,9 @@ export const Message = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   color: ${COLORS.GRAY_600};
-  font-family: ${({ font }) => font};
+  * {
+    font-family: ${({ $font }) => $font};
+  }
   ${FONT_STYLE.REGULAR_15};
 
   ${onTabletAndPc} {

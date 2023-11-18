@@ -19,6 +19,8 @@ function useToast(wait) {
       return;
     }
 
+    if (Toast) return;
+
     const newToast = createToast(TOASTS[toast], closeToast);
     setToast(newToast);
 

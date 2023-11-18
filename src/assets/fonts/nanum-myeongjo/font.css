@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "나눔명조";
+  src: url("subset-NanumMyeongjoOTF00.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "나눔명조";
+  src: url("subset-NanumMyeongjoOTFBold00.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "나눔명조";
+  src: url("subset-NanumMyeongjoOTFExtraBold00.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: fallback;
+}

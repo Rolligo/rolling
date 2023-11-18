@@ -13,14 +13,17 @@ export const Background = styled.div`
       &:after {
         content: "";
         background-image: url(${$backgroundImageURL});
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         filter: brightness(0.5);
         z-index: -1;
-        background-repeat: round;
+        background-size: cover;
+        background-repeat: none;
+        background-position: center;
+
       }
         `
       : `

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import * as S from "./PostMessagePage.style";
+import * as S from "./CreateMessagePage.style";
 import Input from "components/Input";
 import TextEditor from "components/TextEditor";
 import DefaultProfile from "assets/images/DefaultProfile.png";
@@ -8,7 +8,10 @@ import NavBar from "components/NavBar";
 import { Button } from "components/Button";
 import useRequest from "hooks/useRequest";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
+import loadingImg from "assets/images/loading.png";
+import WebpImg from "components/WebpImg";
+import DefaultProfileWebp from "assets/images/DefaultProfile.webp";
 const RELATIONSHIP = ["지인", "친구", "동료", "가족"];
 
 const FONT_SELECT = [
@@ -32,7 +35,7 @@ const imageUrls = [
 ];
 const defaultImageUrl = "https://ifh.cc/g/nt96P0.png";
 
-const PostMessagePage = () => {
+const CreateMessagePage = () => {
   const [isError, setIsError] = useState(false);
   const [inputNameValue, setInputNameValue] = useState("");
   const [isSingleImgClicked, setIsSingleImgClicked] = useState(false);
@@ -47,6 +50,7 @@ const PostMessagePage = () => {
   const [isEditorEmpty, setIsEditorEmpty] = useState(true);
   const navigate = useNavigate();
   const { id } = useParams();
+  const [loading, setLoading] = useState();
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -117,26 +121,56 @@ const PostMessagePage = () => {
       method: "post",
       headers: { "Content-Type": "application/json" },
       data: message,
-    }
+    },
   });
 
   async function handleCreatePostClick(e) {
     e.preventDefault();
-    const {error: fetchedError} = await fetch();
+    setLoading(true);
+    const { error: fetchedError } = await fetch();
     if (fetchedError === undefined) {
-      alert(
-        "롤링페이퍼에 메시지가 성공적으로 작성되었습니다! 페이지를 이동합니다."
-      );
+      setLoading(false);
       navigate(`/post/${id}`);
     } else {
-      alert("서버 오류로 메시지 작성에 실패했습니다..");
+      alert("서버 오류로 메시지 작성에 실패했습니다.");
+      navigate("/list");
     }
   }
 
   return (
     <>
+      <Helmet>
+        <title>메세지 생성 - Rolling</title>
+        <meta
+          name="description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
+        <meta
+          property="og:image"
+          content="https://codeit-part2-team4.github.io/assets/images/logo.png"
+        />
+        <meta property="og:title" content="메세지 생성 - Rolling" />
+        <meta
+          property="og:description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
+        <meta
+          property="og:url"
+          content="https://codeit-part2-team4.github.io/rolling/"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://codeit-part2-team4.github.io/assets/images/logo.png"
+        />
+        <meta name="twitter:title" content="메세지 생성 - Rolling" />
+        <meta
+          name="twitter:description"
+          content="누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요!"
+        />
+      </Helmet>
       <NavBar showButton={false} />
-      <S.PostMessagePageDiv>
+      <S.CreateMessagePageDiv>
         <S.Section>
           <S.H1>From.</S.H1>
           <Input
@@ -159,11 +193,15 @@ const PostMessagePage = () => {
             <S.Div>
               <S.H2>프로필 이미지를 선택해주세요!</S.H2>
               <S.ImgContainer>
-                <S.SingleImageButton>
-                  <S.SingleImage 
-                    src={defaultImageUrl}
-                    onClick={(e) => handleDefaultImgClick(e)}
-                  />
+                <S.SingleImageButton onClick={(e) => handleDefaultImgClick(e)}>
+                  <S.SingleDiv>
+                    <WebpImg
+                      src={defaultImageUrl}
+                      webpSrc={DefaultProfileWebp}
+                      alt={"기본 이미지"}
+                      lazyMode={true}
+                    />
+                  </S.SingleDiv>
                 </S.SingleImageButton>
                 {imageUrls.map((url) => {
                   return (
@@ -171,7 +209,7 @@ const PostMessagePage = () => {
                       key={url}
                       onClick={(e) => handleSingleImgClick(e, url)}
                     >
-                      <S.SingleImage src={url} />
+                      <S.SingleImg src={url} />
                     </S.SingleImageButton>
                   );
                 })}
@@ -203,12 +241,12 @@ const PostMessagePage = () => {
             onClick={(e) => handleCreatePostClick(e)}
             disabled={isDisabled}
           >
-            생성하기
+            {loading ? <S.LoadingImg src={loadingImg} /> : "생성하기"}
           </Button>
         </S.Section>
-      </S.PostMessagePageDiv>
+      </S.CreateMessagePageDiv>
     </>
   );
 };
 
-export default PostMessagePage;
+export default CreateMessagePage;

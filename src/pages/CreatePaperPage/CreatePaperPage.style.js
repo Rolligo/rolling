@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { COLORS } from "styles/palette";
 import { onPc, onTabletAndPc } from "styles/mediaQuery";
 
@@ -108,11 +108,21 @@ export const CheckedIcon = styled.img`
 
 export const ButtonContainer = styled.div`
   padding: 2.4rem 0;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+`;
 
-  ${onPc} {
-    position: relative;
+const Spin = keyframes`
+  0% {
+    transform: rotate(0deg);
   }
+  100% {
+    transform: rotate(-720deg);
+  }
+`;
+
+export const LoadingImg = styled.img`
+  width: 3.2rem;
+  height: 3.2rem;
+  animation: ${Spin} 2.5s linear infinite;
+  filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(309deg)
+    brightness(105%) contrast(102%);
 `;

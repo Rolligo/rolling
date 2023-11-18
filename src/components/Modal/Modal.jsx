@@ -19,9 +19,9 @@ function Modal({ close, item, relationship, content, date }) {
           <S.ProfileWrapper>
             <S.ProfileImg src={item.profileImageURL}></S.ProfileImg>
             <S.ProfileInfo>
-              <div>
+              <S.Sender>
                 From. <S.Name>{item.sender}</S.Name>
-              </div>
+              </S.Sender>
               <Relationship relationship={relationship} />
             </S.ProfileInfo>
           </S.ProfileWrapper>
@@ -29,7 +29,7 @@ function Modal({ close, item, relationship, content, date }) {
         </S.ModalHeader>
         <S.ModalContent>
           <S.ModalTextField
-            font={item.font}
+            $font={item.font}
             dangerouslySetInnerHTML={content}
           ></S.ModalTextField>
           <S.ButtonContainer>

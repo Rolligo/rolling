@@ -5,8 +5,18 @@ import { COLORS } from "styles/palette";
 export const Container = styled.div`
   display: flex;
   position: relative;
-  width: 8.5rem;
   height: 3rem;
+
+  ${({ $count }) => {
+    if ($count >= 4) {
+      return css`
+        width: 8.4rem;
+      `;
+    }
+    return css`
+      width: ${($count - 1) * 1.6 + 3}rem;
+    `;
+  }}
 `;
 
 export const ImgContainer = styled.div`
@@ -17,13 +27,9 @@ export const ImgContainer = styled.div`
   border-radius: 50%;
   background-color: ${COLORS.WHITE};
 
-  ${({ index, maxindex, align }) => css`
+  ${({ $index }) => css`
     position: absolute;
-    ${align === "right"
-      ? `right: ${
-          maxindex < 3 ? (maxindex - index) * 1.7 : (3 - index) * 1.7
-        }rem;`
-      : `left: ${index * 1.7}rem;`}
+    left: ${$index * 1.7}rem;
   `}
 `;
 
@@ -39,11 +45,11 @@ export const CountContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: 0;
+  left: ${({ $index }) => $index * 1.7}rem;
   width: 3rem;
   height: 3rem;
   border-radius: 3rem;
-  border: 0.17rem solid #e3e3e3;
+  border: 0.17rem solid ${COLORS.GRAY_300};
   background-color: ${COLORS.WHITE};
   color: ${COLORS.GRAY_500};
   ${FONT_STYLE.REGULAR_12};
