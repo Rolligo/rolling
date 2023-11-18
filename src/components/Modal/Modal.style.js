@@ -57,6 +57,13 @@ export const ProfileInfo = styled.div`
   gap: 0.6rem;
 `;
 
+export const Sender = styled.div`
+  max-width: 36rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 export const Name = styled.span`
   color: ${COLORS.BLACK};
   font-size: 2rem;
