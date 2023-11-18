@@ -23,6 +23,7 @@ export const ModalContainer = styled.div`
   background-color: ${COLORS.WHITE};
   border-radius: 1.6rem;
   box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
+  min-width: 27rem;
   padding: 2rem;
 
   ${onTabletAndPc} {
@@ -84,8 +85,13 @@ export const Name = styled.span`
 `;
 
 export const ProfileDate = styled.div`
+  display: none;
   color: ${COLORS.GRAY_400};
   ${FONT_STYLE.REGULAR_14};
+
+  ${onTabletAndPc} {
+    display: block;
+  }
 `;
 
 export const ModalContent = styled.div`
