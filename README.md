@@ -7,6 +7,7 @@
 ## 📌 롤링 서비스 소개
 
 ### 📢 누구나 손쉽게 만들 수 있는 온라인 롤링 페이퍼 서비스
+
 > - 로그인 없이 자유롭게 만드는 롤링 페이퍼
 > - 롤링 페이퍼에 원하는 스타일로 메세지를 남길 수 있어요
 > - 서로에게 이모지로 감정을 표현할 수 있어요
@@ -37,7 +38,7 @@
 
 ### 📍 배포 링크
 
-https://codeit-part2-team4.github.io/rolling/
+https://rolling-paper.netlify.app/
 
 ### 📆 개발 기간
 
@@ -88,6 +89,6 @@ https://codeit-part2-team4.github.io/rolling/
 
 ## 👥 팀원 소개
 
-| 팀원 | 팀원 | 팀원 | 팀장 | 팀원 |
-|:---:|:---:|:---:|:---:|:---:|
-|[<img src="https://github.com/arky02.png" width="100" height="100">](https://github.com/arky02)<br>김기연|[<img src="https://github.com/summerkimm.png" width="100" height="100">](https://github.com/summerkimm)<br>김소은|[<img src="https://github.com/K-Y-Hoo.png" width="100" height="100">](https://github.com/K-Y-Hoo)<br>김윤후|[<img src="https://github.com/asusia1111.png" width="100" height="100">](https://github.com/asusia1111)<br>안성재|[<img src="https://github.com/gw-lim.png" width="100" height="100">](https://github.com/gw-lim)<br>임건우|
+|                                                   팀원                                                    |                                                       팀원                                                        |                                                    팀원                                                     |                                                       팀장                                                        |                                                   팀원                                                    |
+| :-------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
+| [<img src="https://github.com/arky02.png" width="100" height="100">](https://github.com/arky02)<br>김기연 | [<img src="https://github.com/summerkimm.png" width="100" height="100">](https://github.com/summerkimm)<br>김소은 | [<img src="https://github.com/K-Y-Hoo.png" width="100" height="100">](https://github.com/K-Y-Hoo)<br>김윤후 | [<img src="https://github.com/asusia1111.png" width="100" height="100">](https://github.com/asusia1111)<br>안성재 | [<img src="https://github.com/gw-lim.png" width="100" height="100">](https://github.com/gw-lim)<br>임건우 |
