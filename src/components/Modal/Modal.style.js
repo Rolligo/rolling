@@ -131,4 +131,5 @@ export const ButtonContainer = styled.div`
 
 export const StyledButton = styled(Button)`
   width: 1.2rem;
+  margin-top: 1.6rem;
 `;
